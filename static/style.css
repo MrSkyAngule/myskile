@@ -1,238 +1,61 @@
-/* Старые стили шапки и фона сохраняются */
-:root {
-    --bg-dark: #0b0f19;
-    --accent-purple: #8b5cf6;
-    --accent-blue: #3b82f6;
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --border-color: rgba(255, 255, 255, 0.08);
+/* Стили для блока «О проекте» */
+.about-section {
+    padding: 100px 20px;
+    background: radial-gradient(circle at bottom, rgba(59, 130, 246, 0.05), transparent 50%);
+    border-top: 1px solid var(--border-color);
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-}
-
-.navbar {
-    background: rgba(11, 15, 25, 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-}
-
-.nav-container {
-    max-width: 1200px;
+.about-container {
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
 }
 
-.logo {
-    font-size: 1.5rem;
+.about-title {
+    font-size: 2.5rem;
     font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
-}
-
-.logo span { color: var(--accent-purple); }
-
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 60%);
-    padding: 20px;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 25px;
-}
-
-.gradient-text {
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
     margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: center;
+    letter-spacing: -0.5px;
 }
 
-.btn-primary {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    color: #fff;
-    padding: 16px 36px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
-    transition: all 0.3s ease;
-}
-
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5);
-}
-
-/* ==================================================== */
-/* СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА (НОВОЕ) */
-/* ==================================================== */
-
-/* Задний темный фон при открытии окна */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 7, 12, 0.8);
+.about-content {
+    background: var(--bg-card);
     backdrop-filter: blur(8px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none; /* Окно изначально кликабельно сквозь себя */
-    transition: opacity 0.4s ease;
-}
-
-/* Класс, который будет добавляться через JS для показа окна */
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Само белое/темное окно по центру */
-.modal-box {
-    background: #111827;
     border: 1px solid var(--border-color);
     padding: 40px;
-    border-radius: 24px;
-    width: 100%;
-    max-width: 500px;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    transform: scale(0.8);
-    transition: transform 0.4s ease;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.modal-overlay.active .modal-box {
-    transform: scale(1);
-}
-
-/* Кнопка закрытия (крестик) */
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 2rem;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.modal-close:hover {
-    color: #fff;
-}
-
-.modal-box h2 {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.modal-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-}
-
-/* Поля формы */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    font-size: 0.9rem;
-    color: #e5e7eb;
-    margin-bottom: 8px;
-    font-weight: 500;
-}
-
-.form-group select,
-.form-group input {
-    width: 100%;
-    padding: 14px;
-    background: #1f2937;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    color: #fff;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.form-group select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-}
-
-.form-group select:focus,
-.form-group input:focus {
-    border-color: var(--accent-purple);
-}
-
-/* Кнопка отправки внутри формы */
-.btn-submit {
-    width: 100%;
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    color: #fff;
-    border: none;
-    padding: 16px;
-    border-radius: 12px;
-    font-size: 1rem;
+.about-highlight {
+    font-size: 1.3rem;
     font-weight: 600;
-    cursor: pointer;
-    margin-top: 10px;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
-    transition: all 0.3s;
+    color: #fff;
+    margin-bottom: 24px;
+    line-height: 1.4;
+    border-left: 3px solid var(--accent-purple);
+    padding-left: 15px;
 }
 
-.btn-submit:hover {
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
-    filter: brightness(1.1);
+.about-text {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    line-height: 1.7;
 }
 
-@media (max-width: 480px) {
-    .modal-box { padding: 30px 20px; }
-    .hero h1 { font-size: 2.3rem; }
+.about-text:last-child {
+    margin-bottom: 0;
+}
+
+/* Корректировка высоты главного экрана для лучшего скролла */
+.hero {
+    min-height: 90vh;
+}
+
+@media (max-width: 768px) {
+    .about-section { padding: 60px 20px; }
+    .about-title { font-size: 1.8rem; }
+    .about-content { padding: 25px; }
+    .about-highlight { font-size: 1.1rem; }
 }
