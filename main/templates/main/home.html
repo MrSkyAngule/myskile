@@ -4,29 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYS_ERR // 404 NOT FOUND</title>
+    <!-- Подключаем внешний файл стилей. Важно, чтобы его имя точно совпадало -->
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <!-- Главный контейнер терминала -->
     <div class="cyber-card error-active">
         <!-- Бегущая лазерная линия -->
         <div class="scanline"></div>
 
-        <!-- Верхний статус-тег -->
         <div class="corner-tag">STATUS // CRITICAL</div>
 
-        <!-- Большой глитч-код ошибки -->
+        <!-- Главный глитч-текст -->
         <h1 class="glitch-title error-code" data-text="404">404</h1>
         <h2 class="sub-title">СИСТЕМА СЛОМАНА</h2>
 
-        <!-- Описание проблемы -->
         <p class="cyber-text">
             Запрошенный сектор памяти не найден или стерт правительством. Проверьте адрес или начните перезагрузку ядра.
         </p>
 
-        <!-- Аварийная кнопка -->
-        <button class="cyber-btn reboot-btn">
+        <!-- Рабочая кнопка обновления страницы -->
+        <button class="cyber-btn reboot-btn" onclick="location.reload()">
             ПЕРЕЗАПУСТИТЬ СИСТЕМУ
         </button>
     </div>
