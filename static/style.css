@@ -1,300 +1,165 @@
-/* Базовые настройки скролла и сетки */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: 'Courier New', Courier, monospace;
-    scroll-behavior: smooth;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #05050b;
-    color: #8c92ac;
-    min-height: 100vh;
-    overflow-x: hidden;
+    color: #333;
+    line-height: 1.6;
+    background: #f4f7f6;
 }
 
-/* --- КИБЕР ФОН И СЕТКА --- */
-.cyber-grid {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
-    background-image:
-        linear-gradient(rgba(0, 255, 102, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 102, 0.03) 1px, transparent 1px);
-    background-size: 30px 30px;
-    z-index: -1;
-}
-
-.scanline {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 6px;
-    background: rgba(255, 0, 85, 0.1);
-    box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
-    animation: scan-move 6s linear infinite;
-    z-index: 999;
-    pointer-events: none;
-}
-
-/* --- НАВИГАЦИЯ --- */
-.cyber-nav {
-    position: fixed;
-    top: 0; left: 0; width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 5%;
-    background: rgba(5, 5, 11, 0.9);
-    border-bottom: 1px solid rgba(0, 255, 102, 0.2);
-    backdrop-filter: blur(5px);
-    z-index: 100;
-}
-
-.nav-logo {
-    color: #00ff66;
-    font-weight: bold;
-    font-size: 1.2rem;
-    letter-spacing: 2px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-item {
-    color: #8c92ac;
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: bold;
-    letter-spacing: 1px;
-    transition: all 0.3s;
-    border-bottom: 2px solid transparent;
-    padding-bottom: 5px;
-}
-
-.nav-item:hover, .nav-item.active {
-    color: #ff0055;
-    text-shadow: 0 0 10px #ff0055;
-    border-color: #ff0055;
-}
-
-/* --- СЕКЦИИ --- */
-.section-container {
-    min-height: 100vh;
-    padding: 120px 10%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px dashed rgba(255, 0, 85, 0.1);
-}
-
-.hero-block {
-    max-width: 700px;
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 50px 20px;
     text-align: center;
 }
 
-.status-badge {
-    background: rgba(0, 255, 102, 0.1);
-    color: #00ff66;
-    border: 1px solid #00ff66;
-    display: inline-block;
-    padding: 6px 12px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    letter-spacing: 2px;
-}
-
-.hero-title {
-    font-size: 4rem;
-    color: #fff;
-    font-weight: 900;
-    letter-spacing: 5px;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.hero-title::before, .section-title::before {
-    content: attr(data-text);
-    position: absolute;
-    left: 2px; top: 0; width: 100%; height: 100%;
-    text-shadow: -2px 0 #ff0055;
-    background: #05050b;
-    clip: rect(44px, 9999px, 56px, 0);
-    animation: glitch-loop 4s infinite linear alternate-reverse;
-}
-
-.hero-subtitle {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 40px;
-}
-
-.action-btn {
-    display: inline-block;
-    color: #00ff66;
-    border: 1px solid #00ff66;
-    text-decoration: none;
-    padding: 15px 30px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    transition: all 0.3s;
-    background: transparent;
-}
-
-.action-btn:hover {
-    background: #00ff66;
-    color: #000;
-    box-shadow: 0 0 25px #00ff66;
-    transform: translateY(-3px);
-}
-
-.section-title {
+header h1 {
     font-size: 2.5rem;
-    color: #fff;
-    margin-bottom: 50px;
-    letter-spacing: 3px;
-    position: relative;
+    margin-bottom: 10px;
 }
 
-.projects-grid {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.project-card {
-    background: linear-gradient(135deg, #0e0e1a 0%, #05050b 100%);
-    border: 1px solid #ff0055;
-    padding: 35px;
-    width: 340px;
-    position: relative;
-    border-radius: 0 20px 0 20px;
-    transition: all 0.3s;
+.intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    font-size: 1.2rem;
+    color: #666;
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px rgba(255, 0, 85, 0.3);
-    border-color: #00ff66;
+/* Сетка карточек */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
 }
 
-.card-tag {
-    position: absolute;
-    top: 0; right: 20px;
-    background: #ff0055;
-    color: #000;
-    font-size: 0.65rem;
-    font-weight: bold;
-    padding: 3px 8px;
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
 }
 
-.project-card:hover .card-tag {
-    background: #00ff66;
+.card:hover {
+    transform: translateY(-5px);
 }
 
-.project-card h3 {
-    color: #fff;
+.card h3 {
+    color: #2c3e50;
     margin-bottom: 15px;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
 }
 
-.project-card p {
-    font-size: 0.9rem;
-    line-height: 1.6;
+.card ul {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.card ul li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.card ul li::before {
+    content: "✓";
+    color: #27ae60;
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
+
+.badge {
+    display: inline-block;
+    background: #3498db;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.badge.medium {
+    background: #e67e22;
+}
+
+/* Стили калькулятора */
+.calculator {
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.calculator h2 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.calc-group {
     margin-bottom: 20px;
 }
 
-.tech-stack {
-    color: #00ff66;
-    font-size: 0.75rem;
+.calc-group label {
+    display: block;
+    margin-bottom: 8px;
     font-weight: bold;
-    letter-spacing: 1px;
 }
 
-/* --- ТЕРМИНАЛ --- */
-.cyber-terminal {
+.calc-group select {
     width: 100%;
-    max-width: 650px;
-    background: #080812;
-    border: 1px solid #00ff66;
-    box-shadow: 0 0 15px rgba(0, 255, 102, 0.1);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
-.terminal-header {
-    background: rgba(0, 255, 102, 0.1);
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid #00ff66;
+.checkboxes label {
+    display: block;
+    font-weight: normal;
+    margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.terminal-dot {
-    width: 10px;
-    height: 10px;
-    background: #ff0055;
-    border-radius: 50%;
-}
-
-.terminal-title {
-    font-size: 0.8rem;
-    color: #00ff66;
-}
-
-.terminal-window {
-    height: 250px;
-    padding: 20px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    font-size: 0.9rem;
-}
-
-.output-line {
-    line-height: 1.4;
-}
-
-.text-green { color: #00ff66; }
-.text-pink { color: #ff0055; }
-.text-blue { color: #00ffff; }
-
-.terminal-input-row {
-    display: flex;
-    padding: 10px 20px;
-    background: rgba(0, 0, 0, 0.3);
-    border-top: 1px dashed rgba(0, 255, 102, 0.3);
-    align-items: center;
-}
-
-.terminal-prompt {
-    color: #ff0055;
+.checkboxes input {
     margin-right: 10px;
+}
+
+.calc-total {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #eee;
+    font-size: 1.4rem;
     font-weight: bold;
+    text-align: center;
+    color: #27ae60;
 }
 
-#terminal-input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
+footer {
+    background: #2c3e50;
     color: #fff;
-    font-family: inherit;
-    font-size: 0.9rem;
-}
-
-@keyframes scan-move {
-    0% { top: -5%; }
-    100% { top: 105%; }
-}
-
-@keyframes glitch-loop {
-    0% { clip: rect(15px, 9999px, 66px, 0); }
-    30% { clip: rect(85px, 9999px, 5px, 0); }
-    60% { clip: rect(34px, 9999px, 110px, 0); }
-    100% { clip: rect(70px, 9999px, 25px, 0); }
+    text-align: center;
+    padding: 20px;
+    margin-top: 60px;
 }

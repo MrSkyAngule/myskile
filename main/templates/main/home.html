@@ -3,79 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CYBER_CORE // Разработка высоконагруженных сайтов</title>
+    <title>Разработка сайтов: от простых до средних</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <!-- Фоновые эффекты матрицы и лазера -->
-    <div class="cyber-grid"></div>
-    <div class="scanline"></div>
+    <header>
+        <h1>Разработка веб-сайтов</h1>
+        <p>Создаем эффективные решения для вашего бизнеса</p>
+    </header>
 
-    <!-- Навигация студии -->
-    <nav class="cyber-nav">
-        <div class="nav-logo" data-text="C_C">//CYBER_CORE</div>
-        <div class="nav-links">
-            <a href="#main" class="nav-item active">MAIN</a>
-            <a href="#services" class="nav-item">SERVICES</a>
-            <a href="#terminal-sec" class="nav-item">ORDER_CONSOLE</a>
-        </div>
-    </nav>
+    <div class="container">
+        <p class="intro">Выберите готовый тип сайта или рассчитайте стоимость индивидуально с помощью калькулятора ниже.</p>
 
-    <!-- СЕКЦИЯ 1: Главный экран -->
-    <section id="main" class="section-container">
-        <div class="hero-block">
-            <div class="status-badge">AGENCY_STATUS // READY_FOR_DEPLOY</div>
-            <h1 class="hero-title" data-text="CODE_THE_FUTURE">CODE_THE_FUTURE</h1>
-            <p class="hero-subtitle">Создаем отказоустойчивые веб-ресурсы, интернет-магазины и сложные API. Без шаблонных конструкторов. Только чистый код, максимальная скорость и защита от DDoS-атак.</p>
-            <a href="#terminal-sec" class="action-btn">РАССЧИТАТЬ СТОИМОСТЬ <span class="btn-arrow">>></span></a>
-        </div>
-    </section>
-
-    <!-- СЕКЦИЯ 2: Услуги и Тарифы -->
-    <section id="projects" class="section-container">
-        <h2 class="section-title" data-text="OUR_SOLUTIONS">OUR_SOLUTIONS</h2>
-        <div class="projects-grid">
-
-            <!-- Тариф 1 -->
-            <div class="project-card">
-                <div class="card-tag">STACK // LIGHT</div>
-                <h3>HighSpeed Landing</h3>
-                <p>Одностраничный промо-сайт с реактивной загрузкой и идеальной зеленой зоной в Google PageSpeed.</p>
-                <span class="tech-stack">Fastify / Vanilla JS / CSS Grid</span>
+        <!-- Сетка с услугами -->
+        <div class="grid">
+            <div class="card">
+                <span class="badge">Простой</span>
+                <h3>Сайт-визитка / Лендинг</h3>
+                <p>Одностраничный сайт для быстрого старта, презентации услуг или одного товара.</p>
+                <ul>
+                    <li>Сроки: 3–5 дней</li>
+                    <li>Адаптивный дизайн</li>
+                    <li>Форма обратной связи</li>
+                </ul>
             </div>
 
-            <!-- Тариф 2 -->
-            <div class="project-card">
-                <div class="card-tag">STACK // CORP</div>
-                <h3>E-Commerce Core</h3>
-                <p>Масштабируемый интернет-магазин с кастомной админкой, интеграцией CRM, ERP и платежных шлюзов.</p>
-                <span class="tech-stack">Node.js / PostgreSQL / Redis</span>
+            <div class="card">
+                <span class="badge medium">Средний</span>
+                <h3>Корпоративный сайт</h3>
+                <p>Многостраничный сайт для компаний с каталогом услуг, блогом и описанием бизнеса.</p>
+                <ul>
+                    <li>Сроки: 2–3 недели</li>
+                    <li>Удобная CMS-система</li>
+                    <li>Интеграция с картами</li>
+                </ul>
             </div>
 
-        </div>
-    </section>
-
-    <!-- СЕКЦИЯ 3: Хакерская интерактивная консоль заказа -->
-    <section id="terminal-sec" class="section-container">
-        <h2 class="section-title" data-text="ORDER_TERMINAL">ORDER_TERMINAL</h2>
-
-        <div class="cyber-terminal">
-            <div class="terminal-header">
-                <span class="terminal-dot"></span>
-                <span class="terminal-title">bash // order@cyber-core.agency</span>
-            </div>
-            <div class="terminal-window" id="terminal-output">
-                <p class="output-line text-green">[SYSTEM]: Инициализация шлюза заказов успешно завершена.</p>
-                <p class="output-line text-green">[INFO]: Сервер готов рассчитать стоимость вашего проекта.</p>
-                <p class="output-line">[CMD]: Введите команду 'price' для калькулятора или 'order' для отправки брифа.</p>
-            </div>
-            <div class="terminal-input-row">
-                <span class="terminal-prompt">client@core:~#</span>
-                <input type="text" id="terminal-input" placeholder="Введите 'price', 'order' или 'help'..." autocomplete="off">
+            <div class="card">
+                <span class="badge medium">Средний</span>
+                <h3>Интернет-магазин</h3>
+                <p>Торговая площадка для продажи товаров с корзиной и личным кабинетом.</p>
+                <ul>
+                    <li>Сроки: 3–4 недели</li>
+                    <li>Онлайн-оплата</li>
+                    <li>Фильтры товаров</li>
+                </ul>
             </div>
         </div>
-    </section>
+
+        <!-- Интерактивный калькулятор (JS) -->
+        <div class="calculator">
+            <h2>📱 Интерактивный расчет стоимости</h2>
+            <div class="calc-group">
+                <label for="site-type">Выберите тип проекта:</label>
+                <select id="site-type">
+                    <option value="15000">Лендинг / Визитка (от 15 000 ₽)</option>
+                    <option value="35000">Корпоративный сайт (от 35 000 ₽)</option>
+                    <option value="50000">Интернет-магазин (от 50 000 ₽)</option>
+                </select>
+            </div>
+
+            <div class="calc-group checkboxes">
+                <p>Дополнительные опции:</p>
+                <label>
+                    <input type="checkbox" id="opt-seo" value="5000"> SEO-оптимизация (+5 000 ₽)
+                </label>
+                <label>
+                    <input type="checkbox" id="opt-copy" value="4000"> Написание текстов (+4 000 ₽)
+                </label>
+                <label>
+                    <input type="checkbox" id="opt-support" value="3000"> Месяц поддержки (+3 000 ₽)
+                </label>
+            </div>
+
+            <div class="calc-total">
+                Итоговая стоимость: <span id="total-price">15000</span> ₽
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Студия веб-разработки. Все права защищены.</p>
+    </footer>
 
     <script src="static/script.js"></script>
 </body>
