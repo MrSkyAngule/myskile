@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог тарифных карт</title>
+    <!-- Подключаем внешний файл стилей -->
+    <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+
+<section class="catalog-section">
+    <h1 class="catalog-title">Наши тарифные карты</h1>
+
+    <div class="card-grid">
+        <!-- Карточка 1 -->
+        <div class="card-item">
+            <div class="card-body">
+                <h3 class="card-name">Стандарт</h3>
+                <p class="card-description">Базовый набор функций для комфортного старта и ознакомления с возможностями платформы.</p>
+                <div class="card-price">1 500 ₽</div>
+                <button class="card-btn" onclick="alert('Вы выбрали тариф Стандарт')">Заказать</button>
+            </div>
+        </div>
+
+        <!-- Карточка 2 (Популярная) -->
+        <div class="card-item card-featured">
+            <span class="card-badge">Популярно</span>
+            <div class="card-body">
+                <h3 class="card-name">Продвинутый</h3>
+                <p class="card-description">Оптимальный выбор для active пользователей. Включает приоритетную поддержку и расширенное место.</p>
+                <div class="card-price">3 500 ₽</div>
+                <button class="card-btn" onclick="alert('Вы выбрали тариф Продвинутый')">Заказать</button>
+            </div>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="card-item">
+            <div class="card-body">
+                <h3 class="card-name">Максимум</h3>
+                <p class="card-description">Полный доступ ко всем мощностям системы, персональный менеджер и безлимитное хранилище.</p>
+                <div class="card-price">7 900 ₽</div>
+                <button class="card-btn" onclick="alert('Вы выбрали тариф Максимум')">Заказать</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

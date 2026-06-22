@@ -236,3 +236,135 @@ body {
     .modal-box { padding: 30px 20px; }
     .hero h1 { font-size: 2.3rem; }
 }
+/* Сброс базовых отступов */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.5;
+    padding: 40px 20px;
+}
+
+/* Контейнер секции */
+.catalog-section {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.catalog-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 32px;
+    color: #222;
+}
+
+/* Сетка для карточек (Flexbox) */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Стили карточки */
+.card-item {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 320px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Эффект при наведении */
+.card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Карточка с акцентом (Популярная) */
+.card-item.card-featured {
+    border: 2px solid #007bff;
+}
+
+/* Бейджик для популярного тарифа */
+.card-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #007bff;
+    color: #fff;
+    padding: 4px 12px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+/* Внутренний контент */
+.card-body {
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-name {
+    font-size: 22px;
+    margin-bottom: 15px;
+    color: #111;
+}
+
+.card-description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Толкает цену и кнопку вниз, выравнивая их */
+}
+
+.card-price {
+    font-size: 28px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 20px;
+}
+
+/* Кнопка заказа */
+.card-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+
+.card-btn:hover {
+    background: #218838;
+}
+
+/* Стили кнопки для акцентной карточки */
+.card-featured .card-btn {
+    background: #007bff;
+}
+
+.card-featured .card-btn:hover {
+    background: #0069d9;
+}
