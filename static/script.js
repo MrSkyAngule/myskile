@@ -1,4 +1,3 @@
-// Контекст для генерации звуков (Web Audio API)
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function playBeep(freq, type = 'sine', duration = 0.08) {
@@ -17,18 +16,15 @@ function playBeep(freq, type = 'sine', duration = 0.08) {
     osc.stop(audioCtx.currentTime + duration);
 }
 
-// Активируем аудио-контекст при первом клике пользователя по сайту
 document.body.addEventListener('click', () => {
     if (audioCtx.state === 'suspended') audioCtx.resume();
 });
 
-// 1. Озвучка навигации и элементов интерфейса
 document.querySelectorAll('.nav-item, .project-card, .action-btn').forEach(element => {
     element.addEventListener('mouseenter', () => playBeep(440, 'triangle', 0.05));
     element.addEventListener('click', () => playBeep(880, 'square', 0.1));
 });
 
-// 2. Логика подсветки пунктов меню при скролле (ScrollSpy)
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-item');
 
@@ -49,7 +45,7 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// 3. Интерактивный терминал (Парсер команд)
+// БЭКЕНД ПАРСЕР ДЛЯ ТЕРМИНАЛА
 const terminalInput = document.getElementById('terminal-input');
 const terminalOutput = document.getElementById('terminal-output');
 
@@ -57,25 +53,26 @@ terminalInput.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
         const command = this.value.trim().toLowerCase();
 
-        // Дублируем введенную команду на экран терминала
         const userLine = document.createElement('p');
-        userLine.innerHTML = `<span class="text-pink">guest@sys:~#</span> ${this.value}`;
+        userLine.innerHTML = `<span class="text-pink">root@backend:~#</span> ${this.value}`;
         terminalOutput.appendChild(userLine);
 
-        // Логика обработки команд
         const responseLine = document.createElement('p');
         responseLine.classList.add('output-line');
 
         if (command === 'help') {
-            responseLine.innerHTML = `<span class="text-green">Доступные директивы:</span><br>
-            > <b class="text-pink">about</b> - информация о владельце терминала<br>
-            > <b class="text-pink">skills</b> - текущий стек технологий<br>
-            > <b class="text-pink">clear</b> - очистить экран консоли`;
+            responseLine.innerHTML = `<span class="text-green">Консоль ядра сервера. Доступные команды:</span><br>
+            > <b class="text-pink">stack</b> - вывести список технологий серверной части<br>
+            > <b class="text-pink">db_status</b> - проверить статус баз данных<br>
+            > <b class="text-pink">ping</b> - сделать эхо-запрос к API шлюзу<br>
+            > <b class="text-pink">clear</b> - очистить экран логов`;
             playBeep(600, 'sine', 0.15);
-        } else if (command === 'about') {
-            responseLine.innerText = "[DATA]: Net_Runner — цифровой архитектор, специализирующийся на кибер-дизайне и реактивных скриптах.";
-        } else if (command === 'skills') {
-            responseLine.innerText = "[DATA]: Эксперт в HTML5, CSS3 (анимации, гриды), JavaScript (ES6+), Web Audio API.";
+        } else if (command === 'stack') {
+            responseLine.innerHTML = "[DATA]: Основной стек: Node.js (TypeScript), Python, PostgreSQL, Redis, Docker, REST API, GraphQL, gRPC.";
+        } else if (command === 'db_status') {
+            responseLine.innerHTML = `<span class="text-green">[SUCCESS]: PostgreSQL: CONNECTED (Latency: 1.2ms)<br>[SUCCESS]: Redis Cache: ACTIVE (Hit Rate: 94.2%)</span>`;
+        } else if (command === 'ping') {
+            responseLine.innerHTML = "PING api.gateway.local (127.0.0.1) 56(84) bytes of data.<br>64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 <span class='text-green'>time=0.045 ms</span>";
         } else if (command === 'clear') {
             terminalOutput.innerHTML = '';
             this.value = '';
@@ -83,13 +80,11 @@ terminalInput.addEventListener('keydown', function(e) {
         } else if (command === '') {
             return;
         } else {
-            responseLine.innerHTML = `<span class="text-pink">[ERROR]: Команда '${command}' не найдена. Введите 'help'</span>`;
-            playBeep(150, 'sawtooth', 0.3); // Звук ошибки
+            responseLine.innerHTML = `<span class="text-pink">[ERROR]: Неизвестная системная директива '${command}'. Используйте 'help' для списка логических команд.</span>`;
+            playBeep(150, 'sawtooth', 0.3);
         }
 
         terminalOutput.appendChild(responseLine);
-
-        // Очищаем инпут и автоскроллим терминал вниз
         this.value = '';
         terminalOutput.scrollTop = terminalOutput.scrollHeight;
     }

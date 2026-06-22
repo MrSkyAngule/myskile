@@ -3,81 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NET_RUNNER // PORTFOLIO</title>
+    <title>BACKEND_ARCHITECT // ROOT</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <!-- Анимированная фоновая неоновая сетка -->
+    <!-- Фоновая неоновая сетка и лазер -->
     <div class="cyber-grid"></div>
     <div class="scanline"></div>
 
     <!-- Фиксированное кибер-меню -->
     <nav class="cyber-nav">
-        <div class="nav-logo" data-text="N_R">//NET_RUNNER</div>
+        <div class="nav-logo" data-text="B_A">//BACKEND_ARCHITECT</div>
         <div class="nav-links">
-            <a href="#main" class="nav-item active">MAIN</a>
-            <a href="#projects" class="nav-item">PROJECTS</a>
-            <a href="#terminal-sec" class="nav-item">CONSOLE</a>
+            <a href="#main" class="nav-item active">CORE</a>
+            <a href="#projects" class="nav-item">STACK & ARCH</a>
+            <a href="#terminal-sec" class="nav-item">API_CONSOLE</a>
         </div>
     </nav>
 
     <!-- СЕКЦИЯ 1: Главный экран -->
     <section id="main" class="section-container">
         <div class="hero-block">
-            <div class="status-badge">ONLINE // ACCESS_GRANTED</div>
-            <h1 class="hero-title" data-text="NEO_GENESIS">NEO_GENESIS</h1>
-            <p class="hero-subtitle">Веб-разработчик из цифрового подполья. Создаю интерфейсы будущего, которые невозможно взломать.</p>
-            <a href="#projects" class="action-btn">СМОТРЕТЬ ПРОЕКТЫ <span class="btn-arrow">>></span></a>
+            <div class="status-badge">SERVER_STATUS // UP_AND_RUNNING</div>
+            <h1 class="hero-title" data-text="NODE_RUNTIME">NODE_RUNTIME</h1>
+            <p class="hero-subtitle">Проектирую высоконагруженные серверные системы, оптимизирую тяжелые SQL/NoSQL запросы и выстраиваю отказоустойчивую микросервисную архитектуру.</p>
+            <a href="#projects" class="action-btn">ПОСМОТРЕТЬ РЕЛИЗЫ <span class="btn-arrow">>></span></a>
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: Проекты -->
+    <!-- СЕКЦИЯ 2: Бэкенд-Проекты -->
     <section id="projects" class="section-container">
-        <h2 class="section-title" data-text="PROJ_DEPLOYED">PROJ_DEPLOYED</h2>
+        <h2 class="section-title" data-text="CORE_MICROSERVICES">CORE_MICROSERVICES</h2>
         <div class="projects-grid">
 
             <!-- Карточка 1 -->
             <div class="project-card">
-                <div class="card-tag">MODULE // 01</div>
-                <h3>Project_Overlord</h3>
-                <p>Децентрализованная база данных с квантовым шифрованием трафика.</p>
-                <span class="tech-stack">HTML / CSS / JS</span>
+                <div class="card-tag">SERVICE // 01</div>
+                <h3>Auth_Gateway_v2</h3>
+                <p>Микросервис авторизации на базе JWT и Redis с пропускной способностью до 15k RPS.</p>
+                <span class="tech-stack">Node.js / Express / Redis</span>
             </div>
 
             <!-- Карточка 2 -->
             <div class="project-card">
-                <div class="card-tag">MODULE // 02</div>
-                <h3>Neural_Mesh</h3>
-                <p>Нейросетевой интерфейс для автоматической генерации киберпанк-компонентов.</p>
-                <span class="tech-stack">NODE.JS / WEB_AUDIO</span>
+                <div class="card-tag">SERVICE // 02</div>
+                <h3>Data_Pipeline_Stream</h3>
+                <p>Система распределенной обработки очередей сообщений и логирования логов в реальном времени.</p>
+                <span class="tech-stack">Python / Kafka / PostgreSQL</span>
             </div>
 
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: Терминал управления -->
+    <!-- СЕКЦИЯ 3: Терминал (Управление API) -->
     <section id="terminal-sec" class="section-container">
-        <h2 class="section-title" data-text="SYS_CONTROL">SYS_CONTROL</h2>
+        <h2 class="section-title" data-text="API_TERMINAL">API_TERMINAL</h2>
 
         <div class="cyber-terminal">
             <div class="terminal-header">
                 <span class="terminal-dot"></span>
-                <span class="terminal-title">bash // root@net_runner</span>
+                <span class="terminal-title">ssh // dev@production-server</span>
             </div>
             <div class="terminal-window" id="terminal-output">
-                <p class="output-line text-green">[SYSTEM]: Инициализация терминала связи успешно завершена...</p>
-                <p class="output-line text-pink">[ALERT]: Обнаружены уязвимости в секторе 404.</p>
-                <p class="output-line">[INFO]: Введите команду 'help' для просмотра доступных директив.</p>
+                <p class="output-line text-green">[INIT]: Подключение по SSH установлено. Права: root.</p>
+                <p class="output-line text-green">[DB]: PostgreSQL пул подключений: OK (active: 4, idle: 12).</p>
+                <p class="output-line">[INFO]: Наберите 'help' для просмотра команд управления бэкенд-сервером.</p>
             </div>
             <div class="terminal-input-row">
-                <span class="terminal-prompt">guest@sys:~#</span>
-                <input type="text" id="terminal-input" placeholder="Введите команду..." autocomplete="off">
+                <span class="terminal-prompt">root@backend:~#</span>
+                <input type="text" id="terminal-input" placeholder="Введите команду сервера..." autocomplete="off">
             </div>
         </div>
     </section>
 
-    <!-- Подключаем JavaScript логику -->
     <script src="static/script.js"></script>
 </body>
 </html>
