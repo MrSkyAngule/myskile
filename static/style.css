@@ -1,4 +1,4 @@
-/* Базовые настройки стиля будущего */
+/* Базовые настройки экрана */
 * {
     margin: 0;
     padding: 0;
@@ -15,121 +15,149 @@ body {
     overflow: hidden;
 }
 
-/* Корпус кибер-карточки */
+/* Корпус кибер-карточки в аварийном режиме */
 .cyber-card {
     position: relative;
     background: linear-gradient(135deg, #121225 0%, #080811 100%);
-    border: 2px solid #00ff66; /* Неоновый зеленый контур */
-    padding: 40px;
-    width: 350px;
-    border-radius: 0px 30px 0px 30px; /* Асимметричные футуристичные углы */
-    box-shadow: 0 0 20px rgba(0, 255, 102, 0.2),
-                inset 0 0 15px rgba(0, 255, 102, 0.1);
+    border: 2px solid #ff0055; /* Аварийный розовый цвет */
+    padding: 45px 40px;
+    width: 360px;
+    text-align: center;
+    border-radius: 0px 30px 0px 30px; /* Асимметричные углы */
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    animation: alarm-pulse 2s infinite ease-in-out;
+    transition: transform 0.3s ease;
 }
 
-/* Эффект наклона при наведении */
 .cyber-card:hover {
-    transform: translateY(-5px) rotate(-1deg);
-    border-color: #ff0055; /* Смена цвета на неоновый розовый */
-    box-shadow: 0 0 30px rgba(255, 0, 85, 0.4);
+    transform: translateY(-5px) scale(1.02);
 }
 
-/* Бирка в углу */
-.corner-tag {
-    position: absolute;
-    top: 0;
-    right: 30px;
-    background: #00ff66;
-    color: #000;
-    font-size: 0.65rem;
-    font-weight: bold;
-    padding: 3px 8px;
-    text-transform: uppercase;
-}
-.cyber-card:hover .corner-tag {
-    background: #ff0055;
-}
-
-/* --- ЭФФЕКТ ГЛИТЧА ДЛЯ ТЕКСТА --- */
-.glitch-title {
-    position: relative;
-    color: #fff;
-    font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-/* Создаем два виртуальных слоя для раздвоения цвета */
-.glitch-title::before,
-.glitch-title::after {
-    content: attr(data-text);
+/* Лазерная линия сканирования */
+.scanline {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
+    height: 4px;
+    background: rgba(255, 0, 85, 0.7);
+    box-shadow: 0 0 10px #ff0055;
+    animation: scan 3s linear infinite;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Бирка в углу экрана */
+.corner-tag {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    background: #ff0055;
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 4px 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Цифровой код 404 с эффектом глитча */
+.error-code {
+    position: relative;
+    font-size: 5.5rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #ff0055;
+    text-shadow: 0 0 15px rgba(255, 0, 85, 0.6);
+    margin-bottom: 5px;
+}
+
+/* Свечение-дубликат для эффекта раздвоения (розовый слой) */
+.error-code::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 2px;
+    width: 100%;
     height: 100%;
     background: #121225;
-}
-
-/* Розовый слой */
-.glitch-title::before {
-    left: 2px;
     text-shadow: -2px 0 #ff0055;
     clip: rect(44px, 450px, 56px, 0);
-    animation: glitch-anim 5s infinite linear alternate-reverse;
+    animation: glitch-anim 4s infinite linear alternate-reverse;
 }
 
-/* Синий слой */
-.glitch-title::after {
+/* Свечение-дубликат для эффекта раздвоения (бирюзовый слой) */
+.error-code::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
     left: -2px;
+    width: 100%;
+    height: 100%;
+    background: #121225;
     text-shadow: -2px 0 #00ffff;
     clip: rect(85px, 450px, 140px, 0);
     animation: glitch-anim 2s infinite linear alternate-reverse;
 }
 
+/* Подзаголовок ошибки */
+.sub-title {
+    color: #00ff66; /* Контрастный неоновый зеленый */
+    font-size: 0.95rem;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+/* Основной текст */
 .cyber-text {
     color: #8c92ac;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     margin-bottom: 30px;
 }
 
-/* --- НЕОНОВАЯ КНОПКА С АНИМАЦИЕЙ --- */
-.cyber-btn {
+/* Аварийная кнопка перезагрузки */
+.reboot-btn {
     width: 100%;
     background: transparent;
-    border: 1px solid #00ff66;
-    color: #00ff66;
+    border: 1px solid #ff0055;
+    color: #ff0055;
     padding: 15px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
-    position: relative;
     letter-spacing: 2px;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
 }
 
-.cyber-btn:hover {
-    background: #00ff66;
+.reboot-btn:hover {
+    background: #ff0055;
     color: #000;
-    box-shadow: 0 0 15px #00ff66;
+    box-shadow: 0 0 20px #ff0055;
 }
 
-/* Анимация цифрового глитча (сдвиг полос рендеринга) */
+/* --- АНИМАЦИИ --- */
+
+/* Пульсация всей карточки (тревога) */
+@keyframes alarm-pulse {
+    0% { box-shadow: 0 0 15px rgba(255, 0, 85, 0.2); }
+    50% { box-shadow: 0 0 30px rgba(255, 0, 85, 0.5), inset 0 0 15px rgba(255, 0, 85, 0.1); }
+    100% { box-shadow: 0 0 15px rgba(255, 0, 85, 0.2); }
+}
+
+/* Движение лазерной линии */
+@keyframes scan {
+    0% { top: 0%; }
+    50% { top: 100%; }
+    100% { top: 0%; }
+}
+
+/* Нарезка слоев для глитча */
 @keyframes glitch-anim {
     0% { clip: rect(31px, 9999px, 94px, 0); }
-    10% { clip: rect(112px, 9999px, 76px, 0); }
     20% { clip: rect(85px, 9999px, 5px, 0); }
-    30% { clip: rect(27px, 9999px, 115px, 0); }
     40% { clip: rect(73px, 9999px, 29px, 0); }
-    50% { clip: rect(118px, 9999px, 145px, 0); }
     60% { clip: rect(18px, 9999px, 93px, 0); }
-    70% { clip: rect(43px, 9999px, 64px, 0); }
     80% { clip: rect(86px, 9999px, 112px, 0); }
-    90% { clip: rect(102px, 9999px, 34px, 0); }
     100% { clip: rect(57px, 9999px, 128px, 0); }
 }

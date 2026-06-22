@@ -3,26 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberpunk Glitch Card</title>
+    <title>SYS_ERR // 404 NOT FOUND</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <div class="cyber-card">
-        <!-- Декоративные хакерские элементы -->
-        <div class="glitch-bg"></div>
-        <div class="corner-tag">SYS_ERR // 404</div>
+    <!-- Главный контейнер терминала -->
+    <div class="cyber-card error-active">
+        <!-- Бегущая лазерная линия -->
+        <div class="scanline"></div>
 
-        <!-- Заголовок с глитч-эффектом (атрибуты data-text нужны для CSS) -->
-        <h1 class="glitch-title" data-text="NEO-TOKYO">NEO-TOKYO</h1>
+        <!-- Верхний статус-тег -->
+        <div class="corner-tag">STATUS // CRITICAL</div>
 
+        <!-- Большой глитч-код ошибки -->
+        <h1 class="glitch-title error-code" data-text="404">404</h1>
+        <h2 class="sub-title">СИСТЕМА СЛОМАНА</h2>
+
+        <!-- Описание проблемы -->
         <p class="cyber-text">
-            Добро пожаловать в цифровое подполье. Доступ заблокирован, но вы можете активировать терминал.
+            Запрошенный сектор памяти не найден или стерт правительством. Проверьте адрес или начните перезагрузку ядра.
         </p>
 
-        <!-- Киберпанк-кнопка -->
-        <button class="cyber-btn">
-            ВЗЛОМАТЬ СИСТЕМУ<span class="btn-glitch"></span>
+        <!-- Аварийная кнопка -->
+        <button class="cyber-btn reboot-btn">
+            ПЕРЕЗАПУСТИТЬ СИСТЕМУ
         </button>
     </div>
 
