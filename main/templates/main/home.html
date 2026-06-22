@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание сайтов под ключ | WebStudio</title>
+    <!-- Подключаем внешний файл стилей CSS -->
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
-    <p>Hello World</p>
+
+    <!-- Шапка -->
+    <header>
+        <div class="container header-box">
+            <a href="#" class="logo">WebStudio</a>
+            <nav>
+                <a href="#services">Услуги</a>
+                <a href="#contacts">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="container">
+            <h1>Создаем сайты, которые приносят прибыль</h1>
+            <p>Разработка современных, быстрых и адаптивных сайтов для вашего бизнеса под ключ.</p>
+            <a href="#contacts" class="btn">Обсудить проект</a>
+        </div>
+    </section>
+
+    <!-- Блок услуг -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="grid">
+
+                <!-- Карта 1 -->
+                <div class="card">
+                    <span class="card-icon">📄</span>
+                    <h3>Сайт-визитка / Лендинг</h3>
+                    <p>Одностраничный сайт с высокой конверсией для быстрого запуска рекламы и презентации вашего продукта.</p>
+                </div>
+
+                <!-- Карта 2 -->
+                <div class="card">
+                    <span class="card-icon">💼</span>
+                    <h3>Корпоративный сайт</h3>
+                    <p>Полноценный ресурс для вашей компании: многостраничная структура, каталог услуг, блог и формы связи.</p>
+                </div>
+
+                <!-- Карта 3 -->
+                <div class="card">
+                    <span class="card-icon">🛒</span>
+                    <h3>Интернет-магазин</h3>
+                    <p>Онлайн-витрина с корзиной, личным кабинетом, интеграцией платежных систем и систем учета товаров.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer id="contacts">
+        <div class="container">
+            <p>© 2026 WebStudio. Все права защищены.</p>
+            <p class="footer-contacts">Email: info@webstudio.example | Тел: +7 (999) 123-45-67</p>
+        </div>
+    </footer>
+
 </body>
 </html>
