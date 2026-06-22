@@ -3,32 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SYS_ERR // 404 NOT FOUND</title>
+    <title>NET_RUNNER // PORTFOLIO</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <div class="cyber-card error-active" id="card">
-        <!-- Бегущая лазерная линия -->
-        <div class="scanline"></div>
+    <!-- Анимированная фоновая неоновая сетка -->
+    <div class="cyber-grid"></div>
+    <div class="scanline"></div>
 
-        <div class="corner-tag">STATUS // CRITICAL</div>
+    <!-- Фиксированное кибер-меню -->
+    <nav class="cyber-nav">
+        <div class="nav-logo" data-text="N_R">//NET_RUNNER</div>
+        <div class="nav-links">
+            <a href="#main" class="nav-item active">MAIN</a>
+            <a href="#projects" class="nav-item">PROJECTS</a>
+            <a href="#terminal-sec" class="nav-item">CONSOLE</a>
+        </div>
+    </nav>
 
-        <!-- Главный глитч-текст (ID добавлен для JS) -->
-        <h1 class="glitch-title error-code" id="error-text" data-text="404">404</h1>
-        <h2 class="sub-title">СИСТЕМА СЛОМАНА</h2>
+    <!-- СЕКЦИЯ 1: Главный экран -->
+    <section id="main" class="section-container">
+        <div class="hero-block">
+            <div class="status-badge">ONLINE // ACCESS_GRANTED</div>
+            <h1 class="hero-title" data-text="NEO_GENESIS">NEO_GENESIS</h1>
+            <p class="hero-subtitle">Веб-разработчик из цифрового подполья. Создаю интерфейсы будущего, которые невозможно взломать.</p>
+            <a href="#projects" class="action-btn">СМОТРЕТЬ ПРОЕКТЫ <span class="btn-arrow">>></span></a>
+        </div>
+    </section>
 
-        <p class="cyber-text">
-            Запрошенный сектор памяти не найден или стерт правительством. Проверьте адрес или начните перезагрузку ядра.
-        </p>
+    <!-- СЕКЦИЯ 2: Проекты -->
+    <section id="projects" class="section-container">
+        <h2 class="section-title" data-text="PROJ_DEPLOYED">PROJ_DEPLOYED</h2>
+        <div class="projects-grid">
 
-        <!-- Кнопка с ID для запуска скрипта -->
-        <button class="cyber-btn reboot-btn" id="reboot-btn">
-            ПЕРЕЗАПУСТИТЬ СИСТЕМУ
-        </button>
-    </div>
+            <!-- Карточка 1 -->
+            <div class="project-card">
+                <div class="card-tag">MODULE // 01</div>
+                <h3>Project_Overlord</h3>
+                <p>Децентрализованная база данных с квантовым шифрованием трафика.</p>
+                <span class="tech-stack">HTML / CSS / JS</span>
+            </div>
 
-    <!-- Подключаем наш скрипт в самом конце страницы -->
+            <!-- Карточка 2 -->
+            <div class="project-card">
+                <div class="card-tag">MODULE // 02</div>
+                <h3>Neural_Mesh</h3>
+                <p>Нейросетевой интерфейс для автоматической генерации киберпанк-компонентов.</p>
+                <span class="tech-stack">NODE.JS / WEB_AUDIO</span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: Терминал управления -->
+    <section id="terminal-sec" class="section-container">
+        <h2 class="section-title" data-text="SYS_CONTROL">SYS_CONTROL</h2>
+
+        <div class="cyber-terminal">
+            <div class="terminal-header">
+                <span class="terminal-dot"></span>
+                <span class="terminal-title">bash // root@net_runner</span>
+            </div>
+            <div class="terminal-window" id="terminal-output">
+                <p class="output-line text-green">[SYSTEM]: Инициализация терминала связи успешно завершена...</p>
+                <p class="output-line text-pink">[ALERT]: Обнаружены уязвимости в секторе 404.</p>
+                <p class="output-line">[INFO]: Введите команду 'help' для просмотра доступных директив.</p>
+            </div>
+            <div class="terminal-input-row">
+                <span class="terminal-prompt">guest@sys:~#</span>
+                <input type="text" id="terminal-input" placeholder="Введите команду..." autocomplete="off">
+            </div>
+        </div>
+    </section>
+
+    <!-- Подключаем JavaScript логику -->
     <script src="static/script.js"></script>
 </body>
 </html>

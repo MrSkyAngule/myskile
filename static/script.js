@@ -1,93 +1,96 @@
-// Находим нужные элементы на странице
-const card = document.getElementById('card');
-const errorText = document.getElementById('error-text');
-const rebootBtn = document.getElementById('reboot-btn');
-
-// Синтезатор звука (Web Audio API) — генерирует кибер-звуки без аудиофайлов
+// Контекст для генерации звуков (Web Audio API)
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
-function playGlitchSound(frequency, duration, type = 'sawtooth') {
-    // Браузеры блокируют звук до первого клика пользователя по экрану
+function playBeep(freq, type = 'sine', duration = 0.08) {
     if (audioCtx.state === 'suspended') return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
 
-    const oscillator = audioCtx.createOscillator();
-    const gainNode = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
 
-    oscillator.type = type;
-    oscillator.frequency.setValueAtTime(frequency, audioCtx.currentTime);
-    // Добавляем искажение частоты для эффекта глитча
-    oscillator.frequency.exponentialRampToValueAtTime(10, audioCtx.currentTime + duration);
-
-    gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-
-    oscillator.connect(gainNode);
-    gainNode.connect(audioCtx.destination);
-
-    oscillator.start();
-    oscillator.stop(audioCtx.currentTime + duration);
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
 }
 
-// 1. Эффект при наведении мыши на карточку (короткий глитч-звук)
-card.addEventListener('mouseenter', () => {
-    playGlitchSound(120, 0.15, 'square');
+// Активируем аудио-контекст при первом клике пользователя по сайту
+document.body.addEventListener('click', () => {
+    if (audioCtx.state === 'suspended') audioCtx.resume();
 });
 
-// 2. Логика клика по кнопке «Перезапустить систему»
-let isRebooting = false;
+// 1. Озвучка навигации и элементов интерфейса
+document.querySelectorAll('.nav-item, .project-card, .action-btn').forEach(element => {
+    element.addEventListener('mouseenter', () => playBeep(440, 'triangle', 0.05));
+    element.addEventListener('click', () => playBeep(880, 'square', 0.1));
+});
 
-rebootBtn.addEventListener('click', () => {
-    // Включаем аудиоконтекст, если он был «спящим»
-    if (audioCtx.state === 'suspended') {
-        audioCtx.resume();
-    }
+// 2. Логика подсветки пунктов меню при скролле (ScrollSpy)
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-item');
 
-    if (isRebooting) return; // Защита от повторных кликов
-    isRebooting = true;
-
-    // Включаем дикую тряску карточки через CSS класс
-    card.classList.add('hacking');
-
-    // Играем жесткий аналоговый звук ошибки
-    playGlitchSound(350, 0.8, 'sawtooth');
-
-    // Эффект бегущих матричных цифр вместо "404"
-    const chars = "010101#$@%&?";
-    let duration = 0;
-    const matrixInterval = setInterval(() => {
-        let scrambled = "";
-        for (let i = 0; i < 3; i++) {
-            scrambled += chars[Math.floor(Math.random() * chars.length)];
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 150) {
+            current = section.getAttribute('id');
         }
-        errorText.innerText = scrambled;
-        errorText.setAttribute('data-text', scrambled); // Обновляем CSS-глитч слои
+    });
 
-        // Каждые 100мс подмигиваем звуком
-        if (Math.random() > 0.5) playGlitchSound(600, 0.05, 'triangle');
-    }, 70);
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').includes(current)) {
+            item.classList.add('active');
+        }
+    });
+});
 
-    // Обратный отсчет на кнопке
-    let timeLeft = 3;
-    rebootBtn.innerText = `ПЕРЕЗАГРУЗКА ЯДРА (${timeLeft})`;
+// 3. Интерактивный терминал (Парсер команд)
+const terminalInput = document.getElementById('terminal-input');
+const terminalOutput = document.getElementById('terminal-output');
 
-    const countdownInterval = setInterval(() => {
-        timeLeft--;
-        if (timeLeft > 0) {
-            rebootBtn.innerText = `ПЕРЕЗАГРУЗКА ЯДРА (${timeLeft})`;
-            playGlitchSound(150, 0.1, 'square');
+terminalInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        const command = this.value.trim().toLowerCase();
+
+        // Дублируем введенную команду на экран терминала
+        const userLine = document.createElement('p');
+        userLine.innerHTML = `<span class="text-pink">guest@sys:~#</span> ${this.value}`;
+        terminalOutput.appendChild(userLine);
+
+        // Логика обработки команд
+        const responseLine = document.createElement('p');
+        responseLine.classList.add('output-line');
+
+        if (command === 'help') {
+            responseLine.innerHTML = `<span class="text-green">Доступные директивы:</span><br>
+            > <b class="text-pink">about</b> - информация о владельце терминала<br>
+            > <b class="text-pink">skills</b> - текущий стек технологий<br>
+            > <b class="text-pink">clear</b> - очистить экран консоли`;
+            playBeep(600, 'sine', 0.15);
+        } else if (command === 'about') {
+            responseLine.innerText = "[DATA]: Net_Runner — цифровой архитектор, специализирующийся на кибер-дизайне и реактивных скриптах.";
+        } else if (command === 'skills') {
+            responseLine.innerText = "[DATA]: Эксперт в HTML5, CSS3 (анимации, гриды), JavaScript (ES6+), Web Audio API.";
+        } else if (command === 'clear') {
+            terminalOutput.innerHTML = '';
+            this.value = '';
+            return;
+        } else if (command === '') {
+            return;
         } else {
-            clearInterval(countdownInterval);
-            clearInterval(matrixInterval);
-
-            // Финал: возвращаем всё в норму и мягко обновляем страницу
-            rebootBtn.innerText = "СИСТЕМА ВОССТАНОВЛЕНА!";
-            errorText.innerText = "200";
-            errorText.setAttribute('data-text', "200");
-            card.classList.remove('hacking');
-
-            setTimeout(() => {
-                location.reload(); // Перезагрузка вкладки
-            }, 800);
+            responseLine.innerHTML = `<span class="text-pink">[ERROR]: Команда '${command}' не найдена. Введите 'help'</span>`;
+            playBeep(150, 'sawtooth', 0.3); // Звук ошибки
         }
-    }, 1000);
+
+        terminalOutput.appendChild(responseLine);
+
+        // Очищаем инпут и автоскроллим терминал вниз
+        this.value = '';
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+    }
 });
