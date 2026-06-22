@@ -4,30 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SYS_ERR // 404 NOT FOUND</title>
-    <!-- Подключаем внешний файл стилей. Важно, чтобы его имя точно совпадало -->
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <div class="cyber-card error-active">
+    <div class="cyber-card error-active" id="card">
         <!-- Бегущая лазерная линия -->
         <div class="scanline"></div>
 
         <div class="corner-tag">STATUS // CRITICAL</div>
 
-        <!-- Главный глитч-текст -->
-        <h1 class="glitch-title error-code" data-text="404">404</h1>
+        <!-- Главный глитч-текст (ID добавлен для JS) -->
+        <h1 class="glitch-title error-code" id="error-text" data-text="404">404</h1>
         <h2 class="sub-title">СИСТЕМА СЛОМАНА</h2>
 
         <p class="cyber-text">
             Запрошенный сектор памяти не найден или стерт правительством. Проверьте адрес или начните перезагрузку ядра.
         </p>
 
-        <!-- Рабочая кнопка обновления страницы -->
-        <button class="cyber-btn reboot-btn" onclick="location.reload()">
+        <!-- Кнопка с ID для запуска скрипта -->
+        <button class="cyber-btn reboot-btn" id="reboot-btn">
             ПЕРЕЗАПУСТИТЬ СИСТЕМУ
         </button>
     </div>
 
+    <!-- Подключаем наш скрипт в самом конце страницы -->
+    <script src="static/script.js"></script>
 </body>
 </html>
