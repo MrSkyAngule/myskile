@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Премиум Веб-Разработка | Главная</title>
-    <!-- Подключение красивого современного шрифта -->
     <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
@@ -17,14 +16,52 @@
         </div>
     </nav>
 
-    <!-- Главный экран (Hero Section) -->
+    <!-- Главный экран -->
     <header class="hero">
         <div class="hero-content">
             <h1>Создаем цифровые <span class="gradient-text">шедевры</span></h1>
             <p>Профессиональная разработка веб-сайтов от лаконичных визиток до мощных экосистем коммерции.</p>
-            <a href="#" class="btn-primary">Обсудить проект</a>
+            <!-- Добавлен id для отслеживания клика в JS -->
+            <a href="#" class="btn-primary" id="open-modal-btn">Обсудить проект</a>
         </div>
     </header>
 
+    <!-- Всплывающее окно (Модальное окно) -->
+    <div class="modal-overlay" id="modal-container">
+        <div class="modal-box">
+            <button class="modal-close" id="close-modal-btn">&times;</button>
+
+            <h2>Начать проект</h2>
+            <p class="modal-subtitle">Заполните форму, и мы подберем идеальное решение</p>
+
+            <form id="order-form">
+                <!-- Выбор услуг -->
+                <div class="form-group">
+                    <label for="service-select">Какая услуга вас интересует?</label>
+                    <select id="service-select" required>
+                        <option value="" disabled selected>Выберите тип сайта...</option>
+                        <option value="landing">Сайт-визитка / Лендинг (Простой)</option>
+                        <option value="corporate">Корпоративный сайт (Средний)</option>
+                        <option value="ecommerce">Интернет-магазин (Средний)</option>
+                        <option value="custom">Индивидуальное решение</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-name">Ваше имя</label>
+                    <input type="text" id="user-name" placeholder="Иван" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-phone">Телефон или Telegram</label>
+                    <input type="text" id="user-phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Отправить заявку</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
 </body>
 </html>

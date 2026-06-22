@@ -1,35 +1,39 @@
-// Ждем полную загрузку DOM-дерева
 document.addEventListener('DOMContentLoaded', () => {
+    const openBtn = document.getElementById('open-modal-btn');
+    const closeBtn = document.getElementById('close-modal-btn');
+    const modal = document.getElementById('modal-container');
+    const form = document.getElementById('order-form');
 
-    // Элементы формы
-    const siteTypeSelect = document.getElementById('site-type');
-    const checkboxes = document.querySelectorAll('.checkboxes input');
-    const totalPriceElement = document.getElementById('total-price');
-
-    // Функция динамического расчета
-    function calculateTotal() {
-        // Получаем базовую цену из выбранного типа сайта
-        let total = parseInt(siteTypeSelect.value);
-
-        // Прибавляем стоимость каждой выбранной галочки
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                total += parseInt(checkbox.value);
-            }
-        });
-
-        // Обновляем текст на странице с красивым разделением тысяч
-        totalPriceElement.textContent = total.toLocaleString('ru-RU');
-    }
-
-    // Слушаем изменения в выпадающем списке
-    siteTypeSelect.addEventListener('change', calculateTotal);
-
-    // Слушаем изменения на каждом чекбоксе
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', calculateTotal);
+    // Открыть окно при клике на кнопку
+    openBtn.addEventListener('click', (e) => {
+        e.preventDefault(); // Отменяем переход по ссылке #
+        modal.classList.add('active');
     });
 
-    // Первичный расчет при открытии страницы
-    calculateTotal();
+    // Закрыть окно при клике на крестик
+    closeBtn.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
+    // Закрыть окно при клике на темную область вокруг окна
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.remove('active');
+        }
+    });
+
+    // Логика отправки формы
+    form.addEventListener('submit', (e) => {
+        e.preventDefault(); // Запрещаем перезагрузку страницы
+
+        const selectedService = document.getElementById('service-select').value;
+        const userName = document.getElementById('user-name').value;
+
+        // Имитация отправки на сервер
+        alert(`Спасибо, ${userName}! Ваша заявка на услугу "${selectedService}" успешно принята. Мы свяжемся с вами.`);
+
+        // Сбрасываем форму и закрываем окно
+        form.reset();
+        modal.classList.remove('active');
+    });
 });
