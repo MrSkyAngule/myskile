@@ -3,57 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создание сайтов под ключ | WebStudio</title>
-    <!-- Подключаем внешний файл стилей CSS -->
+    <title>WebDev Studio | Создание цифровых продуктов</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
     <!-- Шапка -->
     <header>
-        <div class="container header-box">
-            <a href="#" class="logo">WebStudio</a>
-            <nav>
+        <div class="container header-flex">
+            <a href="#" class="logo">web<span>.</span>dev</a>
+            <nav class="nav-menu">
                 <a href="#services">Услуги</a>
-                <a href="#contacts">Контакты</a>
+                <a href="#about">О нас</a>
+                <a href="#contact" class="btn-nav">Связаться</a>
             </nav>
         </div>
     </header>
 
-    <!-- Главный баннер -->
-    <section class="hero">
-        <div class="container">
-            <h1>Создаем сайты, которые приносят прибыль</h1>
-            <p>Разработка современных, быстрых и адаптивных сайтов для вашего бизнеса под ключ.</p>
-            <a href="#contacts" class="btn">Обсудить проект</a>
+    <!-- Главный экран -->
+    <section class="hero-section">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <span class="badge">Премиум веб-разработка</span>
+                <h1>Проектируем интерфейсы, запускаем бизнесы</h1>
+                <p>Мы не просто пишем код. Мы создаем быстрые, адаптивные и продающие сайты, которые выделяют вас среди конкурентов.</p>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">Начать проект</a>
+                    <a href="#services" class="btn-secondary">Наши услуги</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="abstract-shape"></div>
+            </div>
         </div>
     </section>
 
     <!-- Блок услуг -->
-    <section class="services" id="services">
+    <section class="services-section" id="services">
         <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
-            <div class="grid">
+            <div class="section-header">
+                <h2>Что мы делаем хорошо</h2>
+                <p>Полный цикл разработки от идеи до первых клиентов</p>
+            </div>
+            <div class="services-grid">
 
-                <!-- Карта 1 -->
-                <div class="card">
-                    <span class="card-icon">📄</span>
-                    <h3>Сайт-визитка / Лендинг</h3>
-                    <p>Одностраничный сайт с высокой конверсией для быстрого запуска рекламы и презентации вашего продукта.</p>
+                <div class="service-card">
+                    <div class="icon-wrapper">🚀</div>
+                    <h3>Landing Page</h3>
+                    <p>Одностраничные сайты под ключ с фокусом на высокую конверсию и продажи.</p>
                 </div>
 
-                <!-- Карта 2 -->
-                <div class="card">
-                    <span class="card-icon">💼</span>
-                    <h3>Корпоративный сайт</h3>
-                    <p>Полноценный ресурс для вашей компании: многостраничная структура, каталог услуг, блог и формы связи.</p>
+                <div class="service-card">
+                    <div class="icon-wrapper">💻</div>
+                    <h3>Корпоративные сайты</h3>
+                    <p>Масштабируемые веб-ресурсы для крупного бизнеса, брендов и медиа.</p>
                 </div>
 
-                <!-- Карта 3 -->
-                <div class="card">
-                    <span class="card-icon">🛒</span>
-                    <h3>Интернет-магазин</h3>
-                    <p>Онлайн-витрина с корзиной, личным кабинетом, интеграцией платежных систем и систем учета товаров.</p>
+                <div class="service-card">
+                    <div class="icon-wrapper">🛍️</div>
+                    <h3>E-commerce</h3>
+                    <p>Современные интернет-магазины с интеграцией платежей, CRM и каталогов.</p>
                 </div>
 
             </div>
@@ -61,10 +70,13 @@
     </section>
 
     <!-- Подвал -->
-    <footer id="contacts">
-        <div class="container">
-            <p>© 2026 WebStudio. Все права защищены.</p>
-            <p class="footer-contacts">Email: info@webstudio.example | Тел: +7 (999) 123-45-67</p>
+    <footer id="contact">
+        <div class="container footer-content">
+            <p>© 2026 web.dev studio. Все права защищены.</p>
+            <div class="footer-links">
+                <a href="mailto:hello@web.dev">hello@web.dev</a>
+                <a href="tel:+79990000000">+7 (999) 000-00-00</a>
+            </div>
         </div>
     </footer>
 
