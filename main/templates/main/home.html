@@ -3,30 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Премиум Веб-Разработка | Главная</title>
-    <!-- Подключение красивого современного шрифта -->
-    <link href="https://googleapis.com" rel="stylesheet">
-    <link rel="stylesheet" href="static/style.css">
+    <title>Создание сайтов | WebCraft</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Навигационная панель -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">WEB<span>.STUDIO</span></a>
-        </div>
-    </nav>
-
-    <!-- Главный экран (Hero Section) -->
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Создаем цифровые <span class="gradient-text">шедевры</span></h1>
-            <p>Профессиональная разработка веб-сайтов от лаконичных визиток до мощных экосистем коммерции.</p>
-
-            <!-- Кнопка с точной надписью -->
-            <a href="#" class="btn-primary">Заказать услуги</a>
-        </div>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo">WebCraft</div>
+        <nav>
+            <a href="#about">О нас</a>
+            <a href="#services">Услуги</a>
+        </nav>
     </header>
 
+    <!-- Главный экран -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Создаем сайты, которые <span class="highlight">работают</span></h1>
+            <p>Современный дизайн, чистый код и высокая скорость загрузки для вашего бизнеса.</p>
+            <button id="cta-button" class="btn">Начать проект</button>
+        </div>
+    </section>
+
+    <!-- Блок "О нас" -->
+    <section id="about" class="about">
+        <div class="about-container">
+            <h2>О нас</h2>
+            <p>Мы — команда увлеченных разработчиков и дизайнеров. Превращаем сложные идеи в простые, красивые и удобные цифровые продукты. Наша цель — помочь вашему бренду выделиться в сети.</p>
+            <div class="stats">
+                <div class="stat-item"><h3>5+</h3><p>Лет опыта</p></div>
+                <div class="stat-item"><h3>100+</h3><p>Проектов</p></div>
+                <div class="stat-item"><h3>100%</h3><p>Фокус на результат</p></div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
 </body>
 </html>

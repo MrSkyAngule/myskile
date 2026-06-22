@@ -1,304 +1,166 @@
-:root {
-    --bg-dark: #0b0f19;
-    --accent-purple: #8b5cf6;
-    --accent-blue: #3b82f6;
-    --text-main: #f3f4f6;
-    --text-muted: #9ca3af;
-    --border-color: rgba(255, 255, 255, 0.08);
-}
-
+/* Общие стили и обнуление */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    line-height: 1.6;
+    background-color: #0f172a;
+    color: #f8fafc;
     overflow-x: hidden;
-    padding-top: 100px; /* Отступ сверху, чтобы навигация не перекрывала контент */
 }
 
-/* --- НАВИГАЦИЯ --- */
-.navbar {
-    background: rgba(11, 15, 25, 0.8);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-color);
+/* Навигация */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 1000;
-}
-
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+    z-index: 100;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 1px;
-}
-
-.logo span { color: var(--accent-purple); }
-
-/* --- СЕКЦИЯ КАТАЛОГА С КАРТОЧКАМИ --- */
-.catalog-section {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 0 20px;
-}
-
-.catalog-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-
-.card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-/* Карточки в темном стиле */
-.card-item {
-    background: #111827;
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    width: 100%;
-    max-width: 340px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-.card-item:hover {
-    transform: translateY(-5px);
-    border-color: rgba(139, 92, 246, 0.4);
-    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.1);
-}
-
-/* Карточка с акцентом */
-.card-item.card-featured {
-    border: 2px solid var(--accent-purple);
-    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15);
-}
-
-.card-badge {
-    position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-    color: #fff;
-    padding: 4px 16px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.card-body {
-    padding: 40px 30px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.card-name {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 15px;
-    color: #fff;
-}
-
-.card-description {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    margin-bottom: 30px;
-    flex-grow: 1;
-}
-
-.card-price {
-    font-size: 2.2rem;
+    font-size: 24px;
     font-weight: 800;
-    color: #fff;
-    margin-bottom: 25px;
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Кнопка заказа в стиле btn-primary */
-.card-btn {
-    background: linear-gradient(135deg, var(--accent-blue), #2563eb);
-    color: #fff;
-    border: none;
-    padding: 14px 28px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 100%;
+nav a {
+    color: #94a3b8;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: color 0.3s;
 }
 
-.card-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+nav a:hover {
+    color: #3b82f6;
 }
 
-/* Кнопка для выделенной карточки */
-.card-featured .card-btn {
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-}
-
-.card-featured .card-btn:hover {
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
-}
-
-/* --- МОДАЛЬНОЕ ОКНО --- */
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(5, 7, 12, 0.8);
-    backdrop-filter: blur(8px);
+/* Главный экран */
+.hero {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal-box {
-    background: #111827;
-    border: 1px solid var(--border-color);
-    padding: 40px;
-    border-radius: 24px;
-    width: 100%;
-    max-width: 500px;
-    position: relative;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    transform: scale(0.8);
-    transition: transform 0.4s ease;
-}
-
-.modal-overlay.active .modal-box {
-    transform: scale(1);
-}
-
-.modal-close {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    font-size: 2rem;
-    cursor: pointer;
-    transition: color 0.2s;
-    line-height: 1;
-}
-
-.modal-close:hover {
-    color: #fff;
-}
-
-.modal-box h2 {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
     text-align: center;
-    color: #fff;
+    padding: 0 20px;
+    background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent),
+                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.15), transparent);
 }
 
-.modal-subtitle {
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-}
-
-.form-group {
+.hero-content h1 {
+    font-size: 3.5rem;
     margin-bottom: 20px;
+    line-height: 1.2;
 }
 
-.form-group label {
-    display: block;
-    font-size: 0.9rem;
-    color: #e5e7eb;
-    margin-bottom: 8px;
-    font-weight: 500;
+.highlight {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-.form-group select,
-.form-group input {
-    width: 100%;
-    padding: 14px;
-    background: #1f2937;
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    color: #fff;
-    font-size: 0.95rem;
-    outline: none;
-    transition: border-color 0.3s;
+.hero-content p {
+    font-size: 1.2rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 40px auto;
 }
 
-.form-group select {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%239ca3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 14px center;
-}
-
-.form-group select:focus,
-.form-group input:focus {
-    border-color: var(--accent-purple);
-}
-
-.btn-submit {
-    width: 100%;
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+/* Кнопка */
+.btn {
+    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
     color: #fff;
     border: none;
-    padding: 16px;
-    border-radius: 12px;
+    padding: 15px 40px;
     font-size: 1rem;
     font-weight: 600;
+    border-radius: 50px;
     cursor: pointer;
-    margin-top: 10px;
-    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
-    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.btn-submit:hover {
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
-    filter: brightness(1.1);
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
 }
 
-@media (max-width: 480px) {
-    .modal-box { padding: 30px 20px; }
-    .catalog-title { font-size: 2rem; }
+.btn:active {
+    transform: translateY(-1px);
+}
+
+/* Блок О нас */
+.about {
+    padding: 100px 10%;
+    background-color: #1e293b;
+}
+
+.about-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.about h2::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 4px;
+    background: #3b82f6;
+    margin: 10px auto 0 auto;
+    border-radius: 2px;
+}
+
+.about p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 50px;
+}
+
+/* Статистика */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: #3b82f6;
+    margin-bottom: 5px;
+}
+
+.stat-item p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.3rem; }
+    .hero-content p { font-size: 1rem; }
+    .about h2 { font-size: 2rem; }
 }
