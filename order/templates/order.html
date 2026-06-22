@@ -3,48 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог тарифных карт</title>
-    <!-- Подключаем внешний файл стилей -->
+    <title>Каталог тарифов</title>
+    <!-- Шрифты Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Подключение файла стилей -->
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-<section class="catalog-section">
-    <h1 class="catalog-title">Наши тарифные карты</h1>
+    <!-- Шапка сайта -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">CARD<span>NEO</span></a>
+        </div>
+    </nav>
 
-    <div class="card-grid">
-        <!-- Карточка 1 -->
-        <div class="card-item">
-            <div class="card-body">
-                <h3 class="card-name">Стандарт</h3>
-                <p class="card-description">Базовый набор функций для комфортного старта и ознакомления с возможностями платформы.</p>
-                <div class="card-price">1 500 ₽</div>
-                <button class="card-btn" onclick="alert('Вы выбрали тариф Стандарт')">Заказать</button>
+    <!-- Секция с карточками -->
+    <section class="catalog-section">
+        <h1 class="catalog-title">Наши <span class="gradient-text">тарифные карты</span></h1>
+
+        <div class="card-grid">
+            <!-- Карточка 1 -->
+            <div class="card-item">
+                <div class="card-body">
+                    <h3 class="card-name">Стандарт</h3>
+                    <p class="card-description">Базовый набор функций для комфортного старта и ознакомления с возможностями платформы.</p>
+                    <div class="card-price">1 500 ₽</div>
+                    <button class="card-btn" data-tariff="standard">Заказать</button>
+                </div>
+            </div>
+
+            <!-- Карточка 2 (Популярная) -->
+            <div class="card-item card-featured">
+                <span class="card-badge">Популярно</span>
+                <div class="card-body">
+                    <h3 class="card-name">Продвинутый</h3>
+                    <p class="card-description">Оптимальный выбор для активных пользователей. Включает приоритетную поддержку и расширенное место.</p>
+                    <div class="card-price">3 500 ₽</div>
+                    <button class="card-btn" data-tariff="advanced">Заказать</button>
+                </div>
+            </div>
+
+            <!-- Карточка 3 -->
+            <div class="card-item">
+                <div class="card-body">
+                    <h3 class="card-name">Максимум</h3>
+                    <p class="card-description">Полный доступ ко всем мощностям системы, персональный менеджер и безлимитное хранилище.</p>
+                    <div class="card-price">7 900 ₽</div>
+                    <button class="card-btn" data-tariff="premium">Заказать</button>
+                </div>
             </div>
         </div>
+    </section>
 
-        <!-- Карточка 2 (Популярная) -->
-        <div class="card-item card-featured">
-            <span class="card-badge">Популярно</span>
-            <div class="card-body">
-                <h3 class="card-name">Продвинутый</h3>
-                <p class="card-description">Оптимальный выбор для active пользователей. Включает приоритетную поддержку и расширенное место.</p>
-                <div class="card-price">3 500 ₽</div>
-                <button class="card-btn" onclick="alert('Вы выбрали тариф Продвинутый')">Заказать</button>
-            </div>
-        </div>
+    <!-- Модальное окно (Форма заказа) -->
+    <div class="modal-overlay" id="orderModal">
+        <div class="modal-box">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Оформить заказ</h2>
+            <p class="modal-subtitle">Заполните форму, и мы свяжемся с вами в течение 15 минут</p>
 
-        <!-- Карточка 3 -->
-        <div class="card-item">
-            <div class="card-body">
-                <h3 class="card-name">Максимум</h3>
-                <p class="card-description">Полный доступ ко всем мощностям системы, персональный менеджер и безлимитное хранилище.</p>
-                <div class="card-price">7 900 ₽</div>
-                <button class="card-btn" onclick="alert('Вы выбрали тариф Максимум')">Заказать</button>
-            </div>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="tariff-select">Выбранный тариф</label>
+                    <select id="tariff-select" name="tariff">
+                        <option value="standard">Стандарт — 1 500 ₽</option>
+                        <option value="advanced">Продвинутый — 3 500 ₽</option>
+                        <option value="premium">Максимум — 7 900 ₽</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-name">Ваше имя</label>
+                    <input type="text" id="user-name" name="username" placeholder="Иван Иванов" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="user-phone">Телефон</label>
+                    <input type="tel" id="user-phone" name="phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <button type="submit" class="btn-submit">Отправить заявку</button>
+            </form>
         </div>
     </div>
-</section>
 
+    <!-- JavaScript-логика управления модальным окном -->
+    <script>
+        const modal = document.getElementById('orderModal');
+        const closeBtn = document.getElementById('closeModal');
+        const tariffSelect = document.getElementById('tariff-select');
+        const orderButtons = document.querySelectorAll('.card-btn');
+
+        // Открытие модального окна при клике на "Заказать"
+        orderButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const selectedTariff = button.getAttribute('data-tariff');
+                tariffSelect.value = selectedTariff; // Автовыбор тарифа в форме
+                modal.classList.add('active');
+            });
+        });
+
+        // Закрытие по крестику
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('active');
+        });
+
+        // Закрытие при клике на темный фон вне окна
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>

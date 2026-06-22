@@ -1,4 +1,3 @@
-/* Старые стили шапки и фона сохраняются */
 :root {
     --bg-dark: #0b0f19;
     --accent-purple: #8b5cf6;
@@ -20,8 +19,10 @@ body {
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
+    padding-top: 100px; /* Отступ сверху, чтобы навигация не перекрывала контент */
 }
 
+/* --- НАВИГАЦИЯ --- */
 .navbar {
     background: rgba(11, 15, 25, 0.8);
     backdrop-filter: blur(12px);
@@ -48,59 +49,127 @@ body {
 
 .logo span { color: var(--accent-purple); }
 
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: radial-gradient(circle at top, rgba(139, 92, 246, 0.15), transparent 60%);
-    padding: 20px;
+/* --- СЕКЦИЯ КАТАЛОГА С КАРТОЧКАМИ --- */
+.catalog-section {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
+.catalog-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5rem;
     font-weight: 700;
+}
+
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+}
+
+/* Карточки в темном стиле */
+.card-item {
+    background: #111827;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 340px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-item:hover {
+    transform: translateY(-5px);
+    border-color: rgba(139, 92, 246, 0.4);
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.1);
+}
+
+/* Карточка с акцентом */
+.card-item.card-featured {
+    border: 2px solid var(--accent-purple);
+    box-shadow: 0 15px 35px rgba(139, 92, 246, 0.15);
+}
+
+.card-badge {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+    color: #fff;
+    padding: 4px 16px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-body {
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.card-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.card-description {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    flex-grow: 1;
+}
+
+.card-price {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
     margin-bottom: 25px;
 }
 
-.gradient-text {
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero p {
-    font-size: 1.25rem;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.btn-primary {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+/* Кнопка заказа в стиле btn-primary */
+.card-btn {
+    background: linear-gradient(135deg, var(--accent-blue), #2563eb);
     color: #fff;
-    padding: 16px 36px;
-    border-radius: 50px;
+    border: none;
+    padding: 14px 28px;
+    font-size: 1rem;
     font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+    border-radius: 50px;
+    cursor: pointer;
     transition: all 0.3s ease;
+    width: 100%;
 }
 
-.btn-primary:hover {
+.card-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 30px rgba(139, 92, 246, 0.5);
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
 }
 
-/* ==================================================== */
-/* СТИЛИ ДЛЯ МОДАЛЬНОГО ОКНА (НОВОЕ) */
-/* ==================================================== */
+/* Кнопка для выделенной карточки */
+.card-featured .card-btn {
+    background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+}
 
-/* Задний темный фон при открытии окна */
+.card-featured .card-btn:hover {
+    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+}
+
+/* --- МОДАЛЬНОЕ ОКНО --- */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -114,17 +183,15 @@ body {
     justify-content: center;
     z-index: 2000;
     opacity: 0;
-    pointer-events: none; /* Окно изначально кликабельно сквозь себя */
+    pointer-events: none;
     transition: opacity 0.4s ease;
 }
 
-/* Класс, который будет добавляться через JS для показа окна */
 .modal-overlay.active {
     opacity: 1;
     pointer-events: auto;
 }
 
-/* Само белое/темное окно по центру */
 .modal-box {
     background: #111827;
     border: 1px solid var(--border-color);
@@ -142,7 +209,6 @@ body {
     transform: scale(1);
 }
 
-/* Кнопка закрытия (крестик) */
 .modal-close {
     position: absolute;
     top: 20px;
@@ -153,6 +219,7 @@ body {
     font-size: 2rem;
     cursor: pointer;
     transition: color 0.2s;
+    line-height: 1;
 }
 
 .modal-close:hover {
@@ -163,6 +230,7 @@ body {
     font-size: 1.8rem;
     margin-bottom: 8px;
     text-align: center;
+    color: #fff;
 }
 
 .modal-subtitle {
@@ -172,7 +240,6 @@ body {
     margin-bottom: 30px;
 }
 
-/* Поля формы */
 .form-group {
     margin-bottom: 20px;
 }
@@ -211,7 +278,6 @@ body {
     border-color: var(--accent-purple);
 }
 
-/* Кнопка отправки внутри формы */
 .btn-submit {
     width: 100%;
     background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
@@ -234,137 +300,5 @@ body {
 
 @media (max-width: 480px) {
     .modal-box { padding: 30px 20px; }
-    .hero h1 { font-size: 2.3rem; }
-}
-/* Сброс базовых отступов */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #333;
-    line-height: 1.5;
-    padding: 40px 20px;
-}
-
-/* Контейнер секции */
-.catalog-section {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.catalog-title {
-    text-align: center;
-    margin-bottom: 50px;
-    font-size: 32px;
-    color: #222;
-}
-
-/* Сетка для карточек (Flexbox) */
-.card-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-}
-
-/* Стили карточки */
-.card-item {
-    background: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 320px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s, box-shadow 0.2s;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Эффект при наведении */
-.card-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-/* Карточка с акцентом (Популярная) */
-.card-item.card-featured {
-    border: 2px solid #007bff;
-}
-
-/* Бейджик для популярного тарифа */
-.card-badge {
-    position: absolute;
-    top: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: #007bff;
-    color: #fff;
-    padding: 4px 12px;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 20px;
-    text-transform: uppercase;
-}
-
-/* Внутренний контент */
-.card-body {
-    padding: 30px 24px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    text-align: center;
-    flex-grow: 1;
-}
-
-.card-name {
-    font-size: 22px;
-    margin-bottom: 15px;
-    color: #111;
-}
-
-.card-description {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 25px;
-    flex-grow: 1; /* Толкает цену и кнопку вниз, выравнивая их */
-}
-
-.card-price {
-    font-size: 28px;
-    font-weight: bold;
-    color: #222;
-    margin-bottom: 20px;
-}
-
-/* Кнопка заказа */
-.card-btn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 12px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-    width: 100%;
-}
-
-.card-btn:hover {
-    background: #218838;
-}
-
-/* Стили кнопки для акцентной карточки */
-.card-featured .card-btn {
-    background: #007bff;
-}
-
-.card-featured .card-btn:hover {
-    background: #0069d9;
+    .catalog-title { font-size: 2rem; }
 }
