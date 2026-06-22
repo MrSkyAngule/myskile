@@ -3,88 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Разработка сайтов: от простых до средних</title>
+    <title>Премиум Веб-Разработка | Главная</title>
+    <!-- Подключение красивого современного шрифта -->
+    <link href="https://googleapis.com" rel="stylesheet">
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <header>
-        <h1>Разработка веб-сайтов</h1>
-        <p>Создаем эффективные решения для вашего бизнеса</p>
+    <!-- Навигационная панель -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">WEB<span>.STUDIO</span></a>
+            <div class="nav-links">
+                <a href="#services">Услуги</a>
+                <a href="#calculator">Калькулятор</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Главный экран (Hero Section) -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Создаем цифровые <span class="gradient-text">шедевры</span></h1>
+            <p>Профессиональная разработка веб-сайтов от лаконичных визиток до мощных экосистем коммерции.</p>
+            <a href="#calculator" class="btn-primary">Рассчитать проект</a>
+        </div>
     </header>
 
     <div class="container">
-        <p class="intro">Выберите готовый тип сайта или рассчитайте стоимость индивидуально с помощью калькулятора ниже.</p>
 
-        <!-- Сетка с услугами -->
-        <div class="grid">
-            <div class="card">
-                <span class="badge">Простой</span>
-                <h3>Сайт-визитка / Лендинг</h3>
-                <p>Одностраничный сайт для быстрого старта, презентации услуг или одного товара.</p>
-                <ul>
-                    <li>Сроки: 3–5 дней</li>
-                    <li>Адаптивный дизайн</li>
-                    <li>Форма обратной связи</li>
-                </ul>
-            </div>
+        <!-- Секция услуг -->
+        <section id="services" class="section-padding">
+            <h2 class="section-title">Направления разработки</h2>
+            <div class="grid">
 
-            <div class="card">
-                <span class="badge medium">Средний</span>
-                <h3>Корпоративный сайт</h3>
-                <p>Многостраничный сайт для компаний с каталогом услуг, блогом и описанием бизнеса.</p>
-                <ul>
-                    <li>Сроки: 2–3 недели</li>
-                    <li>Удобная CMS-система</li>
-                    <li>Интеграция с картами</li>
-                </ul>
-            </div>
+                <!-- Карточка 1 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge badge-simple">Простой</span>
+                        <h3>Лендинг / Визитка</h3>
+                    </div>
+                    <p class="card-desc">Элегантный одностраничный сайт. Идеален для яркого запуска продукта или презентации услуг личного бренда.</p>
+                    <ul class="card-features">
+                        <li>Сроки: 3–5 рабочих дней</li>
+                        <li>Премиальный мобильный интерфейс</li>
+                        <li>Интеграция конверсионных форм</li>
+                    </ul>
+                </div>
 
-            <div class="card">
-                <span class="badge medium">Средний</span>
-                <h3>Интернет-магазин</h3>
-                <p>Торговая площадка для продажи товаров с корзиной и личным кабинетом.</p>
-                <ul>
-                    <li>Сроки: 3–4 недели</li>
-                    <li>Онлайн-оплата</li>
-                    <li>Фильтры товаров</li>
-                </ul>
-            </div>
-        </div>
+                <!-- Карточка 2 -->
+                <div class="card featured-card">
+                    <div class="card-header">
+                        <span class="badge badge-medium">Средний / Топ</span>
+                        <h3>Корпоративный сайт</h3>
+                    </div>
+                    <p class="card-desc">Масштабируемый многостраничный портал для бизнеса с каталогом, блогом и глубокой проработкой структуры.</p>
+                    <ul class="card-features">
+                        <li>Сроки: 2–3 недели разработки</li>
+                        <li>Управление контентом через удобную CMS</li>
+                        <li>Интерактивные карты и мессенджеры</li>
+                    </ul>
+                </div>
 
-        <!-- Интерактивный калькулятор (JS) -->
-        <div class="calculator">
-            <h2>📱 Интерактивный расчет стоимости</h2>
-            <div class="calc-group">
-                <label for="site-type">Выберите тип проекта:</label>
-                <select id="site-type">
-                    <option value="15000">Лендинг / Визитка (от 15 000 ₽)</option>
-                    <option value="35000">Корпоративный сайт (от 35 000 ₽)</option>
-                    <option value="50000">Интернет-магазин (от 50 000 ₽)</option>
-                </select>
-            </div>
+                <!-- Карточка 3 -->
+                <div class="card">
+                    <div class="card-header">
+                        <span class="badge badge-medium">Средний</span>
+                        <h3>Интернет-магазин</h3>
+                    </div>
+                    <p class="card-desc">Высокотехнологичный маркетплейс для продажи товаров с личными кабинетами и быстрой фильтрацией.</p>
+                    <ul class="card-features">
+                        <li>Сроки: 3–4 недели до запуска</li>
+                        <li>Безопасная онлайн-оплата</li>
+                        <li>Умный поиск и корзина покупателя</li>
+                    </ul>
+                </div>
 
-            <div class="calc-group checkboxes">
-                <p>Дополнительные опции:</p>
-                <label>
-                    <input type="checkbox" id="opt-seo" value="5000"> SEO-оптимизация (+5 000 ₽)
-                </label>
-                <label>
-                    <input type="checkbox" id="opt-copy" value="4000"> Написание текстов (+4 000 ₽)
-                </label>
-                <label>
-                    <input type="checkbox" id="opt-support" value="3000"> Месяц поддержки (+3 000 ₽)
-                </label>
             </div>
+        </section>
 
-            <div class="calc-total">
-                Итоговая стоимость: <span id="total-price">15000</span> ₽
+        <!-- Секция калькулятора -->
+        <section id="calculator" class="section-padding">
+            <div class="calculator-box">
+                <h2>Конфигуратор стоимости</h2>
+                <p class="calc-subtitle">Соберите комплектацию вашего будущего сайта в реальном времени</p>
+
+                <div class="calc-group">
+                    <label for="site-type">Архитектура платформы</label>
+                    <select id="site-type">
+                        <option value="15000">Лендинг / Визитка (от 15 000 ₽)</option>
+                        <option value="35000">Корпоративный сайт (от 35 000 ₽)</option>
+                        <option value="50000">Интернет-магазин (от 50 000 ₽)</option>
+                    </select>
+                </div>
+
+                <div class="calc-group checkboxes">
+                    <label class="group-title">Дополнительные бизнес-модули</label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="opt-seo" value="5000">
+                        <span class="custom-checkbox"></span>
+                        SEO-оптимизация и индексация (+5 000 ₽)
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="opt-copy" value="4000">
+                        <span class="custom-checkbox"></span>
+                        Маркетинговые тексты и копирайтинг (+4 000 ₽)
+                    </label>
+
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="opt-support" value="3000">
+                        <span class="custom-checkbox"></span>
+                        30 дней технической поддержки (+3 000 ₽)
+                    </label>
+                </div>
+
+                <div class="calc-total">
+                    <span class="total-label">Ориентировочный бюджет</span>
+                    <div class="total-amount"><span id="total-price">15000</span> <span class="currency">₽</span></div>
+                </div>
             </div>
-        </div>
+        </section>
+
     </div>
 
     <footer>
-        <p>&copy; 2026 Студия веб-разработки. Все права защищены.</p>
+        <div class="footer-content">
+            <p>&copy; 2026 WEB.STUDIO. Создано с акцентом на эстетику.</p>
+        </div>
     </footer>
 
     <script src="static/script.js"></script>
