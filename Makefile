@@ -9,3 +9,6 @@ restart:
 
 restart_ng:
 	sudo nginx -t && sudo systemctl restart nginx
+
+start_env:
+	cd /var/www/myskile && source env/bin/activate
