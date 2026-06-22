@@ -3,82 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebDev Studio | Создание цифровых продуктов</title>
+    <title>Cyberpunk Glitch Card</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <!-- Шапка -->
-    <header>
-        <div class="container header-flex">
-            <a href="#" class="logo">web<span>.</span>dev</a>
-            <nav class="nav-menu">
-                <a href="#services">Услуги</a>
-                <a href="#about">О нас</a>
-                <a href="#contact" class="btn-nav">Связаться</a>
-            </nav>
-        </div>
-    </header>
+    <div class="cyber-card">
+        <!-- Декоративные хакерские элементы -->
+        <div class="glitch-bg"></div>
+        <div class="corner-tag">SYS_ERR // 404</div>
 
-    <!-- Главный экран -->
-    <section class="hero-section">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <span class="badge">Премиум веб-разработка</span>
-                <h1>Проектируем интерфейсы, запускаем бизнесы</h1>
-                <p>Мы не просто пишем код. Мы создаем быстрые, адаптивные и продающие сайты, которые выделяют вас среди конкурентов.</p>
-                <div class="hero-cta">
-                    <a href="#contact" class="btn-primary">Начать проект</a>
-                    <a href="#services" class="btn-secondary">Наши услуги</a>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <div class="abstract-shape"></div>
-            </div>
-        </div>
-    </section>
+        <!-- Заголовок с глитч-эффектом (атрибуты data-text нужны для CSS) -->
+        <h1 class="glitch-title" data-text="NEO-TOKYO">NEO-TOKYO</h1>
 
-    <!-- Блок услуг -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Что мы делаем хорошо</h2>
-                <p>Полный цикл разработки от идеи до первых клиентов</p>
-            </div>
-            <div class="services-grid">
+        <p class="cyber-text">
+            Добро пожаловать в цифровое подполье. Доступ заблокирован, но вы можете активировать терминал.
+        </p>
 
-                <div class="service-card">
-                    <div class="icon-wrapper">🚀</div>
-                    <h3>Landing Page</h3>
-                    <p>Одностраничные сайты под ключ с фокусом на высокую конверсию и продажи.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="icon-wrapper">💻</div>
-                    <h3>Корпоративные сайты</h3>
-                    <p>Масштабируемые веб-ресурсы для крупного бизнеса, брендов и медиа.</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="icon-wrapper">🛍️</div>
-                    <h3>E-commerce</h3>
-                    <p>Современные интернет-магазины с интеграцией платежей, CRM и каталогов.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Подвал -->
-    <footer id="contact">
-        <div class="container footer-content">
-            <p>© 2026 web.dev studio. Все права защищены.</p>
-            <div class="footer-links">
-                <a href="mailto:hello@web.dev">hello@web.dev</a>
-                <a href="tel:+79990000000">+7 (999) 000-00-00</a>
-            </div>
-        </div>
-    </footer>
+        <!-- Киберпанк-кнопка -->
+        <button class="cyber-btn">
+            ВЗЛОМАТЬ СИСТЕМУ<span class="btn-glitch"></span>
+        </button>
+    </div>
 
 </body>
 </html>

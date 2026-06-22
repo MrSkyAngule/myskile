@@ -1,315 +1,135 @@
-/* Переменные для быстрой смены цветов */
-:root {
-    --bg-main: #f8fafc;
-    --bg-card: #ffffff;
-    --text-dark: #0f172a;
-    --text-muted: #64748b;
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --border-color: #e2e8f0;
-}
-
-/* Общие стили */
+/* Базовые настройки стиля будущего */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-dark);
-    line-height: 1.5;
-}
-
-.container {
-    max-width: 1140px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* Навигация */
-header {
-    background-color: rgba(248, 250, 252, 0.8);
-    backdrop-filter: blur(12px);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.header-flex {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    height: 80px;
-}
-
-.logo {
-    font-size: 22px;
-    font-weight: 800;
-    color: var(--text-dark);
-    text-decoration: none;
-    letter-spacing: -0.5px;
-}
-
-.logo span {
-    color: var(--primary);
-}
-
-.nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-}
-
-.nav-menu a {
-    text-decoration: none;
-    color: var(--text-muted);
-    font-weight: 500;
-    font-size: 15px;
-    transition: color 0.2s;
-}
-
-.nav-menu a:hover {
-    color: var(--text-dark);
-}
-
-.nav-menu .btn-nav {
-    background-color: var(--text-dark);
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.nav-menu .btn-nav:hover {
-    background-color: #1e293b;
-    color: #fff;
-}
-
-/* Главный блок (Hero) */
-.hero-section {
-    padding-top: 180px;
-    padding-bottom: 100px;
+    min-height: 100vh;
+    background-color: #0a0a12; /* Глубокий кибер-черный */
     overflow: hidden;
 }
 
-.hero-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 60px;
-    align-items: center;
-}
-
-.badge {
-    display: inline-block;
-    background-color: #e0e7ff;
-    color: var(--primary);
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    margin-bottom: 24px;
-}
-
-.hero-text h1 {
-    font-size: 54px;
-    font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 24px;
-    letter-spacing: -1px;
-}
-
-.hero-text p {
-    font-size: 18px;
-    color: var(--text-muted);
-    margin-bottom: 40px;
-    max-width: 520px;
-}
-
-.hero-cta {
-    display: flex;
-    gap: 16px;
-}
-
-.btn-primary {
-    background-color: var(--primary);
-    color: #fff;
-    text-decoration: none;
-    padding: 16px 32px;
-    border-radius: 12px;
-    font-weight: 600;
-    transition: background 0.2s;
-}
-
-.btn-primary:hover {
-    background-color: var(--primary-hover);
-}
-
-.btn-secondary {
-    background-color: #fff;
-    color: var(--text-dark);
-    text-decoration: none;
-    padding: 16px 32px;
-    border-radius: 12px;
-    font-weight: 600;
-    border: 1px solid var(--border-color);
-    transition: background 0.2s;
-}
-
-.btn-secondary:hover {
-    background-color: #f1f5f9;
-}
-
-.hero-visual {
+/* Корпус кибер-карточки */
+.cyber-card {
     position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.abstract-shape {
-    width: 320px;
-    height: 320px;
-    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-    filter: blur(10px);
-    opacity: 0.85;
-    animation: morph 8s ease-in-out infinite alternate;
-}
-
-@keyframes morph {
-    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-    100% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
-}
-
-/* Услуги */
-.services-section {
-    padding: 100px 0;
-    border-top: 1px solid var(--border-color);
-}
-
-.section-header {
-    text-align: center;
-    margin-bottom: 64px;
-}
-
-.section-header h2 {
-    font-size: 36px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-    margin-bottom: 12px;
-}
-
-.section-header p {
-    color: var(--text-muted);
-    font-size: 16px;
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 32px;
-}
-
-.service-card {
-    background-color: var(--bg-card);
+    background: linear-gradient(135deg, #121225 0%, #080811 100%);
+    border: 2px solid #00ff66; /* Неоновый зеленый контур */
     padding: 40px;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02), 0 2px 4px -1px rgba(0,0,0,0.01);
-    transition: transform 0.3s, box-shadow 0.3s;
+    width: 350px;
+    border-radius: 0px 30px 0px 30px; /* Асимметричные футуристичные углы */
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.2),
+                inset 0 0 15px rgba(0, 255, 102, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
-.service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05), 0 10px 10px -5px rgba(0,0,0,0.02);
+/* Эффект наклона при наведении */
+.cyber-card:hover {
+    transform: translateY(-5px) rotate(-1deg);
+    border-color: #ff0055; /* Смена цвета на неоновый розовый */
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.4);
 }
 
-.icon-wrapper {
-    font-size: 32px;
-    background-color: #f1f5f9;
-    width: 64px;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    margin-bottom: 24px;
+/* Бирка в углу */
+.corner-tag {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    background: #00ff66;
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: bold;
+    padding: 3px 8px;
+    text-transform: uppercase;
+}
+.cyber-card:hover .corner-tag {
+    background: #ff0055;
 }
 
-.service-card h3 {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 12px;
+/* --- ЭФФЕКТ ГЛИТЧА ДЛЯ ТЕКСТА --- */
+.glitch-title {
+    position: relative;
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
-.service-card p {
-    color: var(--text-muted);
-    font-size: 15px;
+/* Создаем два виртуальных слоя для раздвоения цвета */
+.glitch-title::before,
+.glitch-title::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #121225;
 }
 
-/* Подвал */
-footer {
-    background-color: #fff;
-    padding: 48px 0;
-    border-top: 1px solid var(--border-color);
+/* Розовый слой */
+.glitch-title::before {
+    left: 2px;
+    text-shadow: -2px 0 #ff0055;
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: var(--text-muted);
-    font-size: 14px;
+/* Синий слой */
+.glitch-title::after {
+    left: -2px;
+    text-shadow: -2px 0 #00ffff;
+    clip: rect(85px, 450px, 140px, 0);
+    animation: glitch-anim 2s infinite linear alternate-reverse;
 }
 
-.footer-links {
-    display: flex;
-    gap: 24px;
+.cyber-text {
+    color: #8c92ac;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
 }
 
-.footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 500;
+/* --- НЕОНОВАЯ КНОПКА С АНИМАЦИЕЙ --- */
+.cyber-btn {
+    width: 100%;
+    background: transparent;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    padding: 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    letter-spacing: 2px;
+    transition: all 0.2s;
 }
 
-.footer-links a:hover {
-    color: var(--primary);
+.cyber-btn:hover {
+    background: #00ff66;
+    color: #000;
+    box-shadow: 0 0 15px #00ff66;
 }
 
-/* Адаптивность для телефонов */
-@media (max-width: 768px) {
-    .hero-grid {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 40px;
-    }
-    .hero-text h1 {
-        font-size: 38px;
-    }
-    .hero-text p {
-        margin: 0 auto 32px;
-    }
-    .hero-cta {
-        justify-content: center;
-    }
-    .hero-visual {
-        order: -1;
-    }
-    .abstract-shape {
-        width: 240px;
-        height: 240px;
-    }
-    .nav-menu {
-        display: none; /* Для полноценного меню нужен JS */
-    }
-    .footer-content {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-    }
+/* Анимация цифрового глитча (сдвиг полос рендеринга) */
+@keyframes glitch-anim {
+    0% { clip: rect(31px, 9999px, 94px, 0); }
+    10% { clip: rect(112px, 9999px, 76px, 0); }
+    20% { clip: rect(85px, 9999px, 5px, 0); }
+    30% { clip: rect(27px, 9999px, 115px, 0); }
+    40% { clip: rect(73px, 9999px, 29px, 0); }
+    50% { clip: rect(118px, 9999px, 145px, 0); }
+    60% { clip: rect(18px, 9999px, 93px, 0); }
+    70% { clip: rect(43px, 9999px, 64px, 0); }
+    80% { clip: rect(86px, 9999px, 112px, 0); }
+    90% { clip: rect(102px, 9999px, 34px, 0); }
+    100% { clip: rect(57px, 9999px, 128px, 0); }
 }
