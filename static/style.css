@@ -1,3 +1,4 @@
+/* Базовые настройки скролла и сетки */
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +14,7 @@ body {
     overflow-x: hidden;
 }
 
+/* --- КИБЕР ФОН И СЕТКА --- */
 .cyber-grid {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
@@ -33,6 +35,7 @@ body {
     pointer-events: none;
 }
 
+/* --- НАВИГАЦИЯ --- */
 .cyber-nav {
     position: fixed;
     top: 0; left: 0; width: 100%;
@@ -75,6 +78,7 @@ body {
     border-color: #ff0055;
 }
 
+/* --- СЕКЦИИ --- */
 .section-container {
     min-height: 100vh;
     padding: 120px 10%;
@@ -211,6 +215,7 @@ body {
     letter-spacing: 1px;
 }
 
+/* --- ТЕРМИНАЛ --- */
 .cyber-terminal {
     width: 100%;
     max-width: 650px;
@@ -241,7 +246,7 @@ body {
 }
 
 .terminal-window {
-    height: 220px;
+    height: 250px;
     padding: 20px;
     overflow-y: auto;
     display: flex;
@@ -256,6 +261,7 @@ body {
 
 .text-green { color: #00ff66; }
 .text-pink { color: #ff0055; }
+.text-blue { color: #00ffff; }
 
 .terminal-input-row {
     display: flex;

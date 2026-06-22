@@ -3,76 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BACKEND_ARCHITECT // ROOT</title>
+    <title>CYBER_CORE // Разработка высоконагруженных сайтов</title>
     <link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 
-    <!-- Фоновая неоновая сетка и лазер -->
+    <!-- Фоновые эффекты матрицы и лазера -->
     <div class="cyber-grid"></div>
     <div class="scanline"></div>
 
-    <!-- Фиксированное кибер-меню -->
+    <!-- Навигация студии -->
     <nav class="cyber-nav">
-        <div class="nav-logo" data-text="B_A">//BACKEND_ARCHITECT</div>
+        <div class="nav-logo" data-text="C_C">//CYBER_CORE</div>
         <div class="nav-links">
-            <a href="#main" class="nav-item active">CORE</a>
-            <a href="#projects" class="nav-item">STACK & ARCH</a>
-            <a href="#terminal-sec" class="nav-item">API_CONSOLE</a>
+            <a href="#main" class="nav-item active">MAIN</a>
+            <a href="#services" class="nav-item">SERVICES</a>
+            <a href="#terminal-sec" class="nav-item">ORDER_CONSOLE</a>
         </div>
     </nav>
 
     <!-- СЕКЦИЯ 1: Главный экран -->
     <section id="main" class="section-container">
         <div class="hero-block">
-            <div class="status-badge">SERVER_STATUS // UP_AND_RUNNING</div>
-            <h1 class="hero-title" data-text="NODE_RUNTIME">NODE_RUNTIME</h1>
-            <p class="hero-subtitle">Проектирую высоконагруженные серверные системы, оптимизирую тяжелые SQL/NoSQL запросы и выстраиваю отказоустойчивую микросервисную архитектуру.</p>
-            <a href="#projects" class="action-btn">ПОСМОТРЕТЬ РЕЛИЗЫ <span class="btn-arrow">>></span></a>
+            <div class="status-badge">AGENCY_STATUS // READY_FOR_DEPLOY</div>
+            <h1 class="hero-title" data-text="CODE_THE_FUTURE">CODE_THE_FUTURE</h1>
+            <p class="hero-subtitle">Создаем отказоустойчивые веб-ресурсы, интернет-магазины и сложные API. Без шаблонных конструкторов. Только чистый код, максимальная скорость и защита от DDoS-атак.</p>
+            <a href="#terminal-sec" class="action-btn">РАССЧИТАТЬ СТОИМОСТЬ <span class="btn-arrow">>></span></a>
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 2: Бэкенд-Проекты -->
+    <!-- СЕКЦИЯ 2: Услуги и Тарифы -->
     <section id="projects" class="section-container">
-        <h2 class="section-title" data-text="CORE_MICROSERVICES">CORE_MICROSERVICES</h2>
+        <h2 class="section-title" data-text="OUR_SOLUTIONS">OUR_SOLUTIONS</h2>
         <div class="projects-grid">
 
-            <!-- Карточка 1 -->
+            <!-- Тариф 1 -->
             <div class="project-card">
-                <div class="card-tag">SERVICE // 01</div>
-                <h3>Auth_Gateway_v2</h3>
-                <p>Микросервис авторизации на базе JWT и Redis с пропускной способностью до 15k RPS.</p>
-                <span class="tech-stack">Node.js / Express / Redis</span>
+                <div class="card-tag">STACK // LIGHT</div>
+                <h3>HighSpeed Landing</h3>
+                <p>Одностраничный промо-сайт с реактивной загрузкой и идеальной зеленой зоной в Google PageSpeed.</p>
+                <span class="tech-stack">Fastify / Vanilla JS / CSS Grid</span>
             </div>
 
-            <!-- Карточка 2 -->
+            <!-- Тариф 2 -->
             <div class="project-card">
-                <div class="card-tag">SERVICE // 02</div>
-                <h3>Data_Pipeline_Stream</h3>
-                <p>Система распределенной обработки очередей сообщений и логирования логов в реальном времени.</p>
-                <span class="tech-stack">Python / Kafka / PostgreSQL</span>
+                <div class="card-tag">STACK // CORP</div>
+                <h3>E-Commerce Core</h3>
+                <p>Масштабируемый интернет-магазин с кастомной админкой, интеграцией CRM, ERP и платежных шлюзов.</p>
+                <span class="tech-stack">Node.js / PostgreSQL / Redis</span>
             </div>
 
         </div>
     </section>
 
-    <!-- СЕКЦИЯ 3: Терминал (Управление API) -->
+    <!-- СЕКЦИЯ 3: Хакерская интерактивная консоль заказа -->
     <section id="terminal-sec" class="section-container">
-        <h2 class="section-title" data-text="API_TERMINAL">API_TERMINAL</h2>
+        <h2 class="section-title" data-text="ORDER_TERMINAL">ORDER_TERMINAL</h2>
 
         <div class="cyber-terminal">
             <div class="terminal-header">
                 <span class="terminal-dot"></span>
-                <span class="terminal-title">ssh // dev@production-server</span>
+                <span class="terminal-title">bash // order@cyber-core.agency</span>
             </div>
             <div class="terminal-window" id="terminal-output">
-                <p class="output-line text-green">[INIT]: Подключение по SSH установлено. Права: root.</p>
-                <p class="output-line text-green">[DB]: PostgreSQL пул подключений: OK (active: 4, idle: 12).</p>
-                <p class="output-line">[INFO]: Наберите 'help' для просмотра команд управления бэкенд-сервером.</p>
+                <p class="output-line text-green">[SYSTEM]: Инициализация шлюза заказов успешно завершена.</p>
+                <p class="output-line text-green">[INFO]: Сервер готов рассчитать стоимость вашего проекта.</p>
+                <p class="output-line">[CMD]: Введите команду 'price' для калькулятора или 'order' для отправки брифа.</p>
             </div>
             <div class="terminal-input-row">
-                <span class="terminal-prompt">root@backend:~#</span>
-                <input type="text" id="terminal-input" placeholder="Введите команду сервера..." autocomplete="off">
+                <span class="terminal-prompt">client@core:~#</span>
+                <input type="text" id="terminal-input" placeholder="Введите 'price', 'order' или 'help'..." autocomplete="off">
             </div>
         </div>
     </section>

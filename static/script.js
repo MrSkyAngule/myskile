@@ -1,3 +1,4 @@
+// Генератор звуковых бипов (Web Audio API)
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function playBeep(freq, type = 'sine', duration = 0.08) {
@@ -7,7 +8,7 @@ function playBeep(freq, type = 'sine', duration = 0.08) {
 
     osc.type = type;
     osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-    gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+    gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
     gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
 
     osc.connect(gain);
@@ -20,72 +21,116 @@ document.body.addEventListener('click', () => {
     if (audioCtx.state === 'suspended') audioCtx.resume();
 });
 
-document.querySelectorAll('.nav-item, .project-card, .action-btn').forEach(element => {
-    element.addEventListener('mouseenter', () => playBeep(440, 'triangle', 0.05));
-    element.addEventListener('click', () => playBeep(880, 'square', 0.1));
+document.querySelectorAll('.nav-item, .project-card, .action-btn').forEach(el => {
+    el.addEventListener('mouseenter', () => playBeep(500, 'triangle', 0.04));
+    el.addEventListener('click', () => playBeep(900, 'square', 0.08));
 });
 
+// Навигация со ScrollSpy
 const sections = document.querySelectorAll('section');
 const navItems = document.querySelectorAll('.nav-item');
 
 window.addEventListener('scroll', () => {
     let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 150) {
-            current = section.getAttribute('id');
+    sections.forEach(sec => {
+        if (pageYOffset >= sec.offsetTop - 180) {
+            current = sec.getAttribute('id');
         }
     });
-
     navItems.forEach(item => {
         item.classList.remove('active');
-        if (item.getAttribute('href').includes(current)) {
-            item.classList.add('active');
-        }
+        if (item.getAttribute('href').includes(current)) item.classList.add('active');
     });
 });
 
-// БЭКЕНД ПАРСЕР ДЛЯ ТЕРМИНАЛА
-const terminalInput = document.getElementById('terminal-input');
-const terminalOutput = document.getElementById('terminal-output');
+// ИНТЕРАКТИВНЫЙ БРИФ-ТЕРМИНАЛ СТУДИИ
+const input = document.getElementById('terminal-input');
+const output = document.getElementById('terminal-output');
 
-terminalInput.addEventListener('keydown', function(e) {
+let step = 0; // Этапы опроса при вводе 'order'
+let orderData = { type: '', email: '' };
+
+function addLine(text, cssClass = '') {
+    const p = document.createElement('p');
+    if (cssClass) p.classList.add(cssClass);
+    p.innerHTML = text;
+    output.appendChild(p);
+    output.scrollTop = output.scrollHeight;
+}
+
+input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
-        const command = this.value.trim().toLowerCase();
+        const val = this.value.trim();
+        const cmd = val.toLowerCase();
 
-        const userLine = document.createElement('p');
-        userLine.innerHTML = `<span class="text-pink">root@backend:~#</span> ${this.value}`;
-        terminalOutput.appendChild(userLine);
+        // Отображаем ввод клиента
+        addLine(`<span class="text-pink">client@core:~#</span> ${val}`);
+        this.value = '';
 
-        const responseLine = document.createElement('p');
-        responseLine.classList.add('output-line');
-
-        if (command === 'help') {
-            responseLine.innerHTML = `<span class="text-green">Консоль ядра сервера. Доступные команды:</span><br>
-            > <b class="text-pink">stack</b> - вывести список технологий серверной части<br>
-            > <b class="text-pink">db_status</b> - проверить статус баз данных<br>
-            > <b class="text-pink">ping</b> - сделать эхо-запрос к API шлюзу<br>
-            > <b class="text-pink">clear</b> - очистить экран логов`;
-            playBeep(600, 'sine', 0.15);
-        } else if (command === 'stack') {
-            responseLine.innerHTML = "[DATA]: Основной стек: Node.js (TypeScript), Python, PostgreSQL, Redis, Docker, REST API, GraphQL, gRPC.";
-        } else if (command === 'db_status') {
-            responseLine.innerHTML = `<span class="text-green">[SUCCESS]: PostgreSQL: CONNECTED (Latency: 1.2ms)<br>[SUCCESS]: Redis Cache: ACTIVE (Hit Rate: 94.2%)</span>`;
-        } else if (command === 'ping') {
-            responseLine.innerHTML = "PING api.gateway.local (127.0.0.1) 56(84) bytes of data.<br>64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 <span class='text-green'>time=0.045 ms</span>";
-        } else if (command === 'clear') {
-            terminalOutput.innerHTML = '';
-            this.value = '';
+        // Если запущен пошаговый опрос (сбор брифа)
+        if (step > 0) {
+            handleOrderWizard(val);
             return;
-        } else if (command === '') {
-            return;
-        } else {
-            responseLine.innerHTML = `<span class="text-pink">[ERROR]: Неизвестная системная директива '${command}'. Используйте 'help' для списка логических команд.</span>`;
-            playBeep(150, 'sawtooth', 0.3);
         }
 
-        terminalOutput.appendChild(responseLine);
-        this.value = '';
-        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        // Основное меню команд
+        if (cmd === 'help') {
+            addLine(`<span class="text-green">Доступные шлюзы терминала:</span><br>
+            > <b class="text-pink">price</b> - моментальный калькулятор стоимости проектов<br>
+            > <b class="text-pink">order</b> - инициализация защищенного лога заказа<br>
+            > <b class="text-pink">clear</b> - деструктуризация логов (очистить экран)`);
+            playBeep(600, 'sine');
+        } else if (cmd === 'price') {
+            addLine(`<span class="text-blue">[CALCULATOR]: Ориентировочные бюджеты разработки:</span><br>
+            1. HighSpeed Landing (Одностраничник) -> от 45,000 руб. (Срок: 5-7 дней)<br>
+            2. E-Commerce Core (Магазин/Система) -> от 120,000 руб. (Срок: 20-30 дней)<br>
+            <span class="text-green">Введите команда 'order', чтобы начать сборка технического задания.</span>`);
+            playBeep(700, 'sine', 0.2);
+        } else if (cmd === 'order') {
+            step = 1;
+            addLine(`<span class="text-blue">[WIZARD]: Инициализация мастера бриф-заказа.</span>`);
+            addLine("Шаг 1: Какой тип сайта вам необходим? Введите цифру (<b class='text-green'>1</b> - Лендинг, <b class='text-green'>2</b> - Магазин/Сложный сервис):");
+            playBeep(500, 'triangle');
+        } else if (cmd === 'clear') {
+            output.innerHTML = '';
+        } else if (cmd === '') {
+            return;
+        } else {
+            addLine(`<span class="text-pink">[ERROR]: Неверный протокол '${val}'. Наберите 'help' для авторизации команд.</span>`);
+            playBeep(200, 'sawtooth', 0.25);
+        }
     }
 });
+
+// Мастер сбора контактов
+function handleOrderWizard(value) {
+    if (step === 1) {
+        if (value === '1') {
+            orderData.type = 'HighSpeed Landing';
+            step = 2;
+            addLine(`Выбран тариф: <b class="text-green">${orderData.type}</b>`);
+            addLine("Шаг 2: Введите ваш контактный Email или Telegram для отправки логов архитектуры:");
+            playBeep(500, 'sine');
+        } else if (value === '2') {
+            orderData.type = 'E-Commerce Core';
+            step = 2;
+            addLine(`Выбран тариф: <b class="text-green">${orderData.type}</b>`);
+            addLine("Шаг 2: Введите ваш контактный Email или Telegram для отправки логов архитектуры:");
+            playBeep(500, 'sine');
+        } else {
+            addLine("<span class="text-pink">[REJECTED]: Ошибка ввода. Введите строго цифру 1 или 2:</span>");
+            playBeep(200, 'sawtooth', 0.1);
+        }
+    } else if (step === 2) {
+        if (value.length > 3) {
+            orderData.email = value;
+            step = 0; // Сброс
+            addLine(`<span class="text-green">[SUCCESS]: Пакет данных успешно упакован и отправлен на бэкэнд!</span>`);
+            addLine(`[LOG]: Спецификация: ${orderData.type} | Контакт: ${orderData.email}`);
+            addLine(`Наш архитектор свяжется с вами в течение 30 минут. Сессия закрыта.`);
+            playBeep(880, 'square', 0.3);
+        } else {
+            addLine("<span class='text-pink'>Ошибка. Поле контакта не может быть пустым. Введите данные:</span>");
+        }
+    }
+}
