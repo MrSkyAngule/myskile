@@ -1,166 +1,39 @@
-/* Общие стили и обнуление */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+/* Подключаем современный шрифт Inter из Google Fonts */
+@import url('https://googleapis.com');
 
+/* Включаем плавную прокрутку к якорям (например, к блоку #services) */
 html {
     scroll-behavior: smooth;
 }
 
-body {
-    background-color: #0f172a;
-    color: #f8fafc;
-    overflow-x: hidden;
-}
-
-/* Навигация */
+/* Эффект матового стекла (Glassmorphism) для шапки сайта */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10%;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 100;
-    background: rgba(15, 23, 42, 0.8);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    background-color: rgba(255, 255, 255, 0.85) !important;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 800;
-    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Делаем все анимации кнопок, ссылок и форм плавными */
+a, button, input, select, textarea {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-nav a {
-    color: #94a3b8;
-    text-decoration: none;
-    margin-left: 20px;
-    transition: color 0.3s;
+/* Красивое мягкое свечение вокруг полей ввода при фокусе */
+input:focus, select:focus, textarea:focus {
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15) !important;
 }
 
-nav a:hover {
-    color: #3b82f6;
+/* Стильный тонкий скроллбар для браузеров */
+::-webkit-scrollbar {
+    width: 8px;
 }
-
-/* Главный экран */
-.hero {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-    background: radial-gradient(circle at top right, rgba(139, 92, 246, 0.15), transparent),
-                radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.15), transparent);
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
 }
-
-.hero-content h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
 }
-
-.highlight {
-    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.hero-content p {
-    font-size: 1.2rem;
-    color: #94a3b8;
-    max-width: 600px;
-    margin: 0 auto 40px auto;
-}
-
-/* Кнопка */
-.btn {
-    background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-    color: #fff;
-    border: none;
-    padding: 15px 40px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(139, 92, 246, 0.6);
-}
-
-.btn:active {
-    transform: translateY(-1px);
-}
-
-/* Блок О нас */
-.about {
-    padding: 100px 10%;
-    background-color: #1e293b;
-}
-
-.about-container {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.about h2::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 4px;
-    background: #3b82f6;
-    margin: 10px auto 0 auto;
-    border-radius: 2px;
-}
-
-.about p {
-    color: #94a3b8;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 50px;
-}
-
-/* Статистика */
-.stats {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.stat-item h3 {
-    font-size: 2.5rem;
-    color: #3b82f6;
-    margin-bottom: 5px;
-}
-
-.stat-item p {
-    font-size: 0.9rem;
-    color: #64748b;
-    margin: 0;
-}
-
-/* Адаптивность */
-@media (max-width: 768px) {
-    .hero-content h1 { font-size: 2.3rem; }
-    .hero-content p { font-size: 1rem; }
-    .about h2 { font-size: 2rem; }
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
 }
