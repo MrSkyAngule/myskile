@@ -1,15 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<!-- Главный баннер (Hero) -->
-<section class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white py-24 text-center">
-    <div class="max-w-3xl mx-auto px-4">
-        <h1 class="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">Создаем сайты, которые приносят прибыль</h1>
-        <p class="text-xl text-blue-100 mb-8">Современный дизайн, быстрая загрузка и полная адаптивность под любые устройства.</p>
-        <a href="/orders" class="bg-white text-blue-600 font-bold px-8 py-4 rounded-xl shadow-lg hover:bg-gray-100 transition inline-block text-lg">
-            Заказать расчет стоимости
-        </a>
+<!-- Главный баннер (Hero) с фоновым свечением -->
+<section class="hero-section text-center position-relative d-flex align-items-center">
+    <!-- Фоновое декоративное неоновое пятно -->
+    <div class="hero-blur-glow"></div>
+
+    <div class="container position-relative z-1 py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-10 col-lg-8">
+                <!-- Кастомный заголовок с градиентным текстом -->
+                <h1 class="display-4 fw-black text-white mb-4 tracking-tight hero-gradient-text">
+                    Создаем сайты, которые приносят прибыль
+                </h1>
+                <p class="fs-4 text-muted mb-5 px-md-4 font-light">
+                    Современный дизайн, быстрая загрузка и полная адаптивность под любые устройства.
+                </p>
+                <!-- Главная кнопка действия (Call to Action) -->
+                <a href="/order/" class="btn-custom-primary btn-lg px-5 py-3 fs-5 text-decoration-none d-inline-block">
+                    Заказать расчет стоимости
+                </a>
+            </div>
+        </div>
     </div>
 </section>
-
 {% endblock %}

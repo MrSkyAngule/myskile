@@ -1,214 +1,268 @@
 /* ==========================================================================
-   1. ОБЩИЕ СТИЛИ И ШРИФТЫ (СБРОС И БАЗА)
+   1. ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ И ОСНОВА
    ========================================================================== */
-@import url('https://googleapis.com');
+:root {
+    --bg-dark: #070a13;        /* Глубокий космический фон */
+    --bg-surface: #0f1524;     /* Фон шапки, футера и карточек */
+    --text-main: #f3f4f6;      /* Яркий белый текст */
+    --text-muted: #9ca3af;     /* Приглушенный серый */
+    --accent: #4f46e5;         /* Фиолетовый ультрамарин */
+    --accent-glow: #818cf8;    /* Электрический синий для ховеров */
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-body {
+body.structural-body {
     font-family: 'Inter', sans-serif !important;
-    background-color: #f8fafc !important; /* Мягкий светлый фон */
-    color: #0f172a !important;
+    background-color: var(--bg-dark) !important;
+    color: var(--text-main) !important;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
-
-/* Плавный скролл к якорям (например, к #services) */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Тонкий минималистичный скроллбар */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #f1f5f9;
-}
-::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
-}
-
 
 /* ==========================================================================
-   2. ШАПКА (HEADER) И ПОДВАЛ (FOOTER)
+   2. КАСТОМИЗАЦИЯ НАВИГАЦИИ (HEADER)
    ========================================================================== */
-.navbar {
-    backdrop-filter: blur(12px) !important;
-    -webkit-backdrop-filter: blur(12px) !important;
-    background-color: rgba(255, 255, 255, 0.9) !important;
-    border-bottom: 1px solid #e2e8f0 !important;
+.site-header {
+    background-color: rgba(15, 21, 36, 0.75) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Ссылки в меню */
-.nav-link {
-    color: #475569 !important;
-    font-weight: 500 !important;
-    transition: color 0.2s ease !important;
-}
-.nav-link:hover {
-    color: #0d6efd !important; /* Синий бренд */
+.logo-brand {
+    color: var(--text-main) !important;
+    letter-spacing: -1px;
 }
 
-/* Ссылки в подвале */
-footer a {
-    transition: color 0.2s ease !important;
-}
-footer a:hover {
-    color: #ffffff !important;
+.logo-brand span {
+    color: var(--accent-glow);
 }
 
+.site-header .nav-link {
+    color: var(--text-muted) !important;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.site-header .nav-link:hover,
+.site-header .nav-link.active {
+    color: var(--text-main) !important;
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.4);
+}
 
 /* ==========================================================================
-   3. ГЛАВНАЯ СТРАНИЦА (HOME.HTML) — HERO БАННЕР И БАЗОВЫЕ БЛОКИ
+   3. КАСТОМИЗАЦИЯ ПОДВАЛА (FOOTER)
    ========================================================================== */
-.hero-section {
-    background: linear-gradient(135deg, #0d6efd 0%, #4f46e5 100%) !important;
-    color: #ffffff !important;
+.site-footer {
+    background-color: var(--bg-surface) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.06) !important;
 }
 
-.hero-title {
-    font-weight: 900 !important;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
+.footer-copy {
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
-/* Простые карточки направлений на главной */
-.feature-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 1.25rem;
-    padding: 2rem;
-    transition: box-shadow 0.2s ease;
-}
-.feature-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+.footer-links a.hov-white {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: var(--transition);
+    text-decoration: none;
 }
 
+.footer-links a.hov-white:hover {
+    color: var(--text-main) !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
 
 /* ==========================================================================
-   4. СТРАНИЦА ЗАКАЗА (ORDER.HTML) — ВИТРИНА ИЗ 15 ЯЧЕЕК
+   4. СТИЛИ ДЛЯ ВНУТРЕННИХ БЛОКОВ (Для ваших {% block content %})
    ========================================================================== */
-.service-card {
-    background-color: #ffffff;
-    padding: 1.5rem;
-    border-radius: 1.25rem;
-    border: 1px solid #dee2e6;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+/* Элементы, которые вы будете использовать в дочерних шаблонах, автоматически получат этот стиль */
+
+.hero-gradient-text {
+    background: linear-gradient(135deg, #fff 30%, var(--accent-glow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-/* Ховер-эффект карточки товара (только для ПК, отключаем на смартфонах) */
-@media (min-width: 1024px) {
-    .service-card:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        border-color: #cbd5e1;
-    }
+.custom-card {
+    background-color: var(--bg-surface);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    transition: var(--transition);
 }
 
-.card-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #0f172a;
-    line-height: 1.4;
-    transition: color 0.2s ease;
+.custom-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(79, 70, 229, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-.card-desc {
-    font-size: 0.875rem;
-    color: #64748b;
-    line-height: 1.6;
-}
-
-/* Фиксация низа ячейки с ценой и кнопкой */
-.card-footer-flex {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 1.25rem;
-    margin-top: auto;
-    border-top: 1px solid #f1f5f9;
-}
-
-.card-price {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: #0d6efd; /* Бренд-цвет */
-    letter-spacing: -0.02em;
-}
-
-/* Адаптивная большая кнопка «Выбрать» под палец (Touch Target) */
-.select-btn {
-    padding: 0.625rem 1.5rem;
-    background-color: #0d6efd;
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 0.875rem;
-    border-radius: 0.75rem;
+.btn-custom-primary {
+    background-color: var(--accent);
+    color: #fff;
     border: none;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-    -webkit-tap-highlight-color: transparent; /* Убирает вспышку клика на телефонах */
-}
-.select-btn:hover {
-    background-color: #0b5ed7;
-}
-.select-btn:active {
-    transform: scale(0.96);
+    padding: 10px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
 }
 
-
+.btn-custom-primary:hover {
+    background-color: var(--accent-glow);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(129, 140, 248, 0.5);
+    color: #fff;
+}
 /* ==========================================================================
-   5. ДЕТАЛЬНЫЙ ПРОСМОТР ПРОДУКТА (SERVICE_DETAIL.HTML)
+   5. СТИЛИ ДЛЯ СТРАНИЦЫ ДЕТАЛЕЙ ЗАКАЗА (DETAIL ORDER)
    ========================================================================== */
-.detail-container {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 1.5rem;
+.max-width-container {
+    max-width: 900px;
 }
 
-.detail-badge {
+/* Ссылка назад */
+.back-link {
+    color: var(--accent-glow);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.back-link:hover {
+    color: #fff;
+    transform: translateX(-3px);
+}
+
+/* Бейдж категории */
+.badge-service {
     font-size: 0.75rem;
     font-weight: 700;
-    text-transform: uppercase;
     letter-spacing: 0.05em;
-    background-color: #e0effe;
-    color: #0d6efd;
-    padding: 0.35rem 0.75rem;
-    border-radius: 50rem;
+    color: var(--accent-glow);
+    background-color: rgba(79, 70, 229, 0.15);
+    padding: 6px 14px;
+    border-radius: 50px;
+    display: inline-block;
 }
 
-.benefit-item {
-    background-color: #f8fafc;
-    border: 1px solid #f1f5f9;
-    border-radius: 1rem;
-    padding: 1.25rem;
+/* Текст цены */
+.price-text {
+    color: var(--accent-glow);
+    font-weight: 900;
+    text-shadow: 0 0 15px rgba(129, 140, 248, 0.3);
 }
 
+/* Текст описания */
+.text-light-muted {
+    color: #cbd5e1;
+}
 
+/* Элементы сетки преимуществ */
+.feature-item {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    height: 100%;
+}
+
+.text-success {
+    color: #10b981 !important; /* Насыщенный зеленый для галочек */
+}
+
+/* Дополнительные хелперы для шрифтов */
+.fw-extrabold { font-weight: 800; }
+.fw-black { font-weight: 900; }
 /* ==========================================================================
-   6. ВСПОМОГАТЕЛЬНЫЕ КЛАССЫ И КАСТОМНЫЕ ХОВЕРЫ
+   6. СТИЛИ ДЛЯ СТРАНИЦЫ КАТАЛОГА УСЛУГ (ORDER / CATALOG)
    ========================================================================== */
-.hov-primary:hover .card-title {
-    color: #0d6efd !important;
+.custom-max-w {
+    max-width: 600px;
 }
 
-.tracking-tight {
-    letter-spacing: -0.025em;
+.header-spacing {
+    position: relative;
 }
 
-/* Фикс отступов контейнеров на мобильных экранах в упор */
+/* Ссылка-заголовок внутри карточки */
+.card-link-title {
+    transition: var(--transition);
+}
+
+.card-link-title:hover h3 {
+    color: var(--accent-glow) !important;
+}
+
+/* Ценник в карточке */
+.card-price-tag {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--accent-glow);
+    text-shadow: 0 0 10px rgba(129, 140, 248, 0.2);
+}
+
+/* Компактная экшен-кнопка "Выбрать" */
+.btn-custom-action {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-custom-action:hover {
+    background-color: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Дополнительные глобальные утилиты */
+.fw-black { font-weight: 900; }
+.tracking-tight { letter-spacing: -0.03em; }
+/* ==========================================================================
+   7. СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (HOME / HERO)
+   ========================================================================== */
+.hero-section {
+    min-height: calc(100vh - 180px); /* Вычитаем высоту шапки и футера, чтобы отцентрировать */
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Декоративное фоновое свечение (Ambient Light) */
+.hero-blur-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.18) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(40px);
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+/* Дополнительная плавная адаптивность для мелких экранов */
 @media (max-width: 576px) {
-    .container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+    .hero-section {
+        min-height: auto;
+        padding: 60px 0;
     }
-    .service-card {
-        padding: 1.25rem;
+    .hero-section h1 {
+        font-size: 2.2rem !important;
+    }
+    .hero-section p {
+        font-size: 1.1rem !important;
     }
 }

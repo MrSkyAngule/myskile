@@ -3,28 +3,28 @@
 
 {% block content %}
 <section class="py-4 py-sm-5 container">
-    <!-- Адаптивный заголовок -->
-    <div class="text-center mb-4 mb-sm-5">
-        <h1 class="fw-black text-dark mb-2 tracking-tight display-6">Наши предложения</h1>
-        <p class="text-muted max-w-2xl mx-auto">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
+    <!-- Адаптивный заголовок в ИТ-стиле -->
+    <div class="text-center mb-4 mb-sm-5 header-spacing">
+        <h1 class="fw-black text-white mb-2 tracking-tight display-5 hero-gradient-text">Наши предложения</h1>
+        <p class="text-muted mx-auto custom-max-w">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
     </div>
 
     <!-- Мобильно-адаптивная сетка предложений на Bootstrap -->
     <div class="row g-3 g-sm-4" id="services-grid">
         {% for card in cards %}
             <div class="col-12 col-md-6 col-lg-4">
-                <div class="service-card h-100">
-                    <div class="mb-3">
-                        <a href="/order/{{ card.id }}/" class="text-decoration-none text-dark hov-primary">
-                            <h3 class="card-title mb-2">{{ card.title }}</h3>
+                <div class="service-card custom-card p-4 d-flex flex-column h-100 justify-content-between">
+                    <div class="mb-4">
+                        <a href="/order/{{ card.id }}/" class="text-decoration-none text-white card-link-title">
+                            <h3 class="fw-bold fs-4 mb-2">{{ card.title }}</h3>
                         </a>
-                        <p class="card-desc mb-0">{{ card.description }}</p>
+                        <p class="text-muted small mb-0">{{ card.description }}</p>
                     </div>
 
-                    <div class="card-footer-flex">
-                        <span class="card-price">{{ card.price }}</span>
+                    <div class="d-flex align-items-center justify-content-between mt-auto pt-3 border-top border-secondary-subtle">
+                        <span class="card-price-tag">{{ card.price }}</span>
                         <!-- Кнопка вызывает функцию из script.js -->
-                        <button type="button" class="select-btn" onclick="orderService('{{ card.title }}')">
+                        <button type="button" class="btn-custom-action" onclick="orderService('{{ card.title }}')">
                             Выбрать
                         </button>
                     </div>

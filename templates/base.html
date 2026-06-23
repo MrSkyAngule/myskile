@@ -6,43 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WebCraft — Создание современных сайтов</title>
 
-    <!-- Подключаем Bootstrap 5 CSS (Официальный стабильный CDN) -->
+    <!-- Подключаем Bootstrap 5 CSS -->
     <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- Подключаем ваши 1 и 2 файлы статики -->
+    <!-- Подключаем современный шрифт Inter -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+
+    <!-- Стили статики (перекрывают дефолтный Bootstrap) -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body class="d-flex flex-col min-vh-screen justify-content-between bg-light">
+<body class="d-flex flex-column min-vh-100 justify-content-between structural-body">
 
-    <!-- Шапка сайта (Bootstrap Navbar) -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm sticky-top">
+    <!-- Шапка сайта -->
+    <nav class="navbar navbar-expand navbar-dark sticky-top site-header">
         <div class="container py-1">
-            <a class="navbar-brand fw-bold text-primary fs-3" href="/">WebCraft</a>
+            <a class="navbar-brand fw-bold fs-3 logo-brand" href="/">WebCraft<span>.</span></a>
             <div class="navbar-nav ms-auto flex-row gap-3 gap-sm-4 align-items-center">
-                <a class="nav-link fw-medium py-1" href="/">Главная</a>
+                <a class="nav-link fw-medium py-1 active" href="/">Главная</a>
             </div>
         </div>
     </nav>
 
     <!-- Основной динамический контент -->
-    <main class="flex-grow-1">
+    <main class="flex-grow-1 dynamic-content">
         {% block content %}
         {% endblock %}
     </main>
 
     <!-- Подвал сайта -->
-    <footer class="bg-dark text-secondary py-4 border-top border-secondary mt-5">
+    <footer class="site-footer py-4 mt-5">
         <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 text-center text-sm-start">
-            <p class="mb-0">&copy; 2026 WebCraft. Все права защищены.</p>
-            <div class="d-flex gap-4">
-                <a href="#" class="text-secondary text-decoration-none hov-white">Telegram</a>
-                <a href="#" class="text-secondary text-decoration-none hov-white">WhatsApp</a>
-                <a href="#" class="text-secondary text-decoration-none hov-white">Email</a>
+            <p class="mb-0 footer-copy">&copy; 2026 WebCraft. Все права защищены.</p>
+            <div class="d-flex gap-4 footer-links">
+                <a href="#" class="hov-white">Telegram</a>
+                <a href="#" class="hov-white">WhatsApp</a>
+                <a href="#" class="hov-white">Email</a>
             </div>
         </div>
     </footer>
 
-    <!-- Подключаем Bootstrap JS и ваш script.js в самом конце -->
+    <!-- Подключаем Bootstrap JS и ваш script.js -->
     <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{% static 'script.js' %}"></script>
 </body>
