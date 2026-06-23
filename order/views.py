@@ -11,3 +11,7 @@ def delete_card(request, card_id):
         card = get_object_or_404(ServiceCart, id=card_id)
         card.delete()
     return redirect('order')
+
+def service_detail(request, card_id):
+    card = get_object_or_404(ServiceCart, id=card_id)
+    return render(request, 'detail_detail.html', {'card': card})

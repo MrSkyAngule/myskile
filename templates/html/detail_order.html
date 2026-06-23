@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="py-8 sm:py-12 max-w-4xl mx-auto px-4">
+    <!-- Кнопка «Назад» для удобной навигации на смартфонах -->
+    <div class="mb-6">
+        <a href="{% url 'order_page' %}" class="inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700">
+            &larr; Назад к предложениям
+        </a>
+    </div>
+
+    <!-- Главный блок с описанием товара/услуги -->
+    <div class="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6 pb-6 border-b border-gray-100">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Услуга студии</span>
+                <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-2 tracking-tight">{{ card.title }}</h1>
+            </div>
+            <!-- Цена крупным шрифтом -->
+            <div class="text-left sm:text-right">
+                <span class="block text-xs text-gray-400 font-medium uppercase">Стоимость</span>
+                <span class="text-2xl font-black text-blue-600 tracking-tight">{{ card.price }}</span>
+            </div>
+        </div>
+
+        <!-- Подробный текст описания -->
+        <div class="prose max-w-none text-gray-600 text-base sm:text-lg leading-relaxed mb-8">
+            <h3 class="text-gray-900 font-bold text-lg mb-3">О проекте</h3>
+            <p>{{ card.description }}</p>
+        </div>
+
+        <!-- Сетка с преимуществами / особенностями (Тач-таргеты оптимизированы) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+            <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                <span class="text-xl text-green-500">✓</span>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-800">Адаптивный дизайн</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">Сайт будет идеально открываться на любых смартфонах и планшетах.</p>
+                </div>
+            </div>
+            <div class="flex items-start gap-3 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                <span class="text-xl text-green-500">✓</span>
+                <div>
+                    <h4 class="font-bold text-sm text-gray-800">SEO-подготовка</h4>
+                    <p class="text-xs text-gray-500 mt-0.5">Базовая оптимизация кода для быстрой индексации в поисковиках.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Кнопка действия (Touch target увеличен для мобильных) -->
+        <div class="pt-4 border-t border-gray-100 flex flex-col sm:flex-row justify-end">
+            <a href="https://t.me" target="_blank" class="w-full sm:w-auto text-center bg-blue-600 text-white font-bold px-8 py-4 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100 text-base -webkit-tap-highlight-color-transparent">
+                Обсудить в Telegram
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

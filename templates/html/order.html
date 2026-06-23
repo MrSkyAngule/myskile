@@ -25,7 +25,9 @@
                     <span class="card-price">{{ card.price }}</span>
                     <!-- Кнопка увеличена по высоте, чтобы по ней было удобно попадать пальцем -->
                     <button type="button" class="select-btn">
-                        Выбрать
+                        <a href="{% url 'service_detail' card.id %}" class="hover:text-blue-600 transition">
+                            <h3 class="card-title">{{ card.title }}</h3>
+                        </a>
                     </button>
                 </div>
             </div>
