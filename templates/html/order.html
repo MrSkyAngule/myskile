@@ -2,37 +2,36 @@
 {% load static %}
 
 {% block content %}
-<!-- Подключаем стили витрины -->
-<link rel="stylesheet" href="{% static 'style.css' %}">
-
-<section class="py-8 sm:py-12 max-w-7xl mx-auto px-4">
-    <!-- Адаптивный заголовок страницы -->
-    <div class="text-center mb-8 sm:mb-12">
-        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">Наши предложения</h1>
-        <p class="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
+<section class="py-4 py-sm-5 container">
+    <!-- Адаптивный заголовок -->
+    <div class="text-center mb-4 mb-sm-5">
+        <h1 class="fw-black text-dark mb-2 tracking-tight display-6">Наши предложения</h1>
+        <p class="text-muted max-w-2xl mx-auto">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
     </div>
 
-    <!-- Мобильно-адаптивная сетка предложений -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="services-grid">
+    <!-- Мобильно-адаптивная сетка предложений на Bootstrap -->
+    <div class="row g-3 g-sm-4" id="services-grid">
         {% for card in cards %}
-            <div class="service-card">
-                <div class="mb-4">
-                    <h3 class="card-title">{{ card.title }}</h3>
-                    <p class="card-desc">{{ card.description }}</p>
-                </div>
-
-                <div class="card-footer">
-                    <span class="card-price">{{ card.price }}</span>
-                    <!-- Кнопка увеличена по высоте, чтобы по ней было удобно попадать пальцем -->
-                    <button type="button" class="select-btn">
-                        <a href="{% url 'service_detail' card.id %}" class="hover:text-blue-600 transition">
-                            <h3 class="card-title">Выбрать</h3>
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card h-100">
+                    <div class="mb-3">
+                        <a href="/order/{{ card.id }}/" class="text-decoration-none text-dark hov-primary">
+                            <h3 class="card-title mb-2">{{ card.title }}</h3>
                         </a>
-                    </button>
+                        <p class="card-desc mb-0">{{ card.description }}</p>
+                    </div>
+
+                    <div class="card-footer-flex">
+                        <span class="card-price">{{ card.price }}</span>
+                        <!-- Кнопка вызывает функцию из script.js -->
+                        <button type="button" class="select-btn" onclick="orderService('{{ card.title }}')">
+                            Выбрать
+                        </button>
+                    </div>
                 </div>
             </div>
         {% empty %}
-            <div class="col-span-full text-center py-12 text-gray-500 text-sm">
+            <div class="col-12 text-center py-5 text-muted">
                 Предложений пока нет. Наполните базу через панель администратора Django.
             </div>
         {% endfor %}

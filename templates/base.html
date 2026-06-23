@@ -3,47 +3,47 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <!-- Этот тег обязателен для того, чтобы сайт правильно масштабировался на экранах телефонов -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WebCraft — Создание современных сайтов</title>
 
+    <!-- Подключаем Bootstrap 5 CSS (Официальный стабильный CDN) -->
+    <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- Используем Tailwind CSS -->
-    <script src="{% static 'tailwind.min.js' %}"></script>
-    <script src="https://tailwindcss.com"></script>
-
-
+    <!-- Подключаем ваши 1 и 2 файлы статики -->
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen justify-between text-gray-900 antialiased">
+<body class="d-flex flex-col min-vh-screen justify-content-between bg-light">
 
-    <!-- Адаптивная шапка сайта -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <a href="/" class="text-2xl font-bold text-blue-600 tracking-tight">WebCraft</a>
-            <!-- Пространство между ссылками оптимизировано для нажатия пальцем на телефоне -->
-            <nav class="flex items-center space-x-4 sm:space-x-6 text-sm sm:text-base">
-                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium py-1">Главная</a>
-            </nav>
+    <!-- Шапка сайта (Bootstrap Navbar) -->
+    <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm sticky-top">
+        <div class="container py-1">
+            <a class="navbar-brand fw-bold text-primary fs-3" href="/">WebCraft</a>
+            <div class="navbar-nav ms-auto flex-row gap-3 gap-sm-4 align-items-center">
+                <a class="nav-link fw-medium py-1" href="/">Главная</a>
+            </div>
         </div>
-    </header>
+    </nav>
 
     <!-- Основной динамический контент -->
-    <main class="flex-grow">
+    <main class="flex-grow-1">
         {% block content %}
         {% endblock %}
     </main>
 
     <!-- Подвал сайта -->
-    <footer class="bg-gray-950 text-gray-400 py-8 border-t border-gray-800 text-sm">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-            <p>&copy; 2026 WebCraft. Все права защищены.</p>
-            <div class="space-x-6">
-                <a href="#" class="hover:text-white"></a>
-                <a href="#" class="hover:text-white"></a>
-                <a href="#" class="hover:text-white"></a>
+    <footer class="bg-dark text-secondary py-4 border-top border-secondary mt-5">
+        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 text-center text-sm-start">
+            <p class="mb-0">&copy; 2026 WebCraft. Все права защищены.</p>
+            <div class="d-flex gap-4">
+                <a href="#" class="text-secondary text-decoration-none hov-white">Telegram</a>
+                <a href="#" class="text-secondary text-decoration-none hov-white">WhatsApp</a>
+                <a href="#" class="text-secondary text-decoration-none hov-white">Email</a>
             </div>
         </div>
     </footer>
 
+    <!-- Подключаем Bootstrap JS и ваш script.js в самом конце -->
+    <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
