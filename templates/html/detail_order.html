@@ -1,61 +1,100 @@
-{% extends "base.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Детали услуги — WebCraft</title>
+    <link href="https://jsdelivr.net" rel="stylesheet">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="d-flex flex-column min-vh-100 justify-content-between structural-body">
 
-{% block content %}
-<section class="py-5 max-width-container mx-auto px-3">
-    <!-- Кнопка «Назад» -->
-    <div class="mb-4">
-        <a href="/order/" class="back-link d-inline-flex align-items-center fw-semibold">
-            &larr; Назад к предложениям
-        </a>
-    </div>
-
-    <!-- Блок описания услуги -->
-    <div class="custom-card p-4 p-md-5">
-        <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mb-4 pb-4 border-bottom border-secondary-subtle">
-            <div>
-                <span class="badge-service text-uppercase">Услуга студии</span>
-                <h1 class="h2 fw-extrabold text-white mt-2 tracking-tight">{{ card.title }}</h1>
-            </div>
-            <div class="text-start text-sm-end">
-                <span class="d-block small text-muted text-uppercase fw-medium">Стоимость</span>
-                <span class="h2 fw-black price-text tracking-tight">{{ card.price }}</span>
+    <!-- Шапка сайта -->
+    <nav class="navbar navbar-expand navbar-dark sticky-top site-header">
+        <div class="container py-1">
+            <a class="navbar-brand fw-bold fs-3 logo-brand" href="home.html">WebCraft<span>.</span></a>
+            <div class="navbar-nav ms-auto flex-row gap-3 gap-sm-4 align-items-center">
+                <a class="nav-link fw-medium py-1" href="home.html">Главная</a>
+                <a class="nav-link fw-medium py-1 active" href="order.html">Предложения</a>
             </div>
         </div>
+    </nav>
 
-        <!-- Описание -->
-        <div class="text-light-muted fs-5 leading-relaxed mb-4">
-            <h3 class="text-white fw-bold fs-4 mb-3">О проекте</h3>
-            <p>{{ card.description }}</p>
-        </div>
+    <!-- Основной контент -->
+    <main class="flex-grow-1">
+        <section class="py-5 max-width-container mx-auto px-3">
+            <!-- Кнопка «Назад» -->
+            <div class="mb-4">
+                <a href="order.html" class="back-link d-inline-flex align-items-center fw-semibold">
+                    &larr; Назад к предложениям
+                </a>
+            </div>
 
-        <!-- Преимущества -->
-        <div class="row g-3 mb-4">
-            <div class="col-12 col-md-6">
-                <div class="feature-item p-3 d-flex align-items-start gap-3">
-                    <span class="text-success fs-4 leading-none">✓</span>
+            <!-- Блок описания -->
+            <div class="custom-card p-4 p-md-5">
+                <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mb-4 pb-4 border-bottom border-secondary-subtle">
                     <div>
-                        <h4 class="fw-bold fs-6 text-white mb-1">Адаптивный дизайн</h4>
-                        <p class="small text-muted mb-0">Сайт будет идеально открываться на любых смартфонах и планшетах.</p>
+                        <span class="badge-service text-uppercase">Услуга студии</span>
+                        <h1 class="h2 fw-extrabold text-white mt-2 tracking-tight">Разработка высококонверсионного сайта</h1>
+                    </div>
+                    <div class="text-start text-sm-end">
+                        <span class="d-block small text-muted text-uppercase fw-medium">Стоимость</span>
+                        <span class="h2 fw-black price-text tracking-tight">от 15 000 ₽</span>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-6">
-                <div class="feature-item p-3 d-flex align-items-start gap-3">
-                    <span class="text-success fs-4 leading-none">✓</span>
-                    <div>
-                        <h4 class="fw-bold fs-6 text-white mb-1">SEO-подготовка</h4>
-                        <p class="small text-muted mb-0">Базовая оптимизация кода для быстрой индексации в поисковиках.</p>
+
+                <!-- Описание проекта -->
+                <div class="text-light-muted fs-5 leading-relaxed mb-4">
+                    <h3 class="text-white fw-bold fs-4 mb-3">О проекте</h3>
+                    <p>Мы создаем современные, быстрые и продающие веб-решения, полностью адаптированные под ваши бизнес-цели. В стоимость включены проработка структуры интерфейса, индивидуальный UX/UI дизайн, чистая верстка и первичное наполнение контентом.</p>
+                </div>
+
+                <!-- Преимущества -->
+                <div class="row g-3 mb-4">
+                    <div class="col-12 col-md-6">
+                        <div class="feature-item p-3 d-flex align-items-start gap-3">
+                            <span class="text-success fs-4 leading-none">✓</span>
+                            <div>
+                                <h4 class="fw-bold fs-6 text-white mb-1">Адаптивный дизайн</h4>
+                                <p class="small text-muted mb-0">Сайт будет идеально открываться на любых смартфонах и планшетах.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div class="feature-item p-3 d-flex align-items-start gap-3">
+                            <span class="text-success fs-4 leading-none">✓</span>
+                            <div>
+                                <h4 class="fw-bold fs-6 text-white mb-1">SEO-подготовка</h4>
+                                <p class="small text-muted mb-0">Базовая оптимизация кода для быстрой индексации в поисковиках.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Кнопка действия -->
+                <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-sm-row justify-content-end">
+                    <a href="https://t.me" target="_blank" class="btn-custom-primary text-center text-decoration-none">
+                        Обсудить в Telegram
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer py-4">
+        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 text-center text-sm-start">
+            <p class="mb-0 footer-copy">&copy; 2026 WebCraft. Все права защищены.</p>
+            <div class="d-flex gap-4 footer-links">
+                <a href="https://t.me" target="_blank" class="hov-white">Telegram</a>
+                <a href="#" class="hov-white">WhatsApp</a>
+                <a href="#" class="hov-white">Email</a>
             </div>
         </div>
+    </footer>
 
-        <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-sm-row justify-content-end">
-            <a href="https://t.me" target="_blank" class="btn-custom-primary text-center text-decoration-none">
-                Обсудить в Telegram
-            </a>
-        </div>
-    </div>
-</section>
-{% endblock %}
+</body>
+</html>
