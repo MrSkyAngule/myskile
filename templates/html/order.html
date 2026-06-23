@@ -2,38 +2,35 @@
 {% load static %}
 
 {% block content %}
-<!-- Подключаем изолированные стили витрины -->
+<!-- Подключаем стили витрины -->
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
-<section class="py-12 max-w-7xl mx-auto px-4">
-    <!-- Заголовок страницы -->
-    <div class="text-center mb-12">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Наши предложения</h1>
-        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
+<section class="py-8 sm:py-12 max-w-7xl mx-auto px-4">
+    <!-- Адаптивный заголовок страницы -->
+    <div class="text-center mb-8 sm:mb-12">
+        <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-gray-900 mb-3 tracking-tight">Наши предложения</h1>
+        <p class="text-base sm:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
     </div>
 
-    <!-- Безопасная сетка предложений силами Django -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+    <!-- Мобильно-адаптивная сетка предложений -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="services-grid">
         {% for card in cards %}
             <div class="service-card">
-                <div>
-                    <!-- Заголовок ячейки теперь полностью безопасен, кнопки удаления здесь больше нет -->
-                    <div class="flex justify-between items-start mb-3">
-                        <h3 class="card-title">{{ card.title }}</h3>
-                    </div>
+                <div class="mb-4">
+                    <h3 class="card-title">{{ card.title }}</h3>
                     <p class="card-desc">{{ card.description }}</p>
                 </div>
 
                 <div class="card-footer">
                     <span class="card-price">{{ card.price }}</span>
+                    <!-- Кнопка увеличена по высоте, чтобы по ней было удобно попадать пальцем -->
                     <button type="button" class="select-btn">
                         Выбрать
                     </button>
                 </div>
             </div>
         {% empty %}
-            <!-- Сообщение, если база данных пуста -->
-            <div class="col-span-full text-center py-12 text-gray-500">
+            <div class="col-span-full text-center py-12 text-gray-500 text-sm">
                 Предложений пока нет. Наполните базу через панель администратора Django.
             </div>
         {% endfor %}

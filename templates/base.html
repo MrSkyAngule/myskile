@@ -3,38 +3,23 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Этот тег обязателен для того, чтобы сайт правильно масштабировался на экранах телефонов -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>WebCraft — Создание современных сайтов</title>
 
-    <!-- ИСПРАВЛЕНО: Правильный CDN для Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Настройка кастомного шрифта по умолчанию для классов Tailwind -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Подключаем ваш отдельный файл со стилями -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <!-- Используем Tailwind CSS -->
+    <script src="https://tailwindcss.com"></script>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen justify-between">
+<body class="bg-gray-50 flex flex-col min-h-screen justify-between text-gray-900 antialiased">
 
-    <!-- Шапка сайта -->
+    <!-- Адаптивная шапка сайта -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold text-blue-600">WebCraft</a>
-            <nav class="space-x-6">
-                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium">Главная</a>
-                <a href="/#services" class="text-gray-600 hover:text-blue-600 font-medium">Услуги</a>
-                <a href="/order" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Заказать сайт</a>
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <a href="/" class="text-2xl font-bold text-blue-600 tracking-tight">WebCraft</a>
+            <!-- Пространство между ссылками оптимизировано для нажатия пальцем на телефоне -->
+            <nav class="flex items-center space-x-4 sm:space-x-6 text-sm sm:text-base">
+                <a href="/" class="text-gray-600 hover:text-blue-600 font-medium py-1">Главная</a>
+                <a href="/order" class="bg-blue-600 text-white px-3 sm:px-4 py-2 rounded-xl hover:bg-blue-700 transition font-medium shadow-sm">Заказать сайт</a>
             </nav>
         </div>
     </header>
@@ -42,18 +27,17 @@
     <!-- Основной динамический контент -->
     <main class="flex-grow">
         {% block content %}
-        <!-- Сюда встанет код из дочерних шаблонов -->
         {% endblock %}
     </main>
 
     <!-- Подвал сайта -->
-    <footer class="bg-gray-950 text-gray-400 py-8 border-t border-gray-800">
-        <div class="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer class="bg-gray-950 text-gray-400 py-8 border-t border-gray-800 text-sm">
+        <div class="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
             <p>&copy; 2026 WebCraft. Все права защищены.</p>
-            <div class="space-x-4">
-                <a href="#" class="hover:text-white">Telegram</a>
-                <a href="#" class="hover:text-white">WhatsApp</a>
-                <a href="#" class="hover:text-white">Email</a>
+            <div class="space-x-6">
+                <a href="#" class="hover:text-white"></a>
+                <a href="#" class="hover:text-white"></a>
+                <a href="#" class="hover:text-white"></a>
             </div>
         </div>
     </footer>
