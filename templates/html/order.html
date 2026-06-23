@@ -2,32 +2,24 @@
 {% load static %}
 
 {% block content %}
-<!-- Подключаем стили витрины -->
+<!-- Подключаем изолированные стили витрины -->
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
 <section class="py-12 max-w-7xl mx-auto px-4">
     <!-- Заголовок страницы -->
     <div class="text-center mb-12">
         <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Наши предложения</h1>
-        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Управляйте предложениями или выберите подходящий вариант для вашего бизнеса.</p>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
     </div>
 
-    <!-- Сетка предложений, которая рендерится силами Django -->
+    <!-- Безопасная сетка предложений силами Django -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
         {% for card in cards %}
             <div class="service-card">
                 <div>
-                    <!-- Кнопка удаления в правом верхнем углу ячейки -->
+                    <!-- Заголовок ячейки теперь полностью безопасен, кнопки удаления здесь больше нет -->
                     <div class="flex justify-between items-start mb-3">
                         <h3 class="card-title">{{ card.title }}</h3>
-
-                        <!-- Форма для безопасного удаления ячейки через POST запрос -->
-                        <form action="{% url 'delete_card' card.id %}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить это предложение?');">
-                            {% csrf_token %}
-                            <button type="submit" class="text-red-500 hover:text-red-700 text-sm font-semibold transition" title="Удалить ячейку">
-                                &#10006; Удалить
-                            </button>
-                        </form>
                     </div>
                     <p class="card-desc">{{ card.description }}</p>
                 </div>
@@ -40,7 +32,7 @@
                 </div>
             </div>
         {% empty %}
-            <!-- Сообщение, если в базе данных еще нет ни одной ячейки -->
+            <!-- Сообщение, если база данных пуста -->
             <div class="col-span-full text-center py-12 text-gray-500">
                 Предложений пока нет. Наполните базу через панель администратора Django.
             </div>
