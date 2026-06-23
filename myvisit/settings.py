@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['uhrwerk.ru', 'www.uhrwerk.ru']
 
 INSTALLED_APPS = [
     'main',
+    'order',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
