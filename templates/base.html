@@ -5,8 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebCraft — Создание современных сайтов</title>
-    <!-- Подключаем Tailwind CSS -->
-    <script src="https://tailwindcss.com"></script>
+
+    <!-- ИСПРАВЛЕНО: Правильный CDN для Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Настройка кастомного шрифта по умолчанию для классов Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Подключаем ваш отдельный файл со стилями -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body class="bg-gray-50 flex flex-col min-h-screen justify-between">
