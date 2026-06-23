@@ -1,73 +1,128 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section class="py-12 max-w-2xl mx-auto px-4">
-    <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
-        <h1 class="text-3xl font-bold text-gray-900 mb-2 text-center">Обсудим ваш проект</h1>
-        <p class="text-gray-500 text-center mb-8">Заполните детали, и мы подготовим персональное коммерческое предложение.</p>
+<section class="py-12 max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Выберите конфигурацию вашего сайта</h1>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Отметьте необходимые услуги и пакеты ниже, затем заполните контакты для отправки заявки.</p>
+    </div>
 
-        <form action="/order" method="POST" class="space-y-6">
-            <!-- Имя -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Ваше имя</label>
-                <input type="text" name="name" required placeholder="Иван" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-500 transition">
-            </div>
+    <form action="/order" method="POST" id="order-form" class="space-y-12">
+        <!-- Сетка из 15 карточек услуг -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+            <!-- Карточки генерируются скриптом ниже -->
+        </div>
 
-            <!-- Контакты -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Телефон или Telegram</label>
-                <input type="text" name="contact" required placeholder="+7 (999) 000-00-00 или @username" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-500 transition">
-            </div>
+        <!-- Контактная форма внизу страницы -->
+        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 max-w-xl mx-auto">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Контактные данные</h2>
 
-            <!-- ИНТЕРАКТИВНЫЙ ВЫБОР УСЛУГИ -->
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-3">Какой тип сайта вам необходим?</label>
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Ваше имя</label>
+                    <input type="text" name="name" required placeholder="Иван" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-500 transition">
+                </div>
 
-                    <!-- Вариант 1: Лендинг -->
-                    <label class="relative border border-gray-200 rounded-xl p-4 flex flex-col justify-between cursor-pointer hover:border-blue-500 transition has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/50">
-                        <input type="radio" name="site_type" value="landing" checked class="absolute top-4 right-4 accent-blue-600">
-                        <span class="text-2xl mb-2 block">📄</span>
-                        <div>
-                            <span class="block font-bold text-gray-800 text-sm">Лендинг</span>
-                            <span class="text-xs text-gray-500">от 15 000 ₽</span>
-                        </div>
-                    </label>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Телефон или Telegram</label>
+                    <input type="text" name="contact" required placeholder="+7 (999) 000-00-00 или @username" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-500 transition">
+                </div>
 
-                    <!-- Вариант 2: Сайт компании -->
-                    <label class="relative border border-gray-200 rounded-xl p-4 flex flex-col justify-between cursor-pointer hover:border-blue-500 transition has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/50">
-                        <input type="radio" name="site_type" value="corporate" class="absolute top-4 right-4 accent-blue-600">
-                        <span class="text-2xl mb-2 block">🏢</span>
-                        <div>
-                            <span class="block font-bold text-gray-800 text-sm">Сайт компании</span>
-                            <span class="text-xs text-gray-500">от 35 000 ₽</span>
-                        </div>
-                    </label>
-
-                    <!-- Вариант 3: Магазин -->
-                    <label class="relative border border-gray-200 rounded-xl p-4 flex flex-col justify-between cursor-pointer hover:border-blue-500 transition has-[:checked]:border-blue-600 has-[:checked]:bg-blue-50/50">
-                        <input type="radio" name="site_type" value="shop" class="absolute top-4 right-4 accent-blue-600">
-                        <span class="text-2xl mb-2 block">🛒</span>
-                        <div>
-                            <span class="block font-bold text-gray-800 text-sm">Магазин</span>
-                            <span class="text-xs text-gray-500">от 60 000 ₽</span>
-                        </div>
-                    </label>
-
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Дополнительные пожелания (необязательно)</label>
+                    <textarea name="details" rows="3" placeholder="Особые требования, примеры..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-500 transition resize-none"></textarea>
                 </div>
             </div>
 
-            <!-- Детали -->
+            <!-- Фиксация выбранных услуг и кнопка -->
+            <div class="mt-6 pt-6 border-t border-gray-100 text-center">
+                <div class="text-gray-600 mb-4">Выбрано услуг: <span id="selected-count" class="font-bold text-blue-600">0</span></div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100">
+                    Оформить заказ
+                </button>
+            </div>
+        </div>
+    </form>
+</section>
+
+<!-- Скрипт для рендеринга 15 карточек товара и интерактивного выбора -->
+<script>
+    // Массив данных из 15 разнообразных услуг веб-студии
+    const services = [
+        { id: "landing_promo", title: "Промо-лендинг", desc: "Одностраничный сайт для быстрого старта продаж одного товара.", price: "15 000 ₽" },
+        { id: "landing_premium", title: "Премиум-лендинг", desc: "Эксклюзивный дизайн, интерактивные анимации и копирайтинг текста.", price: "25 000 ₽" },
+        { id: "corp_start", title: "Сайт-визитка", desc: "До 3 страниц: о компании, услуги, контакты. Для малого бизнеса.", price: "20 000 ₽" },
+        { id: "corp_standard", title: "Корпоративный стандарт", desc: "До 10 страниц, блог, базовая SEO-оптимизация и интеграция карт.", price: "35 000 ₽" },
+        { id: "corp_business", title: "Бизнес-портал", desc: "Многостраничный сайт с личным кабинетом клиента и каталогом.", price: "55 000 ₽" },
+        { id: "shop_mini", title: "Мини-маркет", desc: "Интернет-магазин до 50 товаров. Корзина и простая форма заказа.", price: "40 000 ₽" },
+        { id: "shop_pro", title: "Интернет-магазин PRO", desc: "Синхронизация с 1С/МойСклад, фильтры товаров, онлайн-оплата.", price: "75 000 ₽" },
+        { id: "portfolio_creative", title: "Портфолио для автора", desc: "Галерея работ для фотографов, дизайнеров, архитекторов.", price: "18 000 ₽" },
+        { id: "catalog_no_pay", title: "Сайт-каталог", desc: "Витрина товаров без онлайн-оплаты, с кнопкой «Узнать цену».", price: "30 000 ₽" },
+        { id: "seo_pack", title: "Пакет «SEO-Старт»", desc: "Сбор семантического ядра, пропись тегов, регистрация в поисковиках.", price: "12 000 ₽" },
+        { id: "speed_opt", title: "Ускорение сайта", desc: "Оптимизация кода и изображений для зеленой зоны Google PageSpeed.", price: "8 000 ₽" },
+        { id: "design_redesign", title: "Редезайн интерфейса", desc: "Обновление внешнего вида текущего сайта под современные тренды.", price: "22 000 ₽" },
+        { id: "quiz_site", title: "Сайт-квиз", desc: "Интерактивный опросник для генерации горячих лидов и заявок.", price: "10 000 ₽" },
+        { id: "crm_connect", title: "Интеграция CRM", desc: "Связь форм сайта с AmoCRM, Bitrix24 или отправка в Telegram.", price: "7 000 ₽" },
+        { id: "support_month", title: "Поддержка (1 месяц)", desc: "Мониторинг стабильности, исправление ошибок, мелкие правки контента.", price: "10 000 ₽" }
+    ];
+
+    const grid = document.getElementById('services-grid');
+    const countLabel = document.getElementById('selected-count');
+
+    // Функция отрисовки карточек
+    services.forEach(service => {
+        const card = document.createElement('div');
+        // Базовые стили карточки Tailwind
+        card.className = "bg-white p-6 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between transition duration-200 hover:shadow-md relative overflow-hidden";
+        card.id = `card-${service.id}`;
+
+        card.innerHTML = `
             <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Краткое описание задачи (необязательно)</label>
-                <textarea name="details" rows="4" placeholder="Например: нужен сайт для автосервиса, нравятся минималистичные дизайны..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-blue-500 transition resize-none"></textarea>
+                <div class="flex justify-between items-start mb-3">
+                    <h3 class="text-lg font-bold text-gray-900">${service.title}</h3>
+                    <!-- Скрытый чекбокс для отправки формы на бэкенд -->
+                    <input type="checkbox" name="selected_services" value="${service.id}" id="check-${service.id}" class="hidden">
+                </div>
+                <p class="text-gray-500 text-sm mb-6 leading-relaxed">${service.desc}</p>
             </div>
 
-            <!-- Кнопка отправки -->
-            <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100 text-center">
-                Отправить заявку
-            </button>
-        </form>
-    </div>
-</section>
+            <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-50">
+                <span class="text-lg font-extrabold text-blue-600">${service.price}</span>
+                <button type="button" onclick="toggleService('${service.id}')" id="btn-${service.id}" class="px-4 py-2 bg-gray-50 text-gray-700 font-semibold text-sm rounded-xl hover:bg-gray-100 transition border border-gray-200">
+                    Выбрать
+                </button>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+
+    // Функция переключения выбора услуги
+    function toggleService(id) {
+        const checkbox = document.getElementById(`check-${id}`);
+        const card = document.getElementById(`card-${id}`);
+        const btn = document.getElementById(`btn-${id}`);
+
+        checkbox.checked = !checkbox.checked;
+
+        if (checkbox.checked) {
+            // Стили при активации
+            card.classList.remove('border-gray-100');
+            card.classList.add('border-blue-600', 'bg-blue-50/20');
+            btn.classList.remove('bg-gray-50', 'text-gray-700', 'border-gray-200', 'hover:bg-gray-100');
+            btn.classList.add('bg-blue-600', 'text-white', 'border-blue-600', 'hover:bg-blue-700');
+            btn.innerText = "Выбрано ✓";
+        } else {
+            // Стили при деактивации
+            card.classList.remove('border-blue-600', 'bg-blue-50/20');
+            card.classList.add('border-gray-100');
+            btn.classList.remove('bg-blue-600', 'text-white', 'border-blue-600', 'hover:bg-blue-700');
+            btn.classList.add('bg-gray-50', 'text-gray-700', 'border-gray-200', 'hover:bg-gray-100');
+            btn.innerText = "Выбрать";
+        }
+
+        // Обновляем счетчик выбранных услуг
+        const checkedCount = document.querySelectorAll('input[name="selected_services"]:checked').length;
+        countLabel.innerText = checkedCount;
+    }
+</script>
 {% endblock %}
