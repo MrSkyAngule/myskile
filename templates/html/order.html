@@ -2,51 +2,22 @@
 {% load static %}
 
 {% block content %}
-<!-- Подключаем стили страницы заказа -->
+<!-- Подключаем стили витрины -->
 <link rel="stylesheet" href="{% static 'style.css' %}">
 
 <section class="py-12 max-w-7xl mx-auto px-4">
+    <!-- Заголовок страницы -->
     <div class="text-center mb-12">
-        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Выберите конфигурацию вашего сайта</h1>
-        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Отметьте необходимые услуги и пакеты ниже, затем заполните контакты для отправки заявки.</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">Наши предложения</h1>
+        <p class="text-lg text-gray-500 max-w-2xl mx-auto">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
     </div>
 
-    <form action="/order" method="POST" id="order-form" class="space-y-12">
-        <!-- Сетка из 15 карточек товаров (заполняется через JS) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid"></div>
-
-        <!-- Контактная форма внизу страницы -->
-        <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 max-w-xl mx-auto">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Контактные данные</h2>
-
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Ваше имя</label>
-                    <input type="text" name="name" required placeholder="Иван" class="form-input">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Телефон или Telegram</label>
-                    <input type="text" name="contact" required placeholder="+7 (999) 000-00-00 или @username" class="form-input">
-                </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Дополнительные пожелания (необязательно)</label>
-                    <textarea name="details" rows="3" placeholder="Особые требования, примеры..." class="form-input resize-none"></textarea>
-                </div>
-            </div>
-
-            <!-- Итоговая информация и кнопка отправки -->
-            <div class="mt-6 pt-6 border-t border-gray-100 text-center">
-                <div class="text-gray-600 mb-4">Выбрано услуг: <span id="selected-count" class="font-bold text-blue-600">0</span></div>
-                <button type="submit" class="w-full bg-blue-600 text-white font-bold py-4 rounded-xl hover:bg-blue-700 transition shadow-lg shadow-blue-100 text-center">
-                    Оформить заказ
-                </button>
-            </div>
-        </div>
-    </form>
+    <!-- Чистая сетка из 15 ячеек без каких-либо форм вокруг -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="services-grid">
+        <!-- Ячейки генерируются динамически из JS файла -->
+    </div>
 </section>
 
-<!-- Подключаем внешнюю JavaScript-логику страницы -->
+<!-- Подключаем логику рендеринга предложений -->
 <script src="{% static 'script.js' %}"></script>
 {% endblock %}
