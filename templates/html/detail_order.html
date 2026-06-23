@@ -3,34 +3,33 @@
 
 {% block content %}
 <section class="py-5 max-width-container mx-auto px-3">
-    <!-- Кнопка «Назад» с плавной анимацией -->
+    <!-- Кнопка «Назад» -->
     <div class="mb-4">
-        <a href="{% url 'order_page' %}" class="back-link d-inline-flex align-items-center fw-semibold">
+        <a href="/order/" class="back-link d-inline-flex align-items-center fw-semibold">
             &larr; Назад к предложениям
         </a>
     </div>
 
-    <!-- Главный блок с описанием товара/услуги -->
+    <!-- Блок описания услуги -->
     <div class="custom-card p-4 p-md-5">
-        <div class="d-flex flex-column flex-sm-row sm:align-items-center justify-content-between gap-3 mb-4 pb-4 border-bottom border-secondary-subtle">
+        <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mb-4 pb-4 border-bottom border-secondary-subtle">
             <div>
                 <span class="badge-service text-uppercase">Услуга студии</span>
                 <h1 class="h2 fw-extrabold text-white mt-2 tracking-tight">{{ card.title }}</h1>
             </div>
-            <!-- Цена крупным шрифтом -->
             <div class="text-start text-sm-end">
                 <span class="d-block small text-muted text-uppercase fw-medium">Стоимость</span>
                 <span class="h2 fw-black price-text tracking-tight">{{ card.price }}</span>
             </div>
         </div>
 
-        <!-- Подробный текст описания -->
+        <!-- Описание -->
         <div class="text-light-muted fs-5 leading-relaxed mb-4">
             <h3 class="text-white fw-bold fs-4 mb-3">О проекте</h3>
             <p>{{ card.description }}</p>
         </div>
 
-        <!-- Сетка с преимуществами (Полностью адаптивная Bootstrap сетка) -->
+        <!-- Преимущества -->
         <div class="row g-3 mb-4">
             <div class="col-12 col-md-6">
                 <div class="feature-item p-3 d-flex align-items-start gap-3">
@@ -52,7 +51,6 @@
             </div>
         </div>
 
-        <!-- Кнопка действия (Адаптированная под темную тему с неоновым свечением) -->
         <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-sm-row justify-content-end">
             <a href="https://t.me" target="_blank" class="btn-custom-primary text-center text-decoration-none">
                 Обсудить в Telegram

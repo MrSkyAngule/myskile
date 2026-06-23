@@ -9,12 +9,12 @@
     <!-- Подключаем Bootstrap 5 CSS -->
     <link href="https://jsdelivr.net" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <!-- Подключаем современный шрифт Inter -->
+    <!-- Подключаем шрифт Inter -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
 
-    <!-- Стили статики (перекрывают дефолтный Bootstrap) -->
+    <!-- Подключаем кастомные стили -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body class="d-flex flex-column min-vh-100 justify-content-between structural-body">
@@ -25,6 +25,7 @@
             <a class="navbar-brand fw-bold fs-3 logo-brand" href="/">WebCraft<span>.</span></a>
             <div class="navbar-nav ms-auto flex-row gap-3 gap-sm-4 align-items-center">
                 <a class="nav-link fw-medium py-1 active" href="/">Главная</a>
+                <a class="nav-link fw-medium py-1" href="/order/">Предложения</a>
             </div>
         </div>
     </nav>
@@ -40,14 +41,14 @@
         <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 text-center text-sm-start">
             <p class="mb-0 footer-copy">&copy; 2026 WebCraft. Все права защищены.</p>
             <div class="d-flex gap-4 footer-links">
-                <a href="#" class="hov-white">Telegram</a>
+                <a href="https://t.me" target="_blank" class="hov-white">Telegram</a>
                 <a href="#" class="hov-white">WhatsApp</a>
                 <a href="#" class="hov-white">Email</a>
             </div>
         </div>
     </footer>
 
-    <!-- Подключаем Bootstrap JS и ваш script.js -->
+    <!-- Подключаем Bootstrap JS и скрипты -->
     <script src="https://jsdelivr.net" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="{% static 'script.js' %}"></script>
 </body>

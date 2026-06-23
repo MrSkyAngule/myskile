@@ -18,6 +18,12 @@ body.structural-body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Шрифты и трекинг */
+.fw-black { font-weight: 900; }
+.fw-extrabold { font-weight: 800; }
+.tracking-tight { letter-spacing: -0.03em; }
+.font-light { font-weight: 300; }
+
 /* ==========================================================================
    2. КАСТОМИЗАЦИЯ НАВИГАЦИИ (HEADER)
    ========================================================================== */
@@ -75,10 +81,8 @@ body.structural-body {
 }
 
 /* ==========================================================================
-   4. СТИЛИ ДЛЯ ВНУТРЕННИХ БЛОКОВ (Для ваших {% block content %})
+   4. КОМПОНЕНТЫ И ГРАДИЕНТЫ
    ========================================================================== */
-/* Элементы, которые вы будете использовать в дочерних шаблонах, автоматически получат этот стиль */
-
 .hero-gradient-text {
     background: linear-gradient(135deg, #fff 30%, var(--accent-glow) 100%);
     -webkit-background-clip: text;
@@ -102,7 +106,7 @@ body.structural-body {
     background-color: var(--accent);
     color: #fff;
     border: none;
-    padding: 10px 24px;
+    padding: 12px 28px;
     border-radius: 10px;
     font-weight: 600;
     transition: var(--transition);
@@ -115,94 +119,45 @@ body.structural-body {
     box-shadow: 0 6px 20px rgba(129, 140, 248, 0.5);
     color: #fff;
 }
+
 /* ==========================================================================
-   5. СТИЛИ ДЛЯ СТРАНИЦЫ ДЕТАЛЕЙ ЗАКАЗА (DETAIL ORDER)
+   5. ГЛАВНАЯ СТРАНИЦА (HOME)
    ========================================================================== */
-.max-width-container {
-    max-width: 900px;
+.hero-section {
+    min-height: calc(100vh - 180px);
+    padding: 80px 0;
+    overflow: hidden;
 }
 
-/* Ссылка назад */
-.back-link {
-    color: var(--accent-glow);
-    text-decoration: none;
-    transition: var(--transition);
-    font-size: 0.95rem;
+.hero-blur-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(79, 70, 229, 0.18) 0%, transparent 70%);
+    z-index: 0;
+    pointer-events: none;
+    filter: blur(40px);
 }
 
-.back-link:hover {
-    color: #fff;
-    transform: translateX(-3px);
-}
-
-/* Бейдж категории */
-.badge-service {
-    font-size: 0.75rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--accent-glow);
-    background-color: rgba(79, 70, 229, 0.15);
-    padding: 6px 14px;
-    border-radius: 50px;
-    display: inline-block;
-}
-
-/* Текст цены */
-.price-text {
-    color: var(--accent-glow);
-    font-weight: 900;
-    text-shadow: 0 0 15px rgba(129, 140, 248, 0.3);
-}
-
-/* Текст описания */
-.text-light-muted {
-    color: #cbd5e1;
-}
-
-/* Элементы сетки преимуществ */
-.feature-item {
-    background-color: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 12px;
-    height: 100%;
-}
-
-.text-success {
-    color: #10b981 !important; /* Насыщенный зеленый для галочек */
-}
-
-/* Дополнительные хелперы для шрифтов */
-.fw-extrabold { font-weight: 800; }
-.fw-black { font-weight: 900; }
 /* ==========================================================================
-   6. СТИЛИ ДЛЯ СТРАНИЦЫ КАТАЛОГА УСЛУГ (ORDER / CATALOG)
+   6. КАТАЛОГ И ДЕТАЛИ ЗАКАЗА
    ========================================================================== */
-.custom-max-w {
-    max-width: 600px;
-}
+.custom-max-w { max-width: 600px; }
+.max-width-container { max-width: 900px; }
 
-.header-spacing {
-    position: relative;
-}
+.card-link-title { transition: var(--transition); }
+.card-link-title:hover h3 { color: var(--accent-glow) !important; }
 
-/* Ссылка-заголовок внутри карточки */
-.card-link-title {
-    transition: var(--transition);
-}
-
-.card-link-title:hover h3 {
-    color: var(--accent-glow) !important;
-}
-
-/* Ценник в карточке */
-.card-price-tag {
+.card-price-tag, .price-text {
     font-size: 1.25rem;
     font-weight: 800;
     color: var(--accent-glow);
     text-shadow: 0 0 10px rgba(129, 140, 248, 0.2);
 }
 
-/* Компактная экшен-кнопка "Выбрать" */
 .btn-custom-action {
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--text-main);
@@ -223,46 +178,36 @@ body.structural-body {
     transform: translateY(-1px);
 }
 
-/* Дополнительные глобальные утилиты */
-.fw-black { font-weight: 900; }
-.tracking-tight { letter-spacing: -0.03em; }
-/* ==========================================================================
-   7. СТИЛИ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ (HOME / HERO)
-   ========================================================================== */
-.hero-section {
-    min-height: calc(100vh - 180px); /* Вычитаем высоту шапки и футера, чтобы отцентрировать */
-    padding: 80px 0;
-    overflow: hidden;
+.back-link {
+    color: var(--accent-glow);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+.back-link:hover { color: #fff; transform: translateX(-3px); }
+
+.badge-service {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent-glow);
+    background-color: rgba(79, 70, 229, 0.15);
+    padding: 6px 14px;
+    border-radius: 50px;
+    display: inline-block;
 }
 
-/* Декоративное фоновое свечение (Ambient Light) */
-.hero-blur-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, rgba(79, 70, 229, 0.18) 0%, transparent 70%);
-    z-index: 0;
-    pointer-events: none;
-    filter: blur(40px);
+.text-light-muted { color: #cbd5e1; }
+.feature-item {
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 12px;
+    height: 100%;
 }
+.text-success { color: #10b981 !important; }
 
-.font-light {
-    font-weight: 300;
-}
-
-/* Дополнительная плавная адаптивность для мелких экранов */
+/* Адаптивность */
 @media (max-width: 576px) {
-    .hero-section {
-        min-height: auto;
-        padding: 60px 0;
-    }
-    .hero-section h1 {
-        font-size: 2.2rem !important;
-    }
-    .hero-section p {
-        font-size: 1.1rem !important;
-    }
+    .hero-section { min-height: auto; padding: 60px 0; }
+    .hero-section h1 { font-size: 2.2rem !important; }
+    .hero-section p { font-size: 1.1rem !important; }
 }
