@@ -24,19 +24,19 @@
             <h1>Наши предложения</h1>
 
             <div class="services-grid">
-                {% for ServiceCart in services %}
+                {% for order in orders %}
                 <div class="card">
                     <div>
                         <!-- Название -->
-                        <h3>{{ ServiceCart.title }}</h3>
+                        <h3>{{ order.title }}</h3>
                         <!-- Описание мини -->
-                        <p>{{ ServiceCart.description }}</p>
+                        <p>{{ order.description }}</p>
                     </div>
                     <div class="card-footer">
                         <!-- Цена -->
-                        <span class="price">{{ ServiceCart.price }} ₽</span>
-                        <!-- Ссылка на подробнее по cart_id -->
-                        <a href="{% url 'service_detail' cart.id %}" class="btn-primary">Подробнее</a>
+                        <span class="price">{{ order.price }} ₽</span>
+                        <!-- Ссылка "Подробнее" по вашему path с cart_id -->
+                        <a href="{% url 'service_detail' order.id %}" class="btn-primary">Подробнее</a>
                     </div>
                 </div>
                 {% empty %}
