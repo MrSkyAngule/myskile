@@ -3,58 +3,43 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>WebCraft — Создание современных сайтов</title>
-    <!-- Подключаем Bootstrap 5 CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebCraft — Создание сайтов</title>
     <link href="https://jsdelivr.net" rel="stylesheet">
-    <!-- Подключаем шрифт Inter -->
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
-    <!-- Стили -->
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body class="d-flex flex-column min-vh-100 justify-content-between structural-body">
 
-    <!-- Шапка сайта -->
     <nav class="navbar navbar-expand navbar-dark sticky-top site-header">
         <div class="container py-1">
-            <a class="navbar-brand fw-bold fs-3 logo-brand" href="home.html">WebCraft<span>.</span></a>
-            <div class="navbar-nav ms-auto flex-row gap-3 gap-sm-4 align-items-center">
-                <a class="nav-link fw-medium py-1 active" href="home.html">Главная</a>
-                <a class="nav-link fw-medium py-1" href="order.html">Предложения</a>
+            <a class="navbar-brand fw-bold fs-3 logo-brand" href="/">WebCraft<span>.</span></a>
+            <div class="navbar-nav ms-auto flex-row gap-3">
+                <a class="nav-link active" href="/">Главная</a>
+                <a class="nav-link" href="/services/">Предложения</a>
             </div>
         </div>
     </nav>
 
-    <!-- Основной контент -->
-    <main class="flex-grow-1 d-flex align-items-center hero-section text-center position-relative">
-        <div class="hero-blur-glow"></div>
-        <div class="container position-relative z-1 py-5">
-            <div class="row justify-content-center">
-                <div class="col-12 col-md-10 col-lg-8">
-                    <h1 class="display-4 fw-black text-white mb-4 tracking-tight hero-gradient-text">
-                        Создаем сайты, которые приносят прибыль
-                    </h1>
-                    <p class="fs-4 text-muted mb-5 px-md-4 font-light">
-                        Современный дизайн, быстрая загрузка и полная адаптивность под любые устройства.
-                    </p>
-                    <a href="order.html" class="btn-custom-primary btn-lg px-5 py-3 fs-5 text-decoration-none d-inline-block">
-                        Заказать расчет стоимости
-                    </a>
-                </div>
-            </div>
+    <main class="flex-grow-1 d-flex align-items-center text-center py-5">
+        <div class="container">
+            <h1 class="display-4 fw-black text-white mb-4 hero-gradient-text">
+                Создаем сайты, которые приносят прибыль
+            </h1>
+            <p class="fs-4 text-muted mb-5">
+                Современный дизайн, быстрая загрузка и полная адаптивность под любые устройства.
+            </p>
+            <a href="/services/" class="btn-custom-primary btn-lg px-5 py-3 text-decoration-none d-inline-block">
+                Заказать расчет стоимости
+            </a>
         </div>
     </main>
 
-    <!-- Подвал сайта -->
-    <footer class="site-footer py-4">
-        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 text-center text-sm-start">
-            <p class="mb-0 footer-copy">&copy; 2026 WebCraft. Все права защищены.</p>
-            <div class="d-flex gap-4 footer-links">
-                <a href="https://t.me" target="_blank" class="hov-white">Telegram</a>
-                <a href="#" class="hov-white">WhatsApp</a>
-                <a href="#" class="hov-white">Email</a>
+    <footer class="site-footer py-4 text-center">
+        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+            <p class="mb-0 text-muted">&copy; 2026 WebCraft.</p>
+            <div class="d-flex gap-4">
+                <a href="https://t.me" class="text-muted">Telegram</a>
+                <a href="#" class="text-muted">WhatsApp</a>
             </div>
         </div>
     </footer>

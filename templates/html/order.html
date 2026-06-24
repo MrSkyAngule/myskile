@@ -3,98 +3,53 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Наши предложения — WebCraft</title>
     <link href="https://jsdelivr.net" rel="stylesheet">
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body class="d-flex flex-column min-vh-100 justify-content-between structural-body">
 
-    <!-- Шапка сайта -->
     <nav class="navbar navbar-expand navbar-dark sticky-top site-header">
         <div class="container py-1">
-            <a class="navbar-brand fw-bold fs-3 logo-brand" href="home.html">WebCraft<span>.</span></a>
-            <div class="navbar-nav ms-auto flex-row gap-3 gap-sm-4 align-items-center">
-                <a class="nav-link fw-medium py-1" href="home.html">Главная</a>
-                <a class="nav-link fw-medium py-1 active" href="order.html">Предложения</a>
+            <a class="navbar-brand fw-bold fs-3 logo-brand" href="/">WebCraft<span>.</span></a>
+            <div class="navbar-nav ms-auto flex-row gap-3">
+                <a class="nav-link" href="/">Главная</a>
+                <a class="nav-link active" href="/services/">Предложения</a>
             </div>
         </div>
     </nav>
 
-    <!-- Основной контент -->
-    <main class="flex-grow-1">
-        <section class="py-4 py-sm-5 container">
-            <div class="text-center mb-4 mb-sm-5">
-                <h1 class="fw-black text-white mb-2 tracking-tight display-5 hero-gradient-text">Наши предложения</h1>
-                <p class="text-muted mx-auto custom-max-w">Выберите подходящий тип сайта или сопутствующую услугу для вашего бизнеса.</p>
+    <main class="flex-grow-1 py-5 container">
+        <div class="text-center mb-5">
+            <h1 class="fw-black text-white display-5 hero-gradient-text">Наши предложения</h1>
+            <p class="text-muted">Выберите подходящий тип сайта для вашего бизнеса.</p>
+        </div>
+
+        <div class="row g-4" id="services-grid">
+            {% for service in services %}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="service-card custom-card p-4 d-flex flex-column h-100 justify-content-between">
+                    <div>
+                        <h3 class="fw-bold fs-4 text-white mb-2">{{ service.title }}</h3>
+                        <p class="text-muted small">{{ service.description }}</p>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-between mt-4 pt-3 border-top border-secondary-subtle">
+                        <span class="card-price-tag">{{ service.price }} ₽</span>
+                        <a href="/services/{{ service.id }}/" class="btn-custom-action text-decoration-none">Подробнее</a>
+                    </div>
+                </div>
             </div>
-
-            <!-- Статическая сетка карточек -->
-            <div class="row g-3 g-sm-4" id="services-grid">
-
-                <!-- Карточка 1 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="service-card custom-card p-4 d-flex flex-column h-100 justify-content-between">
-                        <div class="mb-4">
-                            <a href="detail_order.html" class="text-decoration-none text-white card-link-title">
-                                <h3 class="fw-bold fs-4 mb-2">Современный Лендинг</h3>
-                            </a>
-                            <p class="text-muted small mb-0">Одностраничный сайт высокой конверсии с индивидуальным дизайном, оптимизированный под контекстную рекламу.</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mt-auto pt-3 border-top border-secondary-subtle">
-                            <span class="card-price-tag">15 000 ₽</span>
-                            <a href="detail_order.html" class="btn-custom-action text-decoration-none text-center">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Карточка 2 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="service-card custom-card p-4 d-flex flex-column h-100 justify-content-between">
-                        <div class="mb-4">
-                            <a href="detail_order.html" class="text-decoration-none text-white card-link-title">
-                                <h3 class="fw-bold fs-4 mb-2">Корпоративный сайт</h3>
-                            </a>
-                            <p class="text-muted small mb-0">Многостраничный сайт для бизнеса. Презентация услуг, каталог, интеграция с CRM, блог компании и формы заявок.</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mt-auto pt-3 border-top border-secondary-subtle">
-                            <span class="card-price-tag">40 000 ₽</span>
-                            <a href="detail_order.html" class="btn-custom-action text-decoration-none text-center">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Карточка 3 -->
-                <div class="col-12 col-md-6 col-lg-4">
-                    <div class="service-card custom-card p-4 d-flex flex-column h-100 justify-content-between">
-                        <div class="mb-4">
-                            <a href="detail_order.html" class="text-decoration-none text-white card-link-title">
-                                <h3 class="fw-bold fs-4 mb-2">Интернет-магазин</h3>
-                            </a>
-                            <p class="text-muted small mb-0">Полноценная торговая площадка: корзина, фильтрация товаров, личный кабинет клиента и подключение онлайн-оплаты.</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between mt-auto pt-3 border-top border-secondary-subtle">
-                            <span class="card-price-tag">60 000 ₽</span>
-                            <a href="detail_order.html" class="btn-custom-action text-decoration-none text-center">Подробнее</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
+            {% endfor %}
+        </div>
     </main>
 
-    <!-- Подвал сайта -->
-    <footer class="site-footer py-4">
-        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 text-center text-sm-start">
-            <p class="mb-0 footer-copy">&copy; 2026 WebCraft. Все права защищены.</p>
-            <div class="d-flex gap-4 footer-links">
-                <a href="https://t.me" target="_blank" class="hov-white">Telegram</a>
-                <a href="#" class="hov-white">WhatsApp</a>
-                <a href="#" class="hov-white">Email</a>
+    <footer class="site-footer py-4 text-center">
+        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3">
+            <p class="mb-0 text-muted">&copy; 2026 WebCraft.</p>
+            <div class="d-flex gap-4">
+                <a href="https://t.me" class="text-muted">Telegram</a>
+                <a href="#" class="text-muted">WhatsApp</a>
             </div>
         </div>
     </footer>
