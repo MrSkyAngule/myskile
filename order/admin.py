@@ -5,6 +5,7 @@ from .models import Tag, ServiceCart
 class ServiceCartAdmin(admin.ModelAdmin):
     list_display = ('title', 'price', 'created_at')
     search_fields = ('title', 'description')
+    filter_horizontal = ('tags',)
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
