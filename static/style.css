@@ -7,32 +7,32 @@
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #f8fafc; /* Светлый уютный фон */
-    color: #1e293b; /* Темно-серый текст вместо чисто черного */
+    background-color: #f8fafc; /* Светлый фон */
+    color: #1e293b;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
-/* Ссылки и кнопки */
 a {
-    color: #2563eb; /* Приятный синий акцент */
+    color: #2563eb;
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
-/* Контейнер на всю ширину экрана без полос */
+/* Контейнер во всю ширину экрана без полос по бокам */
 .container {
     width: 100%;
-    padding: 0 40px; /* Отступы только чтобы текст не прилипал к краям экрана */
+    max-width: 100%;
+    padding: 0 40px;
 }
 
 /* Шапка сайта */
 header {
     background-color: #ffffff;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Легкая тень разделения */
-    padding: 20px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 15px 0;
 }
 
 header .container {
@@ -42,13 +42,13 @@ header .container {
 }
 
 header strong {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     color: #0f172a;
 }
 
 header nav a {
     color: #64748b;
-    margin-left: 25px;
+    margin-left: 20px;
     font-weight: 500;
 }
 
@@ -59,103 +59,100 @@ header nav a.active {
 /* Главный контент */
 main {
     flex-grow: 1;
-    padding: 50px 0;
+    padding: 40px 0;
 }
 
 main h1 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: #0f172a;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
     font-weight: 800;
 }
 
-/* Сетка прямоугольников во всю ширину */
+/* Сетка для аккуратных карточек в несколько колонок */
 .services-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%; /* Занимает всю ширину контейнера */
+    display: grid;
+    /* Автоматически распределяет карточки в ряду в зависимости от ширины экрана */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    width: 100%;
 }
 
-/* Светлая прямоугольная карточка */
+/* Компактная аккуратная карточка */
 .card {
     background-color: #ffffff;
     border: 1px solid #e2e8f0;
     border-radius: 12px;
-    padding: 24px 32px;
+    padding: 20px;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+    flex-direction: column;
+    justify-content: space-between; /* Элементы распределяются сверху вниз */
+    min-height: 200px; /* Фиксированная минимальная небольшая высота */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
 }
 
-/* Эффект наведения на карточку */
+/* Плавный эффект при наведении */
 .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px -5px rgba(0, 0, 0, 0.06);
     border-color: #cbd5e1;
-}
-
-/* Левая текстовая часть карточки */
-.card > div:first-child {
-    flex: 1;
-    text-align: left;
 }
 
 .card h3 {
     color: #0f172a;
-    font-size: 1.3rem;
-    margin-bottom: 6px;
+    font-size: 1.15rem;
+    margin-bottom: 8px;
     font-weight: 700;
 }
 
 .card p {
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     color: #64748b;
+    /* Ограничиваем текст, если он слишком длинный, чтобы карточки были ровными */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
-/* Правая часть с ценой и кнопкой */
+/* Нижняя часть карточки (Цена + Кнопка) */
 .card-footer {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 24px;
-    flex-shrink: 0;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 12px;
+    border-top: 1px solid #f1f5f9;
 }
 
 .price {
     font-weight: 800;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     color: #0f172a;
-    white-space: nowrap;
 }
 
-/* Современная синяя кнопка */
+/* Небольшая компактная синяя кнопка */
 .btn-primary {
     display: inline-block;
     background-color: #2563eb;
     color: #ffffff;
-    padding: 12px 24px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     font-weight: 600;
-    font-size: 0.95rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    font-size: 0.85rem;
 }
 
 .btn-primary:hover {
     background-color: #1d4ed8;
-    opacity: 1;
 }
 
 /* Подвал сайта */
 footer {
     background-color: #ffffff;
     border-top: 1px solid #e2e8f0;
-    padding: 24px 0;
+    padding: 20px 0;
     color: #94a3b8;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
 }
 
 footer .container {
@@ -164,33 +161,17 @@ footer .container {
     align-items: center;
 }
 
-/* Адаптивность под мобильные телефоны */
-@media (max-width: 768px) {
+/* Адаптивность для мобильных телефонов */
+@media (max-width: 600px) {
     .container {
         padding: 0 20px;
     }
-
-    .card {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .card-footer {
-        width: 100%;
-        justify-content: space-between;
-        border-top: 1px solid #f1f5f9;
-        padding-top: 20px;
-    }
-
     header .container, footer .container {
         flex-direction: column;
-        gap: 15px;
+        gap: 12px;
         text-align: center;
     }
-
     header nav a {
-        margin: 0 10px;
+        margin: 0 8px;
     }
 }
