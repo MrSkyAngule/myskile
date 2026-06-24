@@ -6,7 +6,7 @@ def order(request):
     tag_slug = request.GET.get('tag')
     if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        card = ServiceCart.objects.filter(tags=tag)
+        cards = ServiceCart.objects.filter(tags=tag)
     else:
         cards = ServiceCart.objects.all() # Иначе берем все
     tags = Tag.objects.all()
