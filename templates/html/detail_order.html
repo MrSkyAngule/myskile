@@ -3,97 +3,88 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Детали услуги — WebCraft</title>
-    <link href="https://jsdelivr.net" rel="stylesheet">
-    <link rel="preconnect" href="https://googleapis.com">
-    <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ card.title }} — WebCraft</title>
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
-<body class="d-flex flex-column min-vh-100 justify-content-between structural-body">
+<body>
 
-    <!-- Шапка сайта -->
-    <nav class="navbar navbar-expand navbar-dark sticky-top site-header">
-        <div class="container py-1">
-            <a class="navbar-brand fw-bold fs-3 logo-brand" href="home.html">WebCraft<span>.</span></a>
-            <div class="navbar-nav ms-auto flex-row gap-3 gap-sm-4 align-items-center">
-                <a class="nav-link fw-medium py-1" href="home.html">Главная</a>
-                <a class="nav-link fw-medium py-1 active" href="order.html">Предложения</a>
-            </div>
+    <header>
+        <div class="container">
+            <strong>WebCraft.</strong>
+            <nav>
+                <a href="/">Главная</a>
+                <a href="{% url 'order' %}">Предложения</a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <!-- Основной контент -->
-    <main class="flex-grow-1">
-        <section class="py-5 max-width-container mx-auto px-3">
+    <main>
+        <div class="container">
             <!-- Кнопка «Назад» -->
-            <div class="mb-4">
-                <a href="order.html" class="back-link d-inline-flex align-items-center fw-semibold">
+            <div style="margin-bottom: 25px;">
+                <a href="{% url 'order' %}" style="font-weight: 500;">
                     &larr; Назад к предложениям
                 </a>
             </div>
 
-            <!-- Блок описания -->
-            <div class="custom-card p-4 p-md-5">
-                <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 mb-4 pb-4 border-bottom border-secondary-subtle">
+            <!-- Большая светлая карточка с деталями -->
+            <div class="card" style="flex-direction: column; align-items: stretch; gap: 30px; min-height: auto;">
+
+                <!-- Верхняя часть: Название и Цена -->
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 20px;">
                     <div>
-                        <span class="badge-service text-uppercase">Услуга студии</span>
-                        <h1 class="h2 fw-extrabold text-white mt-2 tracking-tight">Разработка высококонверсионного сайта</h1>
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: #2563eb; font-weight: 700; letter-spacing: 1px;">Услуга студии</span>
+                        <h1 style="font-size: 2.2rem; margin-top: 5px;">{{ card.title }}</h1>
                     </div>
-                    <div class="text-start text-sm-end">
-                        <span class="d-block small text-muted text-uppercase fw-medium">Стоимость</span>
-                        <span class="h2 fw-black price-text tracking-tight">от 15 000 ₽</span>
-                    </div>
-                </div>
-
-                <!-- Описание проекта -->
-                <div class="text-light-muted fs-5 leading-relaxed mb-4">
-                    <h3 class="text-white fw-bold fs-4 mb-3">О проекте</h3>
-                    <p>Мы создаем современные, быстрые и продающие веб-решения, полностью адаптированные под ваши бизнес-цели. В стоимость включены проработка структуры интерфейса, индивидуальный UX/UI дизайн, чистая верстка и первичное наполнение контентом.</p>
-                </div>
-
-                <!-- Преимущества -->
-                <div class="row g-3 mb-4">
-                    <div class="col-12 col-md-6">
-                        <div class="feature-item p-3 d-flex align-items-start gap-3">
-                            <span class="text-success fs-4 leading-none">✓</span>
-                            <div>
-                                <h4 class="fw-bold fs-6 text-white mb-1">Адаптивный дизайн</h4>
-                                <p class="small text-muted mb-0">Сайт будет идеально открываться на любых смартфонах и планшетах.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6">
-                        <div class="feature-item p-3 d-flex align-items-start gap-3">
-                            <span class="text-success fs-4 leading-none">✓</span>
-                            <div>
-                                <h4 class="fw-bold fs-6 text-white mb-1">SEO-подготовка</h4>
-                                <p class="small text-muted mb-0">Базовая оптимизация кода для быстрой индексации в поисковиках.</p>
-                            </div>
-                        </div>
+                    <div>
+                        <span style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #64748b; font-weight: 500;">Стоимость</span>
+                        <span class="price" style="font-size: 2rem;">{{ card.price }} ₽</span>
                     </div>
                 </div>
 
-                <!-- Кнопка действия -->
-                <div class="pt-4 border-top border-secondary-subtle d-flex flex-column flex-sm-row justify-content-end">
-                    <a href="https://t.me" target="_blank" class="btn-custom-primary text-center text-decoration-none">
+                <!-- Блок 1: Полноценное описание -->
+                <div>
+                    <h3 style="margin-bottom: 12px; font-size: 1.4rem;">Подробное описание услуги</h3>
+                    {% if card.full_description %}
+                        <p style="color: #475569; -webkit-line-clamp: unset; font-size: 1.05rem; line-height: 1.6;">
+                            {{ card.full_description|linebreaksbr }}
+                        </p>
+                    {% else %}
+                        <p style="color: #94a3b8; -webkit-line-clamp: unset; font-style: italic;">
+                            Подробное описание еще не добавлено администратором.
+                        </p>
+                    {% endif %}
+                </div>
+
+                <!-- Блок 2: Для чего используется сайт -->
+                <div style="background-color: #f8fafc; padding: 20px; border-radius: 8px; border-left: 4px solid #2563eb;">
+                    <h3 style="margin-bottom: 10px; font-size: 1.2rem; color: #0f172a;">Для каких целей применяется этот сайт:</h3>
+                    {% if card.use_case %}
+                        <p style="color: #475569; -webkit-line-clamp: unset; font-size: 1rem; margin-bottom: 0;">
+                            {{ card.use_case|linebreaksbr }}
+                        </p>
+                    {% else %}
+                        <p style="color: #94a3b8; -webkit-line-clamp: unset; font-style: italic; margin-bottom: 0;">
+                            Информация о назначении сайта временно отсутствует.
+                        </p>
+                    {% endif %}
+                </div>
+
+                <!-- Нижняя часть с кнопкой действия -->
+                <div style="border-top: 1px solid #f1f5f9; padding-top: 20px; display: flex; justify-content: flex-end;">
+                    <a href="https://t.me" target="_blank" class="btn-primary" style="padding: 14px 32px; font-size: 1rem;">
                         Обсудить в Telegram
                     </a>
                 </div>
+
             </div>
-        </section>
+        </div>
     </main>
 
-    <!-- Подвал сайта -->
-    <footer class="site-footer py-4">
-        <div class="container d-flex flex-column flex-sm-row justify-content-between align-items-center gap-3 text-center text-sm-start">
-            <p class="mb-0 footer-copy">&copy; 2026 WebCraft. Все права защищены.</p>
-            <div class="d-flex gap-4 footer-links">
-                <a href="https://t.me" target="_blank" class="hov-white">Telegram</a>
-                <a href="#" class="hov-white">WhatsApp</a>
-                <a href="#" class="hov-white">Email</a>
-            </div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 WebCraft.</p>
         </div>
     </footer>
 
