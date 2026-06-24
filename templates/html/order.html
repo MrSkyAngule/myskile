@@ -14,7 +14,7 @@
             <strong>WebCraft.</strong>
             <nav>
                 <a href="/">Главная</a>
-                <a href="orders/" class="active">Предложения</a>
+                <a href="orders" class="active">Предложения</a>
             </nav>
         </div>
     </header>
@@ -22,18 +22,21 @@
     <main>
         <div class="container">
             <h1>Наши предложения</h1>
-            <p>Выберите подходящий тип сайта для вашего бизнеса.</p>
 
             <div class="services-grid">
                 {% for service in services %}
                 <div class="card">
                     <div>
+                        <!-- Название -->
                         <h3>{{ service.title }}</h3>
+                        <!-- Описание мини -->
                         <p>{{ service.description }}</p>
                     </div>
                     <div class="card-footer">
+                        <!-- Цена -->
                         <span class="price">{{ service.price }} ₽</span>
-                        <a href="{% url 'service_detail' service.id %}/" class="btn-primary">Подробнее</a>
+                        <!-- Ссылка на подробнее по cart_id -->
+                        <a href="{% url 'service_detail' cart.id %}" class="btn-primary">Подробнее</a>
                     </div>
                 </div>
                 {% empty %}
@@ -46,10 +49,6 @@
     <footer>
         <div class="container">
             <p>&copy; 2026 WebCraft.</p>
-            <nav>
-                <a href="https://t.me">Telegram</a>
-                <a href="#">WhatsApp</a>
-            </nav>
         </div>
     </footer>
 
