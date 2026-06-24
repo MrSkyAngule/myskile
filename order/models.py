@@ -1,5 +1,9 @@
 from django.db import models
 
+class Tag(models.Model):
+    name = models.CharField(max)
+    slug = models.SlugField(max_length=50, unique=True, verbose_name='Слуг (для ссылки)')
+
 class ServiceCart(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название услуги')
     description = models.TextField(verbose_name='Мини описание', default='')
@@ -7,6 +11,8 @@ class ServiceCart(models.Model):
     use_case = models.TextField(verbose_name='для чего используется сайт', default='')
     price = models.CharField(max_length=50, verbose_name='Цена')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+
+    tags = models.ManyToManyField(Tag, blank=True, related_name='tags', verbose_name='Теги')
 
     def Meta(self):
         verbose_name = 'Услуга'
