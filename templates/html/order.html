@@ -14,7 +14,7 @@
             <strong>WebCraft.</strong>
             <nav>
                 <a href="/">Главная</a>
-                <a href="orders" class="active">Предложения</a>
+                <a href="/orders/" class="active">Предложения</a>
             </nav>
         </div>
     </header>
@@ -24,19 +24,19 @@
             <h1>Наши предложения</h1>
 
             <div class="services-grid">
-                {% for cards in orders %}
+                {% for order in orders %}
                 <div class="card">
                     <div>
                         <!-- Название -->
-                        <h3>{{ cards.title }}</h3>
+                        <h3>{{ order.title }}</h3>
                         <!-- Описание мини -->
-                        <p>{{ cards.description }}</p>
+                        <p>{{ order.description }}</p>
                     </div>
                     <div class="card-footer">
                         <!-- Цена -->
-                        <span class="price">{{ cards.price }} ₽</span>
-                        <!-- Ссылка "Подробнее" по вашему path с cart_id -->
-                        <a href="{% url 'service_detail' cards.id %}" class="btn-primary">Подробнее</a>
+                        <span class="price">{{ order.price }} ₽</span>
+                        <!-- Ссылка "Подробнее" отправляет id в cart_id -->
+                        <a href="{% url 'service_detail' order.id %}" class="btn-primary">Подробнее</a>
                     </div>
                 </div>
                 {% empty %}
