@@ -1,8 +1,12 @@
 from django.db import models
 
 class Tag(models.Model):
-    name = models.CharField(max)
+    name = models.CharField(max_length=50, unique=True, verbose_name='Название')
     slug = models.SlugField(max_length=50, unique=True, verbose_name='Слуг (для ссылки)')
+    show_in_menu = models.BooleanField(default=True, verbose_name="Показывать как вкладку в меню")
+
+    def __str__(self):
+        return self.name
 
 class ServiceCart(models.Model):
     title = models.CharField(max_length=100, verbose_name='Название услуги')

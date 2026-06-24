@@ -3,7 +3,7 @@ from .models import ServiceCart, Tag
 
 
 def order(request):
-    tags = Tag.objects.all()
+    tags = Tag.objects.filter(show_in_menu=True)
     tag_slug = request.GET.get('tag')
 
     if tag_slug:
