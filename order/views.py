@@ -3,15 +3,28 @@ from .models import ServiceCart, Tag
 
 
 def order(request):
-    tag_slug = request.GET.get('tag')
-    if tag_slug:
-        tag = get_object_or_404(Tag, slug=tag_slug)
-        cards = ServiceCart.objects.filter(tags=tag)
-    else:
-        cards = ServiceCart.objects.all() # Иначе берем все
     tags = Tag.objects.all()
+    tag_slug = request.GET.get('tag')
 
-    return render(request, 'html/order.html', {'cards': cards, 'tags': tags, 'selected_tag': tag_slug})
+    if tag_slug:
+        try:
+            active_tag = Tag.objects.get(slug=tag_slug)
+            cards = ServiceCart.objects.filter(tags=active_tag)
+        except Tag.DoesNotExist:
+            cards = ServiceCart.objects.none()
+    else:
+        first_tag = tags.first()
+        if first_tag:
+            cards = ServiceCart.objects.filter(tags=first_tag)
+            tag_slug = first_tag.slug
+        else:
+            cards = ServiceCart.objects.all()
+
+    return render(request, 'html/order.html', {
+        'cards': cards,
+        'tags': tags,
+        'selected_tag': tag_slug
+    })
 
 def delete_card(request, card_id):
     if request.method == 'POST':

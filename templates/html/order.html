@@ -22,33 +22,23 @@
     <main>
         <div class="container">
             <h1>Наши предложения</h1>
-                <div class="filter-bar" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+            <div class="global-tabs-bar" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 8px; margin-bottom: 30px; display: inline-flex; gap: 8px; flex-wrap: wrap; width: 100%;">
 
-                <div style="display: flex; align-items: center; gap: 10px;">
-                    <!-- Иконка или текст направления -->
-                    <span style="font-size: 0.9rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">Фильтр услуг:</span>
-                </div>
+                {% for tag in tags %}
+                <a href="{% url 'order' %}?tag={{ tag.slug }}"
+                   style="padding: 12px 24px; font-weight: 600; font-size: 0.95rem; border-radius: 8px; transition: all 0.2s ease; text-align: center; flex-grow: 1;
+                          {% if selected_tag == tag.slug %}
+                              background-color: #2563eb; color: #ffffff;
+                          {% else %}
+                              background-color: transparent; color: #64748b;
+                          {% endif %}">
+                    {{ tag.name }}
+                </a>
+                {% empty %}
+                <p style="color: #94a3b8; padding: 10px; font-size: 0.9rem; margin-bottom: 0;">Теги еще не созданы в админ-панели.</p>
+                {% endfor %}
 
-                <!-- Выпадающий список (Селектор) -->
-                <div style="flex-grow: 1; max-width: 350px; width: 100%;">
-                    <select onchange="location = this.value;" style="width: 100%; padding: 10px 16px; font-size: 0.95rem; font-weight: 500; color: #1e293b; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; cursor: pointer; transition: border-color 0.2s;">
-
-                        <!-- Опция "Все услуги" -->
-                        <option value="{% url 'order' %}" {% if not selected_tag %}selected{% endif %}>
-                            📂 Все направления разработки
-                        </option>
-
-                        <!-- Динамический список тегов из базы данных -->
-                        {% for tag in tags %}
-                            <option value="{% url 'order' %}?tag={{ tag.slug }}" {% if selected_tag == tag.slug %}selected{% endif %}>
-                                🏷️ {{ tag.name }}
-                            </option>
-                        {% endfor %}
-
-                    </select>
-                </div>
-                </div><div class="filter-bar" style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px 20px; margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
-
+            </div>
             <div class="services-grid">
                 {% for card in cards %}
                 <div class="card">
