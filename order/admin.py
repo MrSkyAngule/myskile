@@ -9,5 +9,5 @@ class ServiceCartAdmin(admin.ModelAdmin):
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
-    list_display = ('name', 'slug')
+    list_display = ('name', 'slug', 'show_in_menu')
     list_editable = ('show_in_menu',)
