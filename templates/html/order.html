@@ -54,26 +54,6 @@
                     <span style="font-size: 0.9rem; font-weight: 700; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px;">Фильтр услуг:</span>
                 </div>
 
-                <!-- Выпадающий список (Селектор) -->
-                <div style="flex-grow: 1; max-width: 350px; width: 100%;">
-                    <select onchange="location = this.value;" style="width: 100%; padding: 10px 16px; font-size: 0.95rem; font-weight: 500; color: #1e293b; background-color: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; cursor: pointer; transition: border-color 0.2s;">
-
-                        <!-- Опция "Все услуги" -->
-                        <option value="{% url 'order' %}" {% if not selected_tag %}selected{% endif %}>
-                            📂 Все направления разработки
-                        </option>
-
-                        <!-- Динамический список тегов из базы данных -->
-                        {% for tag in tags %}
-                            <option value="{% url 'order' %}?tag={{ tag.slug }}" {% if selected_tag == tag.slug %}selected{% endif %}>
-                                🏷️ {{ tag.name }}
-                            </option>
-                        {% endfor %}
-
-                    </select>
-                </div>
-            </div>
-
             <div class="services-grid">
                 {% for card in cards %}
                 <div class="card">
