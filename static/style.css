@@ -1,4 +1,4 @@
-/* Общие настройки для всего сайта */
+/* Сброс стилей */
 * {
     margin: 0;
     padding: 0;
@@ -7,38 +7,32 @@
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #0b0f19; /* Темный стильный фон */
-    color: #ffffff;
+    background-color: #f8fafc; /* Светлый уютный фон */
+    color: #1e293b; /* Темно-серый текст вместо чисто черного */
     display: flex;
-    flex-column: column;
+    flex-direction: column;
     min-height: 100vh;
     line-height: 1.5;
 }
 
 /* Ссылки и кнопки */
 a {
-    color: #4f46e5; /* Фиолетовый акцент */
+    color: #2563eb; /* Приятный синий акцент */
     text-decoration: none;
-    transition: opacity 0.2s;
+    transition: all 0.2s ease;
 }
 
-a:hover {
-    opacity: 0.8;
-}
-
-/* Контейнер для выравнивания контента по центру */
+/* Контейнер на всю ширину экрана без полос */
 .container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 40px; /* Отступы только чтобы текст не прилипал к краям экрана */
 }
 
 /* Шапка сайта */
 header {
-    background-color: #111827;
-    border-bottom: 1px solid #1f2937;
-    padding: 15px 0;
+    background-color: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Легкая тень разделения */
+    padding: 20px 0;
 }
 
 header .container {
@@ -49,100 +43,118 @@ header .container {
 
 header strong {
     font-size: 1.5rem;
-    color: #ffffff;
+    color: #0f172a;
 }
 
 header nav a {
-    color: #9ca3af;
-    margin-left: 20px;
+    color: #64748b;
+    margin-left: 25px;
+    font-weight: 500;
 }
 
 header nav a.active {
-    color: #ffffff;
-    font-weight: bold;
+    color: #2563eb;
 }
 
 /* Главный контент */
 main {
     flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 60px 0;
+    padding: 50px 0;
 }
 
 main h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    line-height: 1.2;
+    font-size: 2.5rem;
+    color: #0f172a;
+    margin-bottom: 30px;
+    font-weight: 800;
 }
 
-main p {
-    color: #9ca3af;
-    font-size: 1.25rem;
-    max-width: 600px;
-    margin: 0 auto 40px auto;
-}
-
-/* Кнопка действия */
-.btn-primary {
-    display: inline-block;
-    background-color: #4f46e5;
-    color: #ffffff;
-    padding: 12px 30px;
-    border-radius: 8px;
-    font-weight: 600;
-}
-
-/* Сетка для карточек услуг (для второй страницы) */
+/* Сетка прямоугольников во всю ширину */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    width: 100%;
-    margin-top: 40px;
-}
-
-.card {
-    background-color: #111827;
-    border: 1px solid #1f2937;
-    border-radius: 12px;
-    padding: 25px;
-    text-align: left;
     display: flex;
     flex-direction: column;
+    gap: 16px;
+    width: 100%; /* Занимает всю ширину контейнера */
+}
+
+/* Светлая прямоугольная карточка */
+.card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     justify-content: space-between;
+    gap: 40px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+/* Эффект наведения на карточку */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+
+/* Левая текстовая часть карточки */
+.card > div:first-child {
+    flex: 1;
+    text-align: left;
 }
 
 .card h3 {
-    margin-bottom: 10px;
+    color: #0f172a;
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    font-weight: 700;
 }
 
 .card p {
     font-size: 0.95rem;
-    margin-bottom: 20px;
+    color: #64748b;
 }
 
+/* Правая часть с ценой и кнопкой */
 .card-footer {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
     align-items: center;
-    border-top: 1px solid #1f2937;
-    padding-top: 15px;
+    gap: 24px;
+    flex-shrink: 0;
 }
 
 .price {
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-weight: 800;
+    font-size: 1.4rem;
+    color: #0f172a;
+    white-space: nowrap;
+}
+
+/* Современная синяя кнопка */
+.btn-primary {
+    display: inline-block;
+    background-color: #2563eb;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    opacity: 1;
 }
 
 /* Подвал сайта */
 footer {
-    background-color: #111827;
-    border-top: 1px solid #1f2937;
-    padding: 20px 0;
-    color: #6b7280;
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 24px 0;
+    color: #94a3b8;
     font-size: 0.9rem;
 }
 
@@ -152,15 +164,24 @@ footer .container {
     align-items: center;
 }
 
-footer a {
-    color: #6b7280;
-    margin-left: 15px;
-}
-
-/* Адаптивность для мобильных экранов */
+/* Адаптивность под мобильные телефоны */
 @media (max-width: 768px) {
-    main h1 {
-        font-size: 2rem;
+    .container {
+        padding: 0 20px;
+    }
+
+    .card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .card-footer {
+        width: 100%;
+        justify-content: space-between;
+        border-top: 1px solid #f1f5f9;
+        padding-top: 20px;
     }
 
     header .container, footer .container {
