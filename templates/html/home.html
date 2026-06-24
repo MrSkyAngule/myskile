@@ -5,28 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebCraft — Создание сайтов</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
 
     <header>
-        <strong>WebCraft.</strong>
-        <nav>
-            <a href="/">Главная</a> |
-            <a href="/services/">Предложения</a>
-        </nav>
+        <div class="container">
+            <strong>WebCraft.</strong>
+            <nav>
+                <a href="/" class="active">Главная</a>
+                <a href="orders/">Предложения</a>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <h1>Создаем сайты, которые приносят прибыль</h1>
-        <p>Современный дизайн, быстрая загрузка и полная адаптивность под любые устройства.</p>
-        <a href="/services/">Заказать расчет стоимости</a>
+        <div class="container">
+            <h1>Создаем сайты, которые приносят прибыль</h1>
+            <p>Современный дизайн, быстрая загрузка и полная адаптивность под любые устройства.</p>
+            <a href="orders/" class="btn-primary">Заказать расчет стоимости</a>
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 WebCraft.</p>
-        <a href="https://t.me">Telegram</a>
-        <a href="#">WhatsApp</a>
+        <div class="container">
+            <p>&copy; 2026 WebCraft.</p>
+            <nav>
+                <a href="https://t.me">Telegram</a>
+                <a href="#">WhatsApp</a>
+            </nav>
+        </div>
     </footer>
 
 </body>
