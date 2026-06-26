@@ -367,7 +367,7 @@ body {
     }
 
     .bottom-action-bar {
-        position: static !important;
+        position: static ;
         margin-top: 20px;
         padding: 0;
     }
