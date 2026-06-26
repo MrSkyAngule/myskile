@@ -1,66 +1,64 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создание современных сайтов под ключ</title>
-    <!-- Подключаем современный шрифт Inter из Google Fonts -->
+    <title>Разработка сайтов премиум-класса</title>
+    <!-- Подключаем строгий геометрический шрифт -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
-    <!-- Подключение ваших стилей из папки static -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link href="https://googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'style.css'%}">
 </head>
 <body>
 
-    <!-- Фоновые декоративные светящиеся сферы -->
-    <div class="glow-sphere sphere-1"></div>
-    <div class="glow-sphere sphere-2"></div>
-
-    <div class="container">
-        <!-- Шапка (Hero-секция) -->
-        <header class="hero-header">
-            <span class="badge">🔥 Разработка полного цикла</span>
-            <h1>Создаем сайты, которые продают и влюбляют</h1>
-            <p>Превращаем ваши идеи в быстрые, адаптивные и современные веб-решения. От простых лендингов до сложных интернет-магазинов.</p>
+    <div class="site-wrapper">
+        <!-- Шапка -->
+        <header class="minimal-header">
+            <div class="status-tag">Доступны для новых проектов</div>
+            <h1>Проектируем цифровые продукты с характером</h1>
+            <p class="hero-lead">Мы не просто верстаем страницы. Мы создаем быстрые, эстетичные и понятные сайты, которые превращают случайных посетителей в постоянных клиентов.</p>
         </header>
 
-        <!-- Сетка с преимуществами вашей разработки -->
-        <main class="grid-features">
-            <div class="card">
-                <div class="card-icon">🎨</div>
-                <h3>Уникальный дизайн</h3>
-                <p>Никаких шаблонных решений. Проектируем стильный интерфейс (UI/UX) под ваш бренд, который выделит вас среди конкурентов.</p>
+        <!-- Сетка услуг / преимуществ -->
+        <main class="minimal-grid">
+            <div class="grid-card">
+                <span class="card-number">01</span>
+                <h3>Бизнес-аналитика</h3>
+                <p>Изучаем ваших конкурентов и целевую аудиторию. Строим логику сайта так, чтобы каждая деталь вела пользователя к покупке.</p>
             </div>
 
-            <div class="card">
-                <div class="card-icon">⚡</div>
-                <h3>Ультра-скорость</h3>
-                <p>Оптимизируем код, изображения и статические файлы, чтобы ваш сайт загружался моментально на любых устройствах.</p>
+            <div class="grid-card">
+                <span class="card-number">02</span>
+                <h3>Эстетика & UI</h3>
+                <p>Чистый дизайн без визуального шума. Фокусируем внимание пользователя на вашем продукте с помощью правильной типографики.</p>
             </div>
 
-            <div class="card">
-                <div class="card-icon">📱</div>
-                <h3>100% Адаптивность</h3>
-                <p>Сайт будет безупречно отображаться, удобно скроллиться и идеально работать на смартфонах, планшетах и компьютерах.</p>
+            <div class="grid-card">
+                <span class="card-number">03</span>
+                <h3>Чистый код</h3>
+                <p>Верстаем вручную без тяжелых конструкторов. Сайт загружается за доли секунды и легко продвигается в поисковых системах.</p>
             </div>
         </main>
 
-        <!-- Секция с целевой кнопкой «Заказать» в самом низу -->
-        <footer class="cta-wrapper">
-            <p class="cta-subtext">Обсудим ваш проект? Оставьте заявку прямо сейчас.</p>
+        <!-- Заключительный текст перед кнопкой -->
+        <section class="final-text">
+            <h2>Готовы запустить свой проект?</h2>
+            <p>Напишите нам, чтобы рассчитать точную стоимость и сроки разработки.</p>
+        </section>
 
-            <!-- Замените https://your-link.com на ссылку вашей формы, мессенджера (например, Telegram/WhatsApp) или CRM -->
-            <a href="https://your-link.com" class="btn-premium">
-                Заказать сайт
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                </svg>
-            </a>
-        </footer>
+        <!-- Нижняя закрепленная панель с кнопкой заказа (всегда внизу экрана) -->
+        <div class="bottom-action-bar">
+            <div class="bar-container">
+                <div class="bar-info">
+                    <span class="bar-title">Обсудить проект</span>
+                    <span class="bar-subtitle">Ответим в течение 15 минут</span>
+                </div>
+                <!-- Замените # на вашу ссылку на Telegram, WhatsApp или форму -->
+                <a href="#" class="btn-minimal">Заказать сайт</a>
+            </div>
+        </div>
     </div>
 
 </body>
