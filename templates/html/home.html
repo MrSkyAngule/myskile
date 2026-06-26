@@ -4,40 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Современный Лендинг</title>
-    <!-- Подключение внешнего файла стилей CSS -->
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Премиум Лендинг</title>
+    <!-- Подключаем современный шрифт Inter из Google Fonts -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Подключение ваших стилей из папки static -->
+    <link rel="stylesheet" href="{% static 'style.css'%}">
 </head>
 <body>
 
+    <!-- Фоновые декоративные светящиеся сферы -->
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+
     <div class="container">
-        <!-- Шапка лендинга -->
-        <header>
+        <!-- Шапка -->
+        <header class="hero-header">
+            <span class="badge">Новое обновление 2.0</span>
             <h1>Идеальное решение для вашего бизнеса</h1>
-            <p>Узнайте, как наш продукт может изменить ваш рабочий процесс уже сегодня.</p>
+            <p>Уникальная платформа для автоматизации рутины и взрывного роста вашей прибыли.</p>
         </header>
 
-        <!-- Основной контент страницы -->
-        <main class="features">
-            <div class="feature-item">
-                <h3>🚀 Быстрый старт</h3>
-                <p>Вам не придется тратить недели на настройку. Наш сервис готов к работе сразу после простой регистрации.</p>
+        <!-- Сетка с преимуществами -->
+        <main class="grid-features">
+            <div class="card">
+                <div class="card-icon">🚀</div>
+                <h3>Быстрый старт</h3>
+                <p>Вам не придется тратить недели на сложную настройку. Наш сервис готов к работе сразу после регистрации.</p>
             </div>
 
-            <div class="feature-item">
-                <h3>🔒 Безопасность данных</h3>
-                <p>Мы используем передовые протоколы шифрования, чтобы ваша личная информация оставалась под надежной защитой.</p>
+            <div class="card">
+                <div class="card-icon">🔒</div>
+                <h3>Безопасность</h3>
+                <p>Передовые протоколы сквозного шифрования. Ваша личная и коммерческая информация под надежной защитой.</p>
             </div>
 
-            <div class="feature-item">
-                <h3>📈 Рост эффективности</h3>
-                <p>Автоматизируйте рутинные задачи и сфокусируйтесь на том, что действительно важно для увеличения прибыли.</p>
+            <div class="card">
+                <div class="card-icon">📈</div>
+                <h3>Эффективность</h3>
+                <p>Автоматизируйте рутинные задачи и сфокусируйтесь на глобальных целях вашей компании.</p>
             </div>
         </main>
 
-        <!-- Подвал / Секция с кнопкой в самом низу -->
-        <footer class="cta-section">
-            <a href="https://example.com" class="btn-cta">Начать бесплатно</a>
+        <!-- Секция с призывом к действию в самом низу -->
+        <footer class="cta-wrapper">
+            <p class="cta-subtext">Попробуйте бесплатно. Отмена в любой момент.</p>
+            <a href="https://example.com" class="btn-premium">
+                Начать бесплатно
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
         </footer>
     </div>
 
