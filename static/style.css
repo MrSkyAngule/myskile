@@ -350,7 +350,7 @@ body {
     }
 
     .site-wrapper {
-        padding: 40px 16px 100px 16px; /* Никаких гигантских пустых отступов */
+        padding: 40px 16px 40px 16px; /* Никаких гигантских пустых отступов */
     }
 
     .about-card {
