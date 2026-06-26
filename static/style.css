@@ -1,97 +1,207 @@
-/* Общие стили для всей страницы */
+/* Сброс базовых стилей и плавная прокрутка */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Inter', sans-serif;
+    background-color: #0b0f19; /* Глубокий премиальный темный фон */
+    color: #f3f4f6;
     line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
 }
 
-/* Контейнер для центрирования контента */
+/* Декоративное неоновое свечение на фоне */
+.glow-sphere {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(130px);
+    z-index: -1;
+    opacity: 0.35;
+}
+
+.sphere-1 {
+    width: 400px;
+    height: 400px;
+    background: #0070f3; /* Синее свечение */
+    top: -100px;
+    left: -100px;
+}
+
+.sphere-2 {
+    width: 500px;
+    height: 500px;
+    background: #7928ca; /* Фиолетовое свечение */
+    bottom: -100px;
+    right: -100px;
+}
+
+/* Основной контейнер */
 .container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 40px 20px;
+    padding: 80px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Главный заголовок */
-header {
+/* Стили заголовка (Hero-секция) */
+.hero-header {
     text-align: center;
-    margin-bottom: 40px;
+    max-width: 750px;
+    margin-bottom: 60px;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    color: #111;
-    margin-bottom: 15px;
-}
-
-header p {
-    font-size: 1.2rem;
-    color: #666;
-}
-
-/* Блок с преимуществами / текстом */
-.features {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    margin-bottom: 50px;
-}
-
-.feature-item {
-    margin-bottom: 25px;
-}
-
-.feature-item:last-child {
-    margin-bottom: 0;
-}
-
-.feature-item h3 {
-    font-size: 1.4rem;
-    color: #0070f3;
-    margin-bottom: 8px;
-}
-
-/* Секция с кнопкой внизу */
-.cta-section {
-    text-align: center;
-    padding: 20px 0;
-}
-
-/* Стили целевой кнопки */
-.btn-cta {
+.badge {
     display: inline-block;
-    background-color: #0070f3;
+    background: rgba(0, 112, 243, 0.15);
+    border: 1px solid rgba(0, 112, 243, 0.3);
+    color: #38bdf8;
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.hero-header h1 {
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    background: linear-gradient(135deg, #ffffff 40%, #a5b4fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    letter-spacing: -0.03em;
+}
+
+.hero-header p {
+    font-size: 1.25rem;
+    color: #9ca3af;
+    font-weight: 400;
+}
+
+/* Сетка карточек в стиле Glassmorphism */
+.grid-features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 80px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 32px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(0, 112, 243, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.card h3 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #9ca3af;
+    line-height: 1.6;
+}
+
+/* Нижняя секция призыва к действию */
+.cta-wrapper {
+    text-align: center;
+    width: 100%;
+    padding-top: 20px;
+}
+
+.cta-subtext {
+    font-size: 1rem;
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+
+/* Премиальная кнопка заказать */
+.btn-premium {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    background: linear-gradient(135deg, #0070f3, #7928ca);
     color: #ffffff;
     text-decoration: none;
-    padding: 18px 40px;
-    font-size: 1.3rem;
-    font-weight: bold;
-    border-radius: 8px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    box-shadow: 0 4px 14px rgba(0, 112, 243, 0.4);
+    padding: 18px 54px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 28px rgba(0, 112, 243, 0.3);
 }
 
-/* Эффект при наведении на кнопку */
-.btn-cta:hover {
-    background-color: #0051b3;
-    transform: translateY(-2px);
+.btn-premium svg {
+    transition: transform 0.2s ease;
 }
 
-/* Эффект при клике */
-.btn-cta:active {
-    transform: translateY(1px);
+/* Эффекты при наведении */
+.btn-premium:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 35px rgba(121, 40, 202, 0.5);
 }
 
-/* Адаптивность для мобильных устройств */
-@media (max-width: 600px) {
-    header h1 { font-size: 2rem; }
-    .btn-cta { width: 100%; text-align: center; }
+/* Небольшая пульсация корзины при наведении */
+.btn-premium:hover svg {
+    transform: scale(1.1);
+}
+
+.btn-premium:active {
+    transform: translateY(-1px) scale(1);
+}
+
+/* Адаптивность для мобильных экранов */
+@media (max-width: 900px) {
+    .grid-features {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .hero-header h1 {
+        font-size: 2.3rem;
+    }
+
+    .container {
+        padding: 50px 20px;
+    }
+
+    .btn-premium {
+        width: 100%;
+        padding: 16px 32px;
+    }
 }
