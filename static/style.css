@@ -338,7 +338,6 @@ body {
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.25);
 }
 
-/* ==================== АДАТИВНОСТЬ (ЧИСТЫЙ КОД) ==================== */
 @media (max-width: 900px) {
     .minimal-grid {
         grid-template-columns: 1fr;
@@ -351,7 +350,7 @@ body {
     }
 
     .site-wrapper {
-        padding: 40px 16px 40px 16px; /* Никаких гигантских пустых отступов */
+        padding: 40px 16px 100px 16px; /* Никаких гигантских пустых отступов */
     }
 
     .about-card {
@@ -367,9 +366,8 @@ body {
         justify-content: center;
     }
 
-    /* ИСПРАВЛЕНИЕ: На телефонах отменяем парение панели и встраиваем её логично в самый низ */
     .bottom-action-bar {
-        position: static; /* Становится обычным блоком страницы */
+        position: static;
         margin-top: 20px;
         padding: 0;
     }
