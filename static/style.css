@@ -185,7 +185,7 @@ body {
     margin-bottom: 0;
 }
 
-/* Кнопка GitHub */
+/* Кнопка */
 .about-actions {
     margin-top: 28px;
     display: flex;
@@ -195,7 +195,7 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    background-color: #24292f; /* Родной цвет GitHub */
+    background-color: #24292f;
     color: #ffffff;
     text-decoration: none;
     padding: 12px 24px;
@@ -210,10 +210,6 @@ body {
     background-color: #121518;
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(36, 41, 47, 0.25);
-}
-
-.btn-github:active {
-    transform: translateY(0);
 }
 
 /* Сетка карточек */
@@ -281,7 +277,7 @@ body {
     font-size: 1.1rem;
 }
 
-/* Фиксированная плашка с кнопкой в самом низу экрана */
+/* Фиксированная плашка */
 .bottom-action-bar {
     position: fixed;
     bottom: 28px;
@@ -315,7 +311,6 @@ body {
     color: #ffffff;
     font-weight: 600;
     font-size: 1.1rem;
-    letter-spacing: -0.01em;
 }
 
 .bar-subtitle {
@@ -323,7 +318,6 @@ body {
     font-size: 0.88rem;
 }
 
-/* Кнопка на плашке */
 .btn-minimal {
     display: inline-flex;
     align-items: center;
@@ -345,42 +339,12 @@ body {
 
 /* Адаптивность */
 @media (max-width: 900px) {
-    .minimal-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .minimal-header h1 {
-        font-size: 2.4rem;
-    }
-
-    .site-wrapper {
-        padding: 60px 16px 180px 16px;
-    }
-
-    .about-card {
-        padding: 24px;
-    }
-
-    .about-actions {
-        width: 100%;
-    }
-
-    .btn-github {
-        width: 100%;
-        justify-content: center;
-    }
-
-    .bar-container {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-        border-radius: 20px;
-        padding: 20px;
-    }
-
-    .btn-minimal {
-        width: 100%;
-        justify-content: center;
-    }
+    .minimal-grid { grid-template-columns: 1fr; gap: 16px; }
+    .minimal-header h1 { font-size: 2.4rem; }
+    .site-wrapper { padding: 60px 16px 180px 16px; }
+    .about-card { padding: 24px; }
+    .about-actions { width: 100%; }
+    .btn-github { width: 100%; justify-content: center; }
+    .bar-container { flex-direction: column; gap: 16px; text-align: center; border-radius: 20px; padding: 20px; }
+    .btn-minimal { width: 100%; justify-content: center; }
 }
