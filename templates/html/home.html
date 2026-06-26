@@ -4,38 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebCraft — Создание сайтов</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Современный Лендинг</title>
+    <!-- Подключение внешнего файла стилей CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <strong>WebCraft.</strong>
-            <nav>
-                <a href="/" class="active">Главная</a>
-                <a href="orders">Предложения</a>
-            </nav>
-        </div>
-    </header>
+    <div class="container">
+        <!-- Шапка лендинга -->
+        <header>
+            <h1>Идеальное решение для вашего бизнеса</h1>
+            <p>Узнайте, как наш продукт может изменить ваш рабочий процесс уже сегодня.</p>
+        </header>
 
-    <main>
-        <div class="container">
-            <h1>Создаем сайты, которые приносят прибыль</h1>
-            <p>Современный дизайн, быстрая загрузка и полная адаптивность под любые устройства.</p>
-            <a href="orders" class="btn-primary">Заказать расчет стоимости</a>
-        </div>
-    </main>
+        <!-- Основной контент страницы -->
+        <main class="features">
+            <div class="feature-item">
+                <h3>🚀 Быстрый старт</h3>
+                <p>Вам не придется тратить недели на настройку. Наш сервис готов к работе сразу после простой регистрации.</p>
+            </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 WebCraft.</p>
-            <nav>
-                <a href="https://t.me">Telegram</a>
-                <a href="#">WhatsApp</a>
-            </nav>
-        </div>
-    </footer>
+            <div class="feature-item">
+                <h3>🔒 Безопасность данных</h3>
+                <p>Мы используем передовые протоколы шифрования, чтобы ваша личная информация оставалась под надежной защитой.</p>
+            </div>
+
+            <div class="feature-item">
+                <h3>📈 Рост эффективности</h3>
+                <p>Автоматизируйте рутинные задачи и сфокусируйтесь на том, что действительно важно для увеличения прибыли.</p>
+            </div>
+        </main>
+
+        <!-- Подвал / Секция с кнопкой в самом низу -->
+        <footer class="cta-section">
+            <a href="https://example.com" class="btn-cta">Начать бесплатно</a>
+        </footer>
+    </div>
 
 </body>
 </html>

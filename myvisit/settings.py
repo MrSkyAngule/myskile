@@ -25,7 +25,7 @@ SITE_ID = 1
 SECRET_KEY = 'django-insecure-_26!mmke(h^4e1zwu6-d_eo3+_#*968@pzate970ek5@$4g0ug'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['uhrwerk.ru', 'www.uhrwerk.ru']
 

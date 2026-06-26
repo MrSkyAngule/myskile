@@ -10,14 +10,37 @@
 <body>
 
     <header>
-        <div class="container">
-            <strong>WebCraft.</strong>
-            <nav>
-                <a href="/">Главная</a>
-                <a href="orders" class="active">Предложения</a>
-            </nav>
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex; align-items: center;">
+                <strong>WebCraft.</strong>
+                <nav style="margin-left: 25px;">
+                    <a href="/">Главная</a>
+                    <a href="{% url 'order' %}">Предложения</a>
+                </nav>
+            </div>
+
+            <!-- Правый верхний угол: блок авторизации django-allauth -->
+            <div class="auth-zone" style="display: flex; align-items: center; gap: 15px;">
+                {% if request.user.is_authenticated %}
+                    <!-- Если пользователь вошел -->
+                    <span style="font-size: 0.9rem; color: #475569; font-weight: 600;">
+                        👤 {{ request.user.username }}
+                    </span>
+                    <a href="{% url 'account_logout' %}"
+                       style="font-size: 0.85rem; font-weight: 500; color: #dc2626; border: 1px solid #fca5a5; padding: 6px 12px; border-radius: 6px; background-color: #fef2f2;">
+                        Выйти
+                    </a>
+                {% else %}
+                    <!-- Если пользователь гость -->
+                    <a href="{% url 'account_login' %}" class="btn-primary"
+                       style="padding: 8px 16px; font-size: 0.85rem; border-radius: 6px; font-weight: 600;">
+                        Войти
+                    </a>
+                {% endif %}
+            </div>
         </div>
     </header>
+
 
     <main>
         <div class="container">

@@ -2,7 +2,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('administrations/', admin.site.urls),
+    path('dfoshkjsbgildbfindfaijvn/', admin.site.urls),
     path('', include('main.urls')),
-    path('orders/', include('order.urls')),
 ]
