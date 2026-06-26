@@ -1,16 +1,16 @@
-{% load static %}
+{%load static%}
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Премиум Лендинг</title>
+    <title>Создание современных сайтов под ключ</title>
     <!-- Подключаем современный шрифт Inter из Google Fonts -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
     <link href="https://googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
     <!-- Подключение ваших стилей из папки static -->
-    <link rel="stylesheet" href="{% static 'style.css'%}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
 
@@ -19,40 +19,46 @@
     <div class="glow-sphere sphere-2"></div>
 
     <div class="container">
-        <!-- Шапка -->
+        <!-- Шапка (Hero-секция) -->
         <header class="hero-header">
-            <span class="badge">Новое обновление 2.0</span>
-            <h1>Идеальное решение для вашего бизнеса</h1>
-            <p>Уникальная платформа для автоматизации рутины и взрывного роста вашей прибыли.</p>
+            <span class="badge">🔥 Разработка полного цикла</span>
+            <h1>Создаем сайты, которые продают и влюбляют</h1>
+            <p>Превращаем ваши идеи в быстрые, адаптивные и современные веб-решения. От простых лендингов до сложных интернет-магазинов.</p>
         </header>
 
-        <!-- Сетка с преимуществами -->
+        <!-- Сетка с преимуществами вашей разработки -->
         <main class="grid-features">
             <div class="card">
-                <div class="card-icon">🚀</div>
-                <h3>Быстрый старт</h3>
-                <p>Вам не придется тратить недели на сложную настройку. Наш сервис готов к работе сразу после регистрации.</p>
+                <div class="card-icon">🎨</div>
+                <h3>Уникальный дизайн</h3>
+                <p>Никаких шаблонных решений. Проектируем стильный интерфейс (UI/UX) под ваш бренд, который выделит вас среди конкурентов.</p>
             </div>
 
             <div class="card">
-                <div class="card-icon">🔒</div>
-                <h3>Безопасность</h3>
-                <p>Передовые протоколы сквозного шифрования. Ваша личная и коммерческая информация под надежной защитой.</p>
+                <div class="card-icon">⚡</div>
+                <h3>Ультра-скорость</h3>
+                <p>Оптимизируем код, изображения и статические файлы, чтобы ваш сайт загружался моментально на любых устройствах.</p>
             </div>
 
             <div class="card">
-                <div class="card-icon">📈</div>
-                <h3>Эффективность</h3>
-                <p>Автоматизируйте рутинные задачи и сфокусируйтесь на глобальных целях вашей компании.</p>
+                <div class="card-icon">📱</div>
+                <h3>100% Адаптивность</h3>
+                <p>Сайт будет безупречно отображаться, удобно скроллиться и идеально работать на смартфонах, планшетах и компьютерах.</p>
             </div>
         </main>
 
-        <!-- Секция с призывом к действию в самом низу -->
+        <!-- Секция с целевой кнопкой «Заказать» в самом низу -->
         <footer class="cta-wrapper">
-            <p class="cta-subtext">Попробуйте бесплатно. Отмена в любой момент.</p>
-            <a href="https://example.com" class="btn-premium">
-                Начать бесплатно
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <p class="cta-subtext">Обсудим ваш проект? Оставьте заявку прямо сейчас.</p>
+
+            <!-- Замените https://your-link.com на ссылку вашей формы, мессенджера (например, Telegram/WhatsApp) или CRM -->
+            <a href="https://your-link.com" class="btn-premium">
+                Заказать сайт
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
             </a>
         </footer>
     </div>
