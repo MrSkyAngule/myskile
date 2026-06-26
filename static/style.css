@@ -128,7 +128,7 @@ body {
     font-weight: 400;
 }
 
-/* СТИЛИ ДЛЯ НОВОГО БЛОКА «О СЕБЕ» */
+/* БЛОК «О СЕБЕ» */
 .about-section {
     width: 100%;
     margin-bottom: 60px;
@@ -171,7 +171,7 @@ body {
 
 .about-subtitle {
     font-size: 0.9rem;
-    color: #4f46e5; /* Акцентный фиолетовый */
+    color: #4f46e5;
     font-weight: 600;
 }
 
@@ -183,6 +183,37 @@ body {
 
 .about-text p:last-child {
     margin-bottom: 0;
+}
+
+/* Кнопка GitHub */
+.about-actions {
+    margin-top: 28px;
+    display: flex;
+}
+
+.btn-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #24292f; /* Родной цвет GitHub */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(36, 41, 47, 0.15);
+}
+
+.btn-github:hover {
+    background-color: #121518;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(36, 41, 47, 0.25);
+}
+
+.btn-github:active {
+    transform: translateY(0);
 }
 
 /* Сетка карточек */
@@ -329,6 +360,15 @@ body {
 
     .about-card {
         padding: 24px;
+    }
+
+    .about-actions {
+        width: 100%;
+    }
+
+    .btn-github {
+        width: 100%;
+        justify-content: center;
     }
 
     .bar-container {
