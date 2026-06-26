@@ -80,7 +80,7 @@ body {
 .site-wrapper {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 100px 24px 60px 24px; /* Отрегулировали отступы для ПК */
+    padding: 100px 24px 180px 24px; /* Отрегулировали отступы для ПК */
 }
 
 /* Главный заголовок */
